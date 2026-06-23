@@ -13,7 +13,7 @@ export default function Home() {
       <header className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center text-[#111] pointer-events-none">
         <div className="pointer-events-auto flex items-center">
           <Link href="/">
-            <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-14 md:h-16 w-auto object-contain invert" />
+            <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-20 w-auto object-contain invert" />
           </Link>
         </div>
         <nav className="flex gap-12 text-[11px] font-bold tracking-[0.2em] uppercase pointer-events-auto">
@@ -99,43 +99,33 @@ export default function Home() {
         </section>
 
         {/* NOUVELLE SECTION: STUDIO / MANIFESTO */}
-        <section className="px-6 md:px-12 py-32 border-b border-[#111] bg-[#111] text-white relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
-          <div className="flex flex-col md:flex-row gap-16 md:gap-32 items-stretch max-w-7xl mx-auto relative z-10">
-            <div className="w-full md:w-5/12 flex flex-col justify-center">
+        <section className="px-6 md:px-12 py-32 bg-[#F4F4F0] text-[#111] border-b border-[#111]">
+          <div className="flex flex-col md:flex-row gap-16 md:gap-32 items-center max-w-7xl mx-auto">
+            <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85] mb-8">
                 Le <br/> Studio.
               </h2>
               <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-12 flex items-center gap-4">
                 <span className="w-8 h-[1px] bg-[#888]"></span> Manifeste
               </div>
-              <div className="space-y-8 text-sm md:text-base font-medium text-[#ccc] leading-relaxed">
-                <p className="text-xl md:text-2xl font-bold text-white leading-tight">
+              <div className="space-y-8 text-sm md:text-base font-medium text-[#555] leading-relaxed">
+                <p className="text-xl md:text-2xl font-bold text-[#111] leading-tight">
                   Nous ne sommes pas de simples loueurs. Vision Adéquate est né d'une frustration : celle de voir la logistique entraver la création.
                 </p>
                 <p>
                   Chaque pièce de notre inventaire est sélectionnée, testée et calibrée avec une rigueur chirurgicale. Si un équipement n'atteint pas nos standards de fiabilité, il n'est pas proposé à la location. Point.
                 </p>
-                <p className="border-l-2 border-[#F4F4F0] pl-6 py-2 text-white">
+                <p className="text-[#111] font-bold">
                   Notre mission est simple : faire disparaître l'outil pour laisser toute la place à votre vision.
                 </p>
               </div>
             </div>
-            <div className="w-full md:w-7/12 relative min-h-[500px] md:min-h-0 bg-[#0a0a0a] border border-[#333] flex items-center justify-center p-12 group overflow-hidden">
-              {/* Lignes de repère "Blueprint" en arrière-plan de l'image */}
-              <div className="absolute inset-0 border border-[#333] m-4 pointer-events-none z-10 transition-transform duration-1000 group-hover:scale-95" />
-              <div className="absolute inset-y-0 left-1/2 w-[1px] bg-[#222] pointer-events-none z-0" />
-              <div className="absolute inset-x-0 top-1/2 h-[1px] bg-[#222] pointer-events-none z-0" />
-              
+            <div className="w-full md:w-1/2 aspect-square md:aspect-[4/5]">
               <img 
-                src="/assets/materielsdetails/12-sony-a7siii/12-ii.webp" 
-                alt="Sony A7S III Details" 
-                className="w-full h-full object-contain mix-blend-screen opacity-90 group-hover:scale-110 group-hover:rotate-1 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] relative z-20"
+                src="/assets/image.png" 
+                alt="Manifeste Vision Adéquate" 
+                className="w-full h-full object-cover"
               />
-              
-              <div className="absolute bottom-8 right-8 text-[9px] font-mono text-[#666] uppercase tracking-widest z-30">
-                FIG 1. — Sony A7S III Details
-              </div>
             </div>
           </div>
         </section>
@@ -273,7 +263,7 @@ export default function Home() {
         <footer className="bg-[#111] text-[#F4F4F0] px-6 md:px-12 py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 border-b border-[#333] pb-24">
             <div>
-              <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-12 md:h-16 w-auto object-contain mb-12" />
+              <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-24 w-auto object-contain invert mb-12" />
               <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] mb-8">
                 Prêt à <br/> Tourner.
               </h2>

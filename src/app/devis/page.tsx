@@ -66,7 +66,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
       {/* HEADER */}
       <header className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center bg-[#F4F4F0] border-b border-[#111]">
         <Link href="/" className="hover:opacity-50 transition-opacity flex items-center">
-          <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-14 md:h-16 w-auto object-contain invert" />
+          <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-20 w-auto object-contain invert" />
         </Link>
         <nav className="flex gap-12 text-[11px] font-bold tracking-[0.2em] uppercase">
           <Link href="/catalogue" className="hover:opacity-50 transition-opacity">Inventaire</Link>
