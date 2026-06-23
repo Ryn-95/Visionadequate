@@ -112,7 +112,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         {/* TOP BAR - Breadcrumb & Price */}
         <div className="flex justify-between items-center px-6 md:px-12 py-4 border-b border-[#111] text-[10px] font-bold uppercase tracking-widest text-[#555]">
           <Link href="/catalogue" className="flex items-center gap-2 hover:text-[#111] transition-colors">
-            <ArrowLeft className="w-3 h-3" /> Retour à l'inventaire
+            <ArrowLeft className="w-3 h-3" /> Retour à l&apos;inventaire
           </Link>
           <div className="flex items-center gap-4">
             <span className="text-[#111]">REF. {params.id.toUpperCase()}</span>
