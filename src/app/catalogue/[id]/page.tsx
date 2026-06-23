@@ -149,9 +149,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             </div>
           </div>
 
-          {/* DROITE : INFOS & DEVIS (Sticky) */}
+          {/* DROITE : INFOS & DEVIS (Sticky sur Desktop) */}
           <div className="w-full lg:w-1/3 flex flex-col">
-            <div className="sticky top-[89px] flex flex-col h-[calc(100vh-89px)]">
+            <div className="lg:sticky lg:top-[89px] flex flex-col lg:h-[calc(100vh-89px)]">
               {/* Product Header */}
               <div className="p-8 border-b border-[#111]">
                 <div className="text-[10px] font-bold text-[#666] uppercase tracking-[0.2em] mb-4">{product.brand}</div>
@@ -248,9 +248,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         </section>
 
         {/* SUGGESTIONS (Grid Style) */}
-        <section className="border-t border-[#111]">
+        <section className="border-t border-[#111] overflow-hidden">
           <div className="px-6 md:px-12 py-16 flex justify-between items-end border-b border-[#111]">
-            <h2 className="text-5xl font-black tracking-tighter uppercase leading-[0.9]">
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] break-words">
               Recommandations <br/> Techniques
             </h2>
           </div>

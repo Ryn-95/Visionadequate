@@ -98,12 +98,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* NOUVELLE SECTION: STUDIO / MANIFESTO */}
+        {/* NOUVELLE SECTION: L'AGENCE / MANIFESTO */}
         <section className="px-6 md:px-12 py-32 bg-[#F4F4F0] text-[#111] border-b border-[#111]">
           <div className="flex flex-col md:flex-row gap-16 md:gap-32 items-center max-w-7xl mx-auto">
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85] mb-8">
-                Le <br/> Studio.
+                L&apos;Agence.
               </h2>
               <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-12 flex items-center gap-4">
                 <span className="w-8 h-[1px] bg-[#888]"></span> Manifeste

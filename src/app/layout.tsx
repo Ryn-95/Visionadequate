@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="light">
-      <body className="font-sans bg-[#F4F4F0] text-[#111]">
+      <body className="font-sans bg-[#F4F4F0] text-[#111] overflow-x-hidden">
         <CartProvider>
           <Loader />
           {children}
