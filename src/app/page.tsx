@@ -120,11 +120,11 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="w-full md:w-1/2 aspect-square md:aspect-[4/5]">
+            <div className="w-full md:w-1/2 flex items-center justify-center">
               <img 
                 src="/assets/image.png" 
                 alt="Manifeste Vision Adéquate" 
-                className="w-full h-full object-cover"
+                className="w-full h-auto max-h-[70vh] object-contain"
               />
             </div>
           </div>
@@ -263,7 +263,7 @@ export default function Home() {
         <footer className="bg-[#111] text-[#F4F4F0] px-6 md:px-12 py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 border-b border-[#333] pb-24">
             <div>
-              <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-24 w-auto object-contain invert mb-12" />
+              <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-24 w-auto object-contain mb-12" />
               <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] mb-8">
                 Prêt à <br/> Tourner.
               </h2>

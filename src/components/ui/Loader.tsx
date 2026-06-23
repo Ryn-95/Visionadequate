@@ -30,7 +30,7 @@ export default function Loader() {
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-24 w-auto object-contain invert" />
+        <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-32 md:h-56 lg:h-64 w-auto object-contain invert" />
       </motion.div>
     </motion.div>
   );
