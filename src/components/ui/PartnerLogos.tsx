@@ -11,7 +11,7 @@ export const ArteLogo = ({ className }: { className?: string }) => (
 );
 
 export const IconoclastLogo = ({ className }: { className?: string }) => (
-  <img src="/assets/partenaires/iconoclast.svg" alt="Iconoclast" className={className} />
+  <img src="/assets/partenaires/iconoclast.png" alt="Iconoclast" className={className} />
 );
 
 export const ColorsLogo = ({ className }: { className?: string }) => (
