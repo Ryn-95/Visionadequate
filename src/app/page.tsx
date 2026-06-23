@@ -273,6 +273,7 @@ export default function Home() {
         <footer className="bg-[#111] text-[#F4F4F0] px-6 md:px-12 py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 border-b border-[#333] pb-24">
             <div>
+              <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-12 md:h-16 w-auto object-contain mb-12" />
               <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] mb-8">
                 Prêt à <br/> Tourner.
               </h2>
@@ -295,9 +296,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] font-bold tracking-widest uppercase text-[#555]">
+          <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-widest uppercase text-[#555]">
             <span>© 2026 Vision Adéquate.</span>
-            <div className="flex gap-8 mt-4 md:mt-0">
+            <div className="flex gap-8">
               <Link href="#" className="hover:text-white transition-colors">Mentions Légales</Link>
               <Link href="#" className="hover:text-white transition-colors">CGV</Link>
             </div>
