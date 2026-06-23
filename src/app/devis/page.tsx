@@ -242,7 +242,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
                 </div>
                 <h2 className="text-3xl font-black uppercase tracking-tighter">Demande Transmise.</h2>
                 <p className="text-sm font-medium text-[#888] max-w-sm">
-                  WhatsApp s'est ouvert pour envoyer votre demande. Notre équipe technique étudie la disponibilité de votre liste matériel.
+                  WhatsApp s&apos;est ouvert pour envoyer votre demande. Notre équipe technique étudie la disponibilité de votre liste matériel.
                 </p>
                 <Link href="/" className="mt-8 inline-block border-b border-[#555] pb-1 text-[10px] font-bold text-[#888] hover:text-white uppercase tracking-[0.2em] transition-colors">
                   Retour au site

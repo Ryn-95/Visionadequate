@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { products } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import Image from "next/image";
 
 const PRODUCTS_DATA: Record<string, any> = {
   "sony-a7iv": {
@@ -138,11 +139,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <div className="flex border-b border-[#111]">
               {product.images.map((img: string, i: number) => (
                 <button 
-                  key={i} 
+                  key={img} 
                   onClick={() => setActiveImage(i)}
-                  className={`flex-1 aspect-[16/9] border-r border-[#111] last:border-r-0 flex items-center justify-center bg-[#F4F4F0] hover:bg-[#EBEBE6] transition-colors ${i === activeImage ? 'opacity-100' : 'opacity-40'}`}
+                  className={`relative flex-1 aspect-[16/9] border-r border-[#111] last:border-r-0 flex items-center justify-center bg-[#F4F4F0] hover:bg-[#EBEBE6] transition-colors ${i === activeImage ? 'opacity-100' : 'opacity-40'}`}
                 >
-                  <img src={img} className="w-1/2 h-1/2 object-contain mix-blend-multiply" />
+                  <img src={img} alt={`Miniature ${product.model} ${i+1}`} className="w-full h-full object-contain p-4 mix-blend-multiply" />
                 </button>
               ))}
             </div>

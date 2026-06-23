@@ -52,7 +52,7 @@ export function ProductGrid({ products, viewMode }: ProductGridProps) {
       {products.length >= 12 && (
         <div className="mt-32 flex flex-col items-center justify-center">
           <button className="bg-transparent border-b border-[#111] text-[#111] hover:opacity-50 pb-2 text-[11px] font-bold uppercase tracking-[0.2em] transition-opacity mb-6">
-            Charger l'inventaire complet
+            Charger l&apos;inventaire complet
           </button>
           <span className="font-mono text-[9px] text-[#888] uppercase tracking-[0.2em]">
             (87 références restantes)

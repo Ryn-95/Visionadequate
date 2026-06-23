@@ -110,13 +110,13 @@ export default function Home() {
               </div>
               <div className="space-y-8 text-sm md:text-base font-medium text-[#555] leading-relaxed">
                 <p className="text-xl md:text-2xl font-bold text-[#111] leading-tight">
-                  Nous ne sommes pas de simples loueurs. Vision Adéquate est né d'une frustration : celle de voir la logistique entraver la création.
+                  Nous ne sommes pas de simples loueurs. Vision Adéquate est né d&apos;une frustration : celle de voir la logistique entraver la création.
                 </p>
                 <p>
-                  Chaque pièce de notre inventaire est sélectionnée, testée et calibrée avec une rigueur chirurgicale. Si un équipement n'atteint pas nos standards de fiabilité, il n'est pas proposé à la location. Point.
+                  Chaque pièce de notre inventaire est sélectionnée, testée et calibrée avec une rigueur chirurgicale. Si un équipement n&apos;atteint pas nos standards de fiabilité, il n&apos;est pas proposé à la location. Point.
                 </p>
                 <p className="text-[#111] font-bold">
-                  Notre mission est simple : faire disparaître l'outil pour laisser toute la place à votre vision.
+                  Notre mission est simple : faire disparaître l&apos;outil pour laisser toute la place à votre vision.
                 </p>
               </div>
             </div>
@@ -172,10 +172,10 @@ export default function Home() {
         <section className="px-6 md:px-12 py-32 border-b border-[#111]">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9]">
-              Sélection <br/> Technique
+              Sélection <br /> Technique
             </h2>
             <Link href="/catalogue" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest border-b-2 border-[#111] pb-1 hover:opacity-50 transition-opacity">
-              Voir tout l'inventaire <ArrowUpRight className="w-4 h-4" />
+              Voir tout l&apos;inventaire <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
 
