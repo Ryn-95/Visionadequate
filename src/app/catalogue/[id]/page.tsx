@@ -174,11 +174,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-4">
-                  <input 
-                    type="text" 
-                    placeholder="DATES DE LOCATION (EX: 12 NOV - 15 NOV)" 
-                    className="w-full bg-transparent border-b border-[#333] py-3 text-xs font-bold uppercase tracking-widest text-white placeholder:text-[#555] focus:outline-none focus:border-white transition-colors"
-                  />
                   <button 
                     onClick={handleAdd}
                     className={`w-full py-4 text-xs font-bold uppercase tracking-widest transition-colors flex justify-center items-center gap-2 ${
@@ -187,6 +182,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   >
                     {added ? "Ajouté au devis" : "Ajouter au devis"} {added ? null : <ArrowRight className="w-4 h-4" />}
                   </button>
+                  <Link href="/devis" className="w-full py-4 text-xs font-bold uppercase tracking-widest transition-colors flex justify-center items-center gap-2 bg-transparent border border-[#333] text-white hover:bg-[#222]">
+                    Voir mon devis
+                  </Link>
                 </div>
               </div>
 

@@ -39,26 +39,58 @@ export default function Devis() {
 
     const doc = new jsPDF();
     
+    // Convert logo image to base64
+    const logoUrl = '/assets/logo/logo.png';
+    const logoImg = new Image();
+    logoImg.src = logoUrl;
+    
+    await new Promise((resolve) => {
+      logoImg.onload = resolve;
+    });
+
+    const canvas = document.createElement('canvas');
+    canvas.width = logoImg.width;
+    canvas.height = logoImg.height;
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      // Invert the colors for the PDF (black logo on white bg instead of white on black)
+      ctx.drawImage(logoImg, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        // Only invert if it's not transparent
+        if (data[i + 3] > 0) {
+          data[i] = 255 - data[i];     // red
+          data[i + 1] = 255 - data[i + 1]; // green
+          data[i + 2] = 255 - data[i + 2]; // blue
+        }
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+    const logoBase64 = canvas.toDataURL('image/png');
+
     // Add Company Logo/Header
+    doc.addImage(logoBase64, 'PNG', 14, 15, 30, 30 * (logoImg.height / logoImg.width));
+    
     doc.setFontSize(22);
-    doc.text("VISION ADEQUATE", 14, 20);
+    doc.text("VISION ADEQUATE", 50, 25);
     doc.setFontSize(10);
-    doc.text("12 Rue de la Précision", 14, 28);
-    doc.text("75011 Paris, France", 14, 34);
-    doc.text("contact@vision-adequate.fr", 14, 40);
+    doc.text("12 Rue de la Précision", 50, 32);
+    doc.text("75011 Paris, France", 50, 37);
+    doc.text("contact@vision-adequate.fr", 50, 42);
 
     // Add Client Info
     doc.setFontSize(14);
-    doc.text("DEMANDE DE DEVIS", 14, 55);
+    doc.text("DEMANDE DE DEVIS", 14, 60);
     doc.setFontSize(10);
-    doc.text(`Nom : ${formData.nom || "Non précisé"}`, 14, 65);
-    doc.text(`Société : ${formData.societe || "Non précisé"}`, 14, 71);
-    doc.text(`Email : ${formData.email || "Non précisé"}`, 14, 77);
-    doc.text(`Téléphone : ${formData.telephone || "Non précisé"}`, 14, 83);
+    doc.text(`Nom : ${formData.nom || "Non précisé"}`, 14, 70);
+    doc.text(`Société : ${formData.societe || "Non précisé"}`, 14, 76);
+    doc.text(`Email : ${formData.email || "Non précisé"}`, 14, 82);
+    doc.text(`Téléphone : ${formData.telephone || "Non précisé"}`, 14, 88);
     
-    doc.text(`Date de début : ${formatDate(formData.dateDebut)}`, 120, 65);
-    doc.text(`Date de fin : ${formatDate(formData.dateFin)}`, 120, 71);
-    doc.text(`Type de production : ${formData.type || "Non précisé"}`, 120, 77);
+    doc.text(`Date de début : ${formatDate(formData.dateDebut)}`, 120, 70);
+    doc.text(`Date de fin : ${formatDate(formData.dateFin)}`, 120, 76);
+    doc.text(`Type de production : ${formData.type || "Non précisé"}`, 120, 82);
 
     // Add Table
     const tableColumn = ["Description", "Marque", "Quantité", "Prix Unitaire HT", "Total HT"];
@@ -71,28 +103,44 @@ export default function Devis() {
     ]);
 
     autoTable(doc, {
-      startY: 95,
+      startY: 100,
       head: [tableColumn],
       body: tableRows,
       theme: 'grid',
       headStyles: { fillColor: [17, 17, 17] }
     });
 
-    const finalY = (doc as any).lastAutoTable.finalY || 95;
+    const finalY = (doc as any).lastAutoTable.finalY || 100;
+    
+    // Calculate total duration if dates are provided
+    let durationMultiplier = 1;
+    let durationText = "(1 jour)";
+    if (formData.dateDebut && formData.dateFin) {
+      const start = new Date(formData.dateDebut);
+      const end = new Date(formData.dateFin);
+      const diffTime = Math.abs(end.getTime() - start.getTime());
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 to include both start and end days
+      if (diffDays > 0) {
+        durationMultiplier = diffDays;
+        durationText = `(${diffDays} jours)`;
+      }
+    }
+
+    const finalTotalHT = totalHT * durationMultiplier;
     
     doc.setFontSize(12);
-    doc.text(`Total HT (1 jour) : ${totalHT} €`, 120, finalY + 15);
-    doc.text(`TVA (20%) : ${(totalHT * 0.2).toFixed(2)} €`, 120, finalY + 22);
+    doc.text(`Total HT ${durationText} : ${finalTotalHT} €`, 120, finalY + 15);
+    doc.text(`TVA (20%) : ${(finalTotalHT * 0.2).toFixed(2)} €`, 120, finalY + 22);
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
-    doc.text(`Total TTC estimé : ${(totalHT * 1.2).toFixed(2)} €`, 120, finalY + 32);
+    doc.text(`Total TTC estimé : ${(finalTotalHT * 1.2).toFixed(2)} €`, 120, finalY + 32);
 
     // Save the PDF
     doc.save(`Devis_Vision_Adequate_${formData.nom || "Client"}.pdf`);
 
     // Optionally open mail client
     const subject = encodeURIComponent("Nouvelle demande de devis - " + (formData.societe || formData.nom || "Client"));
-    const body = encodeURIComponent(`Bonjour l'équipe Vision Adéquate,\n\nVeuillez trouver ci-joint (à ajouter manuellement s'il vous plaît) ma demande de devis en PDF que je viens de télécharger.\n\nMerci,\n${formData.nom}`);
+    const body = encodeURIComponent(`Bonjour l'équipe Vision Adéquate,\n\nVeuillez trouver ci-joint ma demande de devis en PDF que je viens de générer sur votre site.\n\nMerci,\n${formData.nom}`);
     window.open(`mailto:contact@vision-adequate.fr?subject=${subject}&body=${body}`, '_blank');
     
     setStep(3);
@@ -294,10 +342,20 @@ export default function Devis() {
           {/* Total Bar */}
           {step < 3 && (
             <div className="p-8 md:p-12 border-t border-[#333] flex justify-between items-end">
-              <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em]">Estimation (1 Jour)</div>
+              <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em]">Estimation {
+                formData.dateDebut && formData.dateFin ? 
+                `(${Math.ceil(Math.abs(new Date(formData.dateFin).getTime() - new Date(formData.dateDebut).getTime()) / (1000 * 60 * 60 * 24)) + 1} jours)` : 
+                "(1 Jour)"
+              }</div>
               <div className="text-right">
-                <div className="font-black text-4xl leading-none">{totalHT}€</div>
-                <div className="text-[10px] font-bold text-[#888] uppercase tracking-widest mt-1">HT (+ TVA = {(totalHT * 1.2).toFixed(2)}€ TTC)</div>
+                <div className="font-black text-4xl leading-none">
+                  {totalHT * (formData.dateDebut && formData.dateFin ? 
+                    (Math.ceil(Math.abs(new Date(formData.dateFin).getTime() - new Date(formData.dateDebut).getTime()) / (1000 * 60 * 60 * 24)) + 1) : 
+                    1)}€
+                </div>
+                <div className="text-[10px] font-bold text-[#888] uppercase tracking-widest mt-1">HT (+ TVA = {(totalHT * 1.2 * (formData.dateDebut && formData.dateFin ? 
+                    (Math.ceil(Math.abs(new Date(formData.dateFin).getTime() - new Date(formData.dateDebut).getTime()) / (1000 * 60 * 60 * 24)) + 1) : 
+                    1)).toFixed(2)}€ TTC)</div>
               </div>
             </div>
           )}
