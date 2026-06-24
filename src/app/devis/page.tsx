@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Trash2, Calendar, Video, User, Building2, Mail, Phone, Plus, Download } from "lucide-react";
+import { ArrowRight, Trash2, Calendar, Video, User, Building2, Mail, Phone, Plus, Download, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
@@ -31,6 +31,21 @@ export default function Devis() {
     if (!dateStr) return "Non précisé";
     const date = new Date(dateStr);
     return date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+  };
+
+  const getWhatsAppMessage = () => {
+    let msg = `Bonjour Vision Adéquate, je souhaite vous envoyer une demande de devis.\n\n`;
+    if (formData.nom || formData.societe) {
+      msg += `👤 Client : ${formData.nom} ${formData.societe ? `(${formData.societe})` : ''}\n`;
+    }
+    if (formData.dateDebut && formData.dateFin) {
+      msg += `📅 Dates : du ${formatDate(formData.dateDebut)} au ${formatDate(formData.dateFin)}\n`;
+    }
+    msg += `\n🎥 Matériel sélectionné :\n`;
+    items.forEach(i => {
+      msg += `- ${i.quantity}x ${i.model}\n`;
+    });
+    return encodeURIComponent(msg);
   };
 
   const handleGenerateDevis = async () => {
@@ -301,16 +316,30 @@ export default function Devis() {
                     className="w-full bg-transparent border-b border-[#333] py-3 text-sm font-bold uppercase tracking-widest text-white focus:outline-none focus:border-white transition-colors" 
                   />
                 </div>
-                <div className="pt-8 flex gap-4">
+                <div className="pt-8 flex flex-col md:flex-row gap-4">
                   <button onClick={() => setStep(1)} className="px-6 py-5 border border-[#333] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#222] transition-colors">
                     Retour
                   </button>
-                  <button 
-                    onClick={handleGenerateDevis} 
-                    className="flex-1 py-5 bg-white text-[#111] text-xs font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors flex items-center justify-center gap-3"
-                  >
-                    Générer Devis (PDF) <Download className="w-4 h-4" />
-                  </button>
+                  <div className="flex-1 flex flex-col xl:flex-row gap-4">
+                    <button 
+                      onClick={handleGenerateDevis} 
+                      className="flex-1 py-5 bg-white text-[#111] text-xs font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors flex items-center justify-center gap-3"
+                    >
+                      PDF <Download className="w-4 h-4 shrink-0" />
+                    </button>
+                    <a 
+                      href={`https://wa.me/33666737410?text=${getWhatsAppMessage()}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => {
+                        setStep(3);
+                        setTimeout(() => clearCart(), 1000);
+                      }}
+                      className="flex-1 py-5 bg-[#25D366] text-[#111] text-xs font-bold uppercase tracking-widest hover:bg-[#1DA851] transition-colors flex items-center justify-center gap-3"
+                    >
+                      WhatsApp <MessageCircle className="w-4 h-4 shrink-0" />
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             )}
@@ -320,9 +349,9 @@ export default function Devis() {
                 <div className="w-16 h-16 border-2 border-emerald-500 rounded-full flex items-center justify-center mb-4">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
                 </div>
-                <h2 className="text-3xl font-black uppercase tracking-tighter">Devis Téléchargé.</h2>
+                <h2 className="text-3xl font-black uppercase tracking-tighter">Demande envoyée.</h2>
                 <p className="text-sm font-medium text-[#888] max-w-sm">
-                  Le PDF a été généré avec succès. Votre application mail s&apos;est ouverte, n&apos;oubliez pas d&apos;y joindre le fichier téléchargé pour nous l&apos;envoyer !
+                  Votre demande a bien été traitée. Si vous avez choisi le PDF, n&apos;oubliez pas de nous l&apos;envoyer par mail !
                 </p>
                 <Link href="/" className="mt-8 inline-block border-b border-[#555] pb-1 text-[10px] font-bold text-[#888] hover:text-white uppercase tracking-[0.2em] transition-colors">
                   Retour au site
