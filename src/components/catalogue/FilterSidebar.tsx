@@ -4,6 +4,7 @@ import { FilterAccordion } from "./FilterAccordion";
 import { RangeSlider } from "./RangeSlider";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { Toggle } from "@/components/ui/Toggle";
+import { Video, Aperture, Lightbulb, Move, Mic, Plane, Monitor, Wrench, Package } from "lucide-react";
 
 interface FilterSidebarProps {
   filters: any;
@@ -35,7 +36,7 @@ export function FilterSidebar({ filters, setFilters, counts }: FilterSidebarProp
   };
 
   return (
-    <aside className="w-full sticky top-[89px] h-[calc(100vh-89px)] overflow-y-auto hide-scrollbar flex flex-col">
+    <aside className="w-full md:sticky md:top-[128px] md:h-[calc(100vh-128px)] overflow-y-auto hide-scrollbar flex flex-col">
       
       {/* 1. CATÉGORIES */}
       <div className="border-b border-[#111] p-8">
@@ -46,20 +47,20 @@ export function FilterSidebar({ filters, setFilters, counts }: FilterSidebarProp
             className={`flex items-center justify-between text-xs transition-colors group ${!filters.category || filters.category === 'all' ? 'text-[#111] font-bold' : 'text-[#666] hover:text-[#111] font-medium'}`}
           >
             <span className="flex items-center gap-3 uppercase tracking-widest">
-              Inventaire complet
+              <Package className="w-4 h-4 opacity-70" /> Inventaire complet
             </span>
             <span className="text-[9px] font-mono text-[#888]">[{counts['all'] || 0}]</span>
           </button>
           
           {[
-            { id: 'cameras', label: 'Caméras Cinéma' },
-            { id: 'objectifs', label: 'Objectifs' },
-            { id: 'eclairage', label: 'Éclairage' },
-            { id: 'stabilisation', label: 'Stabilisation' },
-            { id: 'audio', label: 'Audio' },
-            { id: 'drones', label: 'Drones' },
-            { id: 'moniteurs', label: 'Moniteurs' },
-            { id: 'accessoires', label: 'Accessoires' },
+            { id: 'cameras', label: 'Caméras Cinéma', icon: Video },
+            { id: 'objectifs', label: 'Objectifs', icon: Aperture },
+            { id: 'eclairage', label: 'Éclairage', icon: Lightbulb },
+            { id: 'stabilisation', label: 'Stabilisation', icon: Move },
+            { id: 'audio', label: 'Audio', icon: Mic },
+            { id: 'drones', label: 'Drones', icon: Plane },
+            { id: 'moniteurs', label: 'Moniteurs', icon: Monitor },
+            { id: 'accessoires', label: 'Accessoires', icon: Wrench },
           ].map(cat => (
             <button 
               key={cat.id}
@@ -67,7 +68,7 @@ export function FilterSidebar({ filters, setFilters, counts }: FilterSidebarProp
               className={`flex items-center justify-between text-xs transition-colors group ${filters.category === cat.id ? 'text-[#111] font-bold' : 'text-[#666] hover:text-[#111] font-medium'}`}
             >
               <span className="flex items-center gap-3 uppercase tracking-widest">
-                {cat.label}
+                <cat.icon className="w-4 h-4 opacity-70" /> {cat.label}
               </span>
               <span className="text-[9px] font-mono text-[#888]">[{counts[cat.id] || 0}]</span>
             </button>

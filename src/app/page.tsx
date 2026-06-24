@@ -4,7 +4,7 @@ import { products } from "@/data/products";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { NetflixLogo, CanalPlusLogo, ArteLogo, IconoclastLogo, ColorsLogo } from '@/components/ui/PartnerLogos';
+import { NetflixLogo, CanalPlusLogo, ArteLogo, A24Logo, HBOLogo } from '@/components/ui/PartnerLogos';
 
 export default function Home() {
   return (
@@ -93,8 +93,8 @@ export default function Home() {
             <NetflixLogo className="h-6 md:h-8 w-auto" />
             <CanalPlusLogo className="h-4 md:h-6 w-auto" />
             <ArteLogo className="h-6 md:h-8 w-auto" />
-            <IconoclastLogo className="h-6 md:h-8 w-auto" />
-            <ColorsLogo className="h-6 md:h-8 w-auto" />
+            <A24Logo className="h-6 md:h-8 w-auto" />
+            <HBOLogo className="h-6 md:h-8 w-auto" />
           </div>
         </section>
 

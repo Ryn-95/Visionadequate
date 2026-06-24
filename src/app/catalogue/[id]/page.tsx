@@ -108,7 +108,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         </nav>
       </header>
 
-      <main className="pt-[89px]">
+      <main className="pt-[112px] md:pt-[128px]">
         {/* TOP BAR - Breadcrumb & Price */}
         <div className="flex justify-between items-center px-6 md:px-12 py-4 border-b border-[#111] text-[10px] font-bold uppercase tracking-widest text-[#555]">
           <Link href="/catalogue" className="flex items-center gap-2 hover:text-[#111] transition-colors">
@@ -151,7 +151,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
           {/* DROITE : INFOS & DEVIS (Sticky sur Desktop) */}
           <div className="w-full lg:w-1/3 flex flex-col">
-            <div className="lg:sticky lg:top-[89px] flex flex-col lg:h-[calc(100vh-89px)]">
+            <div className="lg:sticky lg:top-[128px] flex flex-col lg:h-[calc(100vh-128px)]">
               {/* Product Header */}
               <div className="p-8 border-b border-[#111]">
                 <div className="text-[10px] font-bold text-[#666] uppercase tracking-[0.2em] mb-4">{product.brand}</div>

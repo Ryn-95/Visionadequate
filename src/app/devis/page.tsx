@@ -74,7 +74,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
         </nav>
       </header>
 
-      <main className="pt-[89px] flex flex-col md:flex-row min-h-[calc(100vh-89px)]">
+      <main className="pt-[112px] md:pt-[128px] flex flex-col md:flex-row min-h-[calc(100vh-112px)] md:min-h-[calc(100vh-128px)]">
         
         {/* COLONNE GAUCHE - Récapitulatif Matériel */}
         <div className="w-full md:w-1/2 border-r border-[#111] flex flex-col">

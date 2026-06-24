@@ -73,7 +73,7 @@ export default function Catalogue() {
         </nav>
       </header>
 
-      <main className="pt-[89px] flex flex-col md:flex-row min-h-screen">
+      <main className="pt-[112px] md:pt-[128px] flex flex-col md:flex-row min-h-screen">
         {/* SIDEBAR */}
         <div className="w-full md:w-[320px] shrink-0 border-r border-[#111] bg-[#F4F4F0]">
           <FilterSidebar filters={filters} setFilters={setFilters} counts={counts} />
