@@ -5,24 +5,14 @@ import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Microscope, Headph
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { NetflixLogo, CanalPlusLogo, ArteLogo, A24Logo, HBOLogo } from '@/components/ui/PartnerLogos';
+import { Header } from "@/components/ui/Header";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#F4F4F0] text-[#111] font-sans selection:bg-[#111] selection:text-white">
-      {/* HEADER - Brutaliste et Minimal */}
-      <header className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center text-[#111] pointer-events-none">
-        <div className="pointer-events-auto flex items-center">
-          <Link href="/">
-            <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-20 w-auto object-contain invert" />
-          </Link>
-        </div>
-        <nav className="flex gap-12 text-[11px] font-bold tracking-[0.2em] uppercase pointer-events-auto">
-          <Link href="/catalogue" className="hover:opacity-50 transition-opacity">Inventaire</Link>
-          <Link href="/devis" className="hover:opacity-50 transition-opacity">Devis</Link>
-        </nav>
-      </header>
+      <Header variant="transparent" />
 
-      <main className="pt-32">
+      <main className="pt-24 md:pt-32">
         {/* HERO SECTION - Typographie Massive & Image Flottante */}
         <section className="px-6 md:px-12 min-h-[85vh] flex flex-col justify-between">
           <div className="flex flex-col md:flex-row items-start justify-between gap-12 mt-12">

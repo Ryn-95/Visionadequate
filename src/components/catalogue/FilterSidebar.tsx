@@ -10,9 +10,11 @@ interface FilterSidebarProps {
   filters: any;
   setFilters: (filters: any) => void;
   counts: Record<string, number>;
+  searchQuery?: string;
+  setSearchQuery?: (q: string) => void;
 }
 
-export function FilterSidebar({ filters, setFilters, counts }: FilterSidebarProps) {
+export function FilterSidebar({ filters, setFilters, counts, searchQuery = "", setSearchQuery }: FilterSidebarProps) {
 
   const handleCategoryChange = (cat: string) => {
     setFilters({ ...filters, category: cat === filters.category ? null : cat });
@@ -36,8 +38,19 @@ export function FilterSidebar({ filters, setFilters, counts }: FilterSidebarProp
   };
 
   return (
-    <aside className="w-full md:sticky md:top-[128px] md:h-[calc(100vh-128px)] overflow-y-auto hide-scrollbar flex flex-col">
+    <aside className="w-full md:sticky md:top-[96px] md:h-[calc(100vh-96px)] overflow-y-auto hide-scrollbar flex flex-col">
       
+      {/* 0. RECHERCHE (MOBILE/DESKTOP) */}
+      <div className="border-b border-[#111] p-6 md:p-8 bg-[#EBEBE6] md:bg-transparent">
+        <input 
+          type="search" 
+          value={searchQuery}
+          placeholder="RECHERCHE..." 
+          className="w-full bg-transparent border-b border-[#111] py-2 text-xs font-bold uppercase tracking-widest text-[#111] focus:outline-none transition-colors placeholder:text-[#888]"
+          onChange={(e) => setSearchQuery?.(e.target.value)}
+        />
+      </div>
+
       {/* 1. CATÉGORIES */}
       <div className="border-b border-[#111] p-8">
         <h3 className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] mb-6">Catégories</h3>

@@ -7,6 +7,7 @@ import { products } from "@/data/products";
 import { FilterSidebar } from "@/components/catalogue/FilterSidebar";
 import { SortBar } from "@/components/catalogue/SortBar";
 import { ProductGrid } from "@/components/catalogue/ProductGrid";
+import { Header } from "@/components/ui/Header";
 
 export default function Catalogue() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -52,33 +53,13 @@ export default function Catalogue() {
 
   return (
     <div className="min-h-screen bg-[#F4F4F0] text-[#111] font-sans selection:bg-[#111] selection:text-white">
-      {/* HEADER */}
-      <header className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center bg-[#F4F4F0] border-b border-[#111]">
-        <Link href="/" className="hover:opacity-50 transition-opacity flex items-center">
-          <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-20 w-auto object-contain invert" />
-        </Link>
-        
-        <div className="flex-1 max-w-md mx-8 relative group hidden md:block">
-          <input 
-            type="search" 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="RECHERCHE..." 
-            className="w-full bg-transparent border-b border-[#111] py-2 px-0 text-[11px] font-bold tracking-[0.2em] uppercase text-[#111] placeholder:text-[#888] focus:outline-none focus:border-black transition-colors"
-          />
-        </div>
+      <Header variant="default" />
 
-        <nav className="flex gap-12 text-[11px] font-bold tracking-[0.2em] uppercase">
-          <Link href="/catalogue" className="text-[#111] hover:opacity-50 transition-opacity">Inventaire</Link>
-          <Link href="/devis" className="hover:opacity-50 transition-opacity">Devis</Link>
-        </nav>
-      </header>
-
-      <main className="pt-[112px] md:pt-[128px] flex flex-col md:flex-row min-h-screen">
+      <main className="pt-[72px] md:pt-[96px] flex flex-col md:flex-row min-h-screen">
         {/* MOBILE FILTER TOGGLE */}
         <button 
           onClick={() => setShowMobileFilters(!showMobileFilters)}
-          className="md:hidden w-full py-4 px-6 border-b border-[#111] flex justify-between items-center bg-[#F4F4F0] text-xs font-bold uppercase tracking-widest sticky top-[112px] z-40"
+          className="md:hidden w-full py-4 px-6 border-b border-[#111] flex justify-between items-center bg-[#F4F4F0] text-xs font-bold uppercase tracking-widest sticky top-[72px] z-40"
         >
           <span>{showMobileFilters ? "Masquer les filtres" : "Filtres & Catégories"}</span>
           <span className="font-mono bg-[#111] text-white px-2 py-0.5 rounded-full text-[10px]">{filteredProducts.length}</span>
@@ -86,7 +67,7 @@ export default function Catalogue() {
 
         {/* SIDEBAR */}
         <div className={`w-full md:w-[320px] shrink-0 border-b md:border-b-0 md:border-r border-[#111] bg-[#F4F4F0] ${showMobileFilters ? 'block' : 'hidden md:block'}`}>
-          <FilterSidebar filters={filters} setFilters={setFilters} counts={counts} />
+          <FilterSidebar filters={filters} setFilters={setFilters} counts={counts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         </div>
 
         {/* MAIN CONTENT */}

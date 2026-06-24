@@ -5,6 +5,7 @@ import { ArrowRight, Trash2, Calendar, Video, User, Building2, Mail, Phone, Plus
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
+import { Header } from "@/components/ui/Header";
 
 export default function Devis() {
   const [step, setStep] = useState(1);
@@ -151,18 +152,9 @@ export default function Devis() {
 
   return (
     <div className="min-h-screen bg-[#F4F4F0] text-[#111] font-sans selection:bg-[#111] selection:text-white">
-      {/* HEADER */}
-      <header className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center bg-[#F4F4F0] border-b border-[#111]">
-        <Link href="/" className="hover:opacity-50 transition-opacity flex items-center">
-          <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-20 w-auto object-contain invert" />
-        </Link>
-        <nav className="flex gap-12 text-[11px] font-bold tracking-[0.2em] uppercase">
-          <Link href="/catalogue" className="hover:opacity-50 transition-opacity">Inventaire</Link>
-          <Link href="/devis" className="text-[#111]">Devis ({items.reduce((acc, i) => acc + i.quantity, 0)})</Link>
-        </nav>
-      </header>
+      <Header variant="default" />
 
-      <main className="pt-[112px] md:pt-[128px] flex flex-col md:flex-row min-h-[calc(100vh-112px)] md:min-h-[calc(100vh-128px)]">
+      <main className="pt-[72px] md:pt-[96px] flex flex-col md:flex-row min-h-[calc(100vh-72px)] md:min-h-[calc(100vh-96px)]">
         
         {/* COLONNE GAUCHE - Récapitulatif Matériel */}
         <div className="w-full md:w-1/2 border-r border-[#111] flex flex-col">

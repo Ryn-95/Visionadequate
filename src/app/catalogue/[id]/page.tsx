@@ -7,6 +7,7 @@ import { useState } from "react";
 import { products } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
+import { Header } from "@/components/ui/Header";
 
 const PRODUCTS_DATA: Record<string, any> = {
   "sony-a7iv": {
@@ -97,18 +98,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="min-h-screen bg-[#F4F4F0] text-[#111] font-sans selection:bg-[#111] selection:text-white">
-      {/* HEADER */}
-      <header className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center bg-[#F4F4F0] border-b border-[#111]">
-        <Link href="/" className="hover:opacity-50 transition-opacity flex items-center">
-          <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-20 w-auto object-contain invert" />
-        </Link>
-        <nav className="flex gap-12 text-[11px] font-bold tracking-[0.2em] uppercase">
-          <Link href="/catalogue" className="hover:opacity-50 transition-opacity">Inventaire</Link>
-          <Link href="/devis" className="hover:opacity-50 transition-opacity">Devis</Link>
-        </nav>
-      </header>
+      <Header variant="default" />
 
-      <main className="pt-[112px] md:pt-[128px]">
+      <main className="pt-[72px] md:pt-[96px]">
         {/* TOP BAR - Breadcrumb & Price */}
         <div className="flex justify-between items-center px-6 md:px-12 py-4 border-b border-[#111] text-[10px] font-bold uppercase tracking-widest text-[#555]">
           <Link href="/catalogue" className="flex items-center gap-2 hover:text-[#111] transition-colors">
@@ -151,7 +143,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
           {/* DROITE : INFOS & DEVIS (Sticky sur Desktop) */}
           <div className="w-full lg:w-1/3 flex flex-col">
-            <div className="lg:sticky lg:top-[128px] flex flex-col lg:h-[calc(100vh-128px)]">
+            <div className="lg:sticky lg:top-[96px] flex flex-col lg:h-[calc(100vh-96px)]">
               {/* Product Header */}
               <div className="p-8 border-b border-[#111]">
                 <div className="text-[10px] font-bold text-[#666] uppercase tracking-[0.2em] mb-4">{product.brand}</div>
