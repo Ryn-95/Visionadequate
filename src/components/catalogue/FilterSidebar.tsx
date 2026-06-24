@@ -85,13 +85,6 @@ export function FilterSidebar({ filters, setFilters, counts }: FilterSidebarProp
             onChange={(c) => setFilters({...filters, availableOnly: c})} 
             label="En stock uniquement" 
           />
-          <div className="pt-2">
-            <input 
-              type="text" 
-              placeholder="DATES (EX: 12-15 NOV)" 
-              className="w-full bg-transparent border-b border-[#111] py-2 text-xs font-bold uppercase tracking-widest text-[#111] focus:outline-none transition-colors placeholder:text-[#888]"
-            />
-          </div>
         </div>
       </div>
 

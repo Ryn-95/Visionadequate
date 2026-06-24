@@ -121,10 +121,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row overflow-hidden">
           {/* GAUCHE : GALERIE */}
           <div className="w-full lg:w-2/3 border-r border-[#111] flex flex-col">
-            <div className="relative aspect-[4/3] lg:aspect-[16/10] bg-[#EBEBE6] flex items-center justify-center p-12 border-b border-[#111]">
+            <div className="relative aspect-[4/3] lg:aspect-[16/10] bg-[#EBEBE6] flex items-center justify-center p-6 lg:p-12 border-b border-[#111]">
               <motion.img 
                 key={activeImage}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -136,12 +136,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               />
             </div>
             {/* THUMBNAILS */}
-            <div className="flex border-b border-[#111]">
+            <div className="flex border-b border-[#111] overflow-x-auto hide-scrollbar">
               {product.images.map((img: string, i: number) => (
                 <button 
                   key={img} 
                   onClick={() => setActiveImage(i)}
-                  className={`relative flex-1 aspect-[16/9] border-r border-[#111] last:border-r-0 flex items-center justify-center bg-[#F4F4F0] hover:bg-[#EBEBE6] transition-colors ${i === activeImage ? 'opacity-100' : 'opacity-40'}`}
+                  className={`relative shrink-0 w-[33.33%] md:w-auto md:flex-1 aspect-[16/9] border-r border-[#111] last:border-r-0 flex items-center justify-center bg-[#F4F4F0] hover:bg-[#EBEBE6] transition-colors ${i === activeImage ? 'opacity-100' : 'opacity-40'}`}
                 >
                   <img src={img} alt={`Miniature ${product.model} ${i+1}`} className="w-full h-full object-contain p-4 mix-blend-multiply" />
                 </button>
@@ -155,7 +155,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               {/* Product Header */}
               <div className="p-8 border-b border-[#111]">
                 <div className="text-[10px] font-bold text-[#666] uppercase tracking-[0.2em] mb-4">{product.brand}</div>
-                <h1 className="text-4xl lg:text-6xl font-black tracking-tighter uppercase leading-[0.9] mb-6">
+                <h1 className="text-4xl lg:text-6xl font-black tracking-tighter uppercase leading-[0.9] mb-6 break-words">
                   {product.name}
                 </h1>
                 <p className="text-sm font-medium text-[#555] leading-relaxed">
@@ -205,10 +205,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         </div>
 
         {/* SECTION: DANS LA VALISE & FAQ (Blueprint Style) */}
-        <section className="border-t border-[#111] grid grid-cols-1 md:grid-cols-2">
+        <section className="border-t border-[#111] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
           {/* Dans la valise */}
-          <div className="p-12 md:p-24 border-b md:border-b-0 md:border-r border-[#111]">
-            <h2 className="flex items-center gap-4 text-3xl font-black tracking-tighter uppercase mb-12"><PackageOpen className="w-8 h-8" /> Inclus dans la valise.</h2>
+          <div className="p-8 md:p-24 border-b md:border-b-0 md:border-r border-[#111]">
+            <h2 className="flex items-center gap-4 text-2xl md:text-3xl font-black tracking-tighter uppercase mb-8 md:mb-12"><PackageOpen className="w-6 h-6 md:w-8 md:h-8 shrink-0" /> Inclus dans la valise.</h2>
             <ul className="space-y-6">
               {[
                 `1x Boîtier ${product.name}`,
@@ -228,8 +228,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           </div>
           
           {/* FAQ */}
-          <div className="p-12 md:p-24 bg-[#EBEBE6]">
-            <h2 className="flex items-center gap-4 text-3xl font-black tracking-tighter uppercase mb-12"><HelpCircle className="w-8 h-8" /> Assistance & FAQ.</h2>
+          <div className="p-8 md:p-24 bg-[#EBEBE6]">
+            <h2 className="flex items-center gap-4 text-2xl md:text-3xl font-black tracking-tighter uppercase mb-8 md:mb-12"><HelpCircle className="w-6 h-6 md:w-8 md:h-8 shrink-0" /> Assistance & FAQ.</h2>
             <div className="space-y-8">
               {[
                 { q: "Le matériel est-il assuré ?", a: "Oui, une assurance bris de machine est incluse avec une franchise de 1500€. Une option zéro franchise est disponible sur devis." },
@@ -247,8 +247,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
         {/* SUGGESTIONS (Grid Style) */}
         <section className="border-t border-[#111] overflow-hidden">
-          <div className="px-6 md:px-12 py-16 flex justify-between items-end border-b border-[#111]">
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] break-words">
+          <div className="px-6 md:px-12 py-12 md:py-16 flex justify-between items-end border-b border-[#111]">
+            <h2 className="text-2xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] break-words">
               Recommandations <br/> Techniques
             </h2>
           </div>

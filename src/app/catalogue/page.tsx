@@ -12,6 +12,7 @@ export default function Catalogue() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState('relevance');
   const [searchQuery, setSearchQuery] = useState("");
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
   
   const [filters, setFilters] = useState({
     category: null as string | null,
@@ -74,8 +75,17 @@ export default function Catalogue() {
       </header>
 
       <main className="pt-[112px] md:pt-[128px] flex flex-col md:flex-row min-h-screen">
+        {/* MOBILE FILTER TOGGLE */}
+        <button 
+          onClick={() => setShowMobileFilters(!showMobileFilters)}
+          className="md:hidden w-full py-4 px-6 border-b border-[#111] flex justify-between items-center bg-[#F4F4F0] text-xs font-bold uppercase tracking-widest sticky top-[112px] z-40"
+        >
+          <span>{showMobileFilters ? "Masquer les filtres" : "Filtres & Catégories"}</span>
+          <span className="font-mono bg-[#111] text-white px-2 py-0.5 rounded-full text-[10px]">{filteredProducts.length}</span>
+        </button>
+
         {/* SIDEBAR */}
-        <div className="w-full md:w-[320px] shrink-0 border-r border-[#111] bg-[#F4F4F0]">
+        <div className={`w-full md:w-[320px] shrink-0 border-b md:border-b-0 md:border-r border-[#111] bg-[#F4F4F0] ${showMobileFilters ? 'block' : 'hidden md:block'}`}>
           <FilterSidebar filters={filters} setFilters={setFilters} counts={counts} />
         </div>
 
