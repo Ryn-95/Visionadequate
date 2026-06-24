@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Trash2, Calendar, Video, User, Building2, Mail, Phone, Plus } from "lucide-react";
+import { ArrowRight, Trash2, Calendar, Video, User, Building2, Mail, Phone, Plus, Download } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
@@ -32,28 +32,68 @@ export default function Devis() {
     return date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
   };
 
-  const handleGenerateDevis = () => {
-    const datesText = formData.dateDebut && formData.dateFin 
-      ? `Du ${formatDate(formData.dateDebut)} au ${formatDate(formData.dateFin)}`
-      : "Non précisé";
+  const handleGenerateDevis = async () => {
+    // Dynamically import jsPDF and autoTable to avoid SSR issues
+    const jsPDF = (await import("jspdf")).default;
+    const autoTable = (await import("jspdf-autotable")).default;
 
-    const message = `*NOUVELLE DEMANDE DE DEVIS* 🎬
+    const doc = new jsPDF();
     
-*PROJET*
-Dates : ${datesText}
-Type : ${formData.type || "Non précisé"}
-Nom : ${formData.nom || "Non précisé"}
-Société : ${formData.societe || "Non précisé"}
-Email : ${formData.email || "Non précisé"}
-Tél : ${formData.telephone || "Non précisé"}
+    // Add Company Logo/Header
+    doc.setFontSize(22);
+    doc.text("VISION ADEQUATE", 14, 20);
+    doc.setFontSize(10);
+    doc.text("12 Rue de la Précision", 14, 28);
+    doc.text("75011 Paris, France", 14, 34);
+    doc.text("contact@vision-adequate.fr", 14, 40);
 
-*MATÉRIEL SÉLECTIONNÉ*
-${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pricePerDay}€ HT/j)`).join("\n")}
+    // Add Client Info
+    doc.setFontSize(14);
+    doc.text("DEMANDE DE DEVIS", 14, 55);
+    doc.setFontSize(10);
+    doc.text(`Nom : ${formData.nom || "Non précisé"}`, 14, 65);
+    doc.text(`Société : ${formData.societe || "Non précisé"}`, 14, 71);
+    doc.text(`Email : ${formData.email || "Non précisé"}`, 14, 77);
+    doc.text(`Téléphone : ${formData.telephone || "Non précisé"}`, 14, 83);
+    
+    doc.text(`Date de début : ${formatDate(formData.dateDebut)}`, 120, 65);
+    doc.text(`Date de fin : ${formatDate(formData.dateFin)}`, 120, 71);
+    doc.text(`Type de production : ${formData.type || "Non précisé"}`, 120, 77);
 
-*TOTAL ESTIMÉ (1 Jour)* : ${totalHT}€ HT (+ TVA 20% = ${(totalHT * 1.2).toFixed(2)}€ TTC)`;
+    // Add Table
+    const tableColumn = ["Description", "Marque", "Quantité", "Prix Unitaire HT", "Total HT"];
+    const tableRows = items.map(item => [
+      item.model,
+      item.brand,
+      item.quantity.toString(),
+      `${item.pricePerDay} €`,
+      `${item.pricePerDay * item.quantity} €`
+    ]);
 
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/33666737410?text=${encodedMessage}`, '_blank');
+    autoTable(doc, {
+      startY: 95,
+      head: [tableColumn],
+      body: tableRows,
+      theme: 'grid',
+      headStyles: { fillColor: [17, 17, 17] }
+    });
+
+    const finalY = (doc as any).lastAutoTable.finalY || 95;
+    
+    doc.setFontSize(12);
+    doc.text(`Total HT (1 jour) : ${totalHT} €`, 120, finalY + 15);
+    doc.text(`TVA (20%) : ${(totalHT * 0.2).toFixed(2)} €`, 120, finalY + 22);
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text(`Total TTC estimé : ${(totalHT * 1.2).toFixed(2)} €`, 120, finalY + 32);
+
+    // Save the PDF
+    doc.save(`Devis_Vision_Adequate_${formData.nom || "Client"}.pdf`);
+
+    // Optionally open mail client
+    const subject = encodeURIComponent("Nouvelle demande de devis - " + (formData.societe || formData.nom || "Client"));
+    const body = encodeURIComponent(`Bonjour l'équipe Vision Adéquate,\n\nVeuillez trouver ci-joint (à ajouter manuellement s'il vous plaît) ma demande de devis en PDF que je viens de télécharger.\n\nMerci,\n${formData.nom}`);
+    window.open(`mailto:contact@vision-adequate.fr?subject=${subject}&body=${body}`, '_blank');
     
     setStep(3);
     clearCart();
@@ -229,7 +269,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
                     onClick={handleGenerateDevis} 
                     className="flex-1 py-5 bg-white text-[#111] text-xs font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors flex items-center justify-center gap-3"
                   >
-                    Générer WhatsApp <ArrowRight className="w-4 h-4" />
+                    Générer Devis (PDF) <Download className="w-4 h-4" />
                   </button>
                 </div>
               </motion.div>
@@ -240,9 +280,9 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
                 <div className="w-16 h-16 border-2 border-emerald-500 rounded-full flex items-center justify-center mb-4">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
                 </div>
-                <h2 className="text-3xl font-black uppercase tracking-tighter">Demande Transmise.</h2>
+                <h2 className="text-3xl font-black uppercase tracking-tighter">Devis Téléchargé.</h2>
                 <p className="text-sm font-medium text-[#888] max-w-sm">
-                  WhatsApp s&apos;est ouvert pour envoyer votre demande. Notre équipe technique étudie la disponibilité de votre liste matériel.
+                  Le PDF a été généré avec succès. Votre application mail s&apos;est ouverte, n&apos;oubliez pas d&apos;y joindre le fichier téléchargé pour nous l&apos;envoyer !
                 </p>
                 <Link href="/" className="mt-8 inline-block border-b border-[#555] pb-1 text-[10px] font-bold text-[#888] hover:text-white uppercase tracking-[0.2em] transition-colors">
                   Retour au site
