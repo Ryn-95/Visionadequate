@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Trash2 } from "lucide-react";
+import { ArrowRight, Trash2, Calendar, Video, User, Building2, Mail, Phone, Plus } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
@@ -53,7 +53,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
 *TOTAL ESTIMÉ (1 Jour)* : ${totalHT}€ HT (+ TVA 20% = ${(totalHT * 1.2).toFixed(2)}€ TTC)`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/33600000000?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/33666737410?text=${encodedMessage}`, '_blank');
     
     setStep(3);
     clearCart();
@@ -114,8 +114,8 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
               ))
             )}
             
-            <Link href="/catalogue" className="block w-full p-8 text-center text-[10px] font-bold text-[#666] hover:text-[#111] uppercase tracking-[0.2em] transition-colors">
-              + Ajouter un équipement
+            <Link href="/catalogue" className="flex items-center justify-center gap-2 w-full p-8 text-center text-[10px] font-bold text-[#666] hover:text-[#111] uppercase tracking-[0.2em] transition-colors">
+              <Plus className="w-3 h-3" /> Ajouter un équipement
             </Link>
           </div>
         </div>
@@ -137,7 +137,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
                 <div className="grid grid-cols-2 gap-8">
                   <div>
-                    <label className="block text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4">Date de début</label>
+                    <label className="flex items-center gap-2 text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4"><Calendar className="w-3 h-3" /> Date de début</label>
                     <input 
                       type="date" 
                       value={formData.dateDebut}
@@ -146,7 +146,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4">Date de fin</label>
+                    <label className="flex items-center gap-2 text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4"><Calendar className="w-3 h-3" /> Date de fin</label>
                     <input 
                       type="date" 
                       value={formData.dateFin}
@@ -156,7 +156,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4">Type de Production</label>
+                  <label className="flex items-center gap-2 text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4"><Video className="w-3 h-3" /> Type de Production</label>
                   <select 
                     value={formData.type}
                     onChange={e => setFormData({...formData, type: e.target.value})}
@@ -185,7 +185,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
                 <div className="grid grid-cols-2 gap-8">
                   <div>
-                    <label className="block text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4">Nom</label>
+                    <label className="flex items-center gap-2 text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4"><User className="w-3 h-3" /> Nom</label>
                     <input 
                       type="text" 
                       value={formData.nom}
@@ -194,7 +194,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4">Société / Prod</label>
+                    <label className="flex items-center gap-2 text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4"><Building2 className="w-3 h-3" /> Société / Prod</label>
                     <input 
                       type="text" 
                       value={formData.societe}
@@ -204,7 +204,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4">Email</label>
+                  <label className="flex items-center gap-2 text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4"><Mail className="w-3 h-3" /> Email</label>
                   <input 
                     type="email" 
                     value={formData.email}
@@ -213,7 +213,7 @@ ${items.map(item => `- ${item.quantity}x ${item.brand} ${item.model} (${item.pri
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4">Téléphone</label>
+                  <label className="flex items-center gap-2 text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-4"><Phone className="w-3 h-3" /> Téléphone</label>
                   <input 
                     type="tel" 
                     value={formData.telephone}

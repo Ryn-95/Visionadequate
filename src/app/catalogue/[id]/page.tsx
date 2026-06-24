@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowLeft, ArrowUpRight, CheckCircle2, HelpCircle, PackageOpen } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { products } from "@/data/products";
@@ -210,7 +210,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         <section className="border-t border-[#111] grid grid-cols-1 md:grid-cols-2">
           {/* Dans la valise */}
           <div className="p-12 md:p-24 border-b md:border-b-0 md:border-r border-[#111]">
-            <h2 className="text-3xl font-black tracking-tighter uppercase mb-12">Inclus dans la valise.</h2>
+            <h2 className="flex items-center gap-4 text-3xl font-black tracking-tighter uppercase mb-12"><PackageOpen className="w-8 h-8" /> Inclus dans la valise.</h2>
             <ul className="space-y-6">
               {[
                 `1x Boîtier ${product.name}`,
@@ -222,7 +222,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 "1x Valise rigide sur-mesure (Pelican/HPRC)"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-4 text-sm font-medium">
-                  <span className="w-2 h-2 bg-[#111] rounded-full" />
+                  <CheckCircle2 className="w-4 h-4 text-[#111]" />
                   {item}
                 </li>
               ))}
@@ -231,7 +231,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           
           {/* FAQ */}
           <div className="p-12 md:p-24 bg-[#EBEBE6]">
-            <h2 className="text-3xl font-black tracking-tighter uppercase mb-12">Assistance & FAQ.</h2>
+            <h2 className="flex items-center gap-4 text-3xl font-black tracking-tighter uppercase mb-12"><HelpCircle className="w-8 h-8" /> Assistance & FAQ.</h2>
             <div className="space-y-8">
               {[
                 { q: "Le matériel est-il assuré ?", a: "Oui, une assurance bris de machine est incluse avec une franchise de 1500€. Une option zéro franchise est disponible sur devis." },

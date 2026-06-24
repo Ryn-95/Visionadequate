@@ -1,7 +1,7 @@
 "use client";
 
 import { products } from "@/data/products";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Microscope, HeadphonesIcon, MapPin, Mail, PlayCircle, Settings, Box } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { NetflixLogo, CanalPlusLogo, ArteLogo, A24Logo, HBOLogo } from '@/components/ui/PartnerLogos';
@@ -73,11 +73,11 @@ export default function Home() {
           <div className="animate-marquee flex items-center gap-8 text-[10px] font-mono font-bold tracking-[0.3em] uppercase">
             {[...Array(6)].map((_, i) => (
               <div key={i} className="flex items-center gap-8">
-                <span>Contrôle Qualité Strict</span>
+                <span className="flex items-center gap-2"><CheckCircle2 className="w-3 h-3" /> Contrôle Qualité Strict</span>
                 <span className="w-1 h-1 bg-white rounded-full" />
-                <span>Support Plateau 24/7</span>
+                <span className="flex items-center gap-2"><HeadphonesIcon className="w-3 h-3" /> Support Plateau 24/7</span>
                 <span className="w-1 h-1 bg-white rounded-full" />
-                <span>Livraison France Entière</span>
+                <span className="flex items-center gap-2"><Box className="w-3 h-3" /> Livraison France Entière</span>
                 <span className="w-1 h-1 bg-white rounded-full" />
               </div>
             ))}
@@ -139,23 +139,29 @@ export default function Home() {
             {[
               {
                 num: "01",
+                icon: Microscope,
                 title: "Laboratoire de Test",
                 desc: "Accès gratuit à notre salle de préparation équipée de mires 4K pour calibrer vos optiques la veille du départ."
               },
               {
                 num: "02",
+                icon: HeadphonesIcon,
                 title: "Hotline Plateau",
                 desc: "Un assistant opérateur disponible 24/7. Un problème matériel à 3h du matin ? Nous trouvons la solution en temps réel."
               },
               {
                 num: "03",
+                icon: ShieldCheck,
                 title: "Logistique Sécurisée",
                 desc: "Livraison par coursier technique sur votre lieu de tournage en Île-de-France, dans des flight cases blindés Pelican."
               }
             ].map((service, i) => (
               <div key={i} className="p-12 border-b md:border-b-0 md:border-r last:border-r-0 border-[#111] hover:bg-[#EBEBE6] transition-colors group">
-                <div className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] mb-12 opacity-50 group-hover:opacity-100 transition-opacity">
-                  {service.num}
+                <div className="flex justify-between items-center mb-12">
+                  <div className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] opacity-50 group-hover:opacity-100 transition-opacity">
+                    {service.num}
+                  </div>
+                  <service.icon className="w-6 h-6 text-[#111] opacity-50 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <h3 className="text-2xl font-black uppercase tracking-tight mb-6">
                   {service.title}
@@ -237,10 +243,10 @@ export default function Home() {
                 <div className="text-[10px] font-bold text-[#666] uppercase tracking-[0.2em] mb-4">Pack Documentaire</div>
                 <h3 className="text-3xl font-black uppercase tracking-tight mb-8">Setup FX3 Run & Gun</h3>
                 <ul className="space-y-4 font-mono text-sm mb-12">
-                  <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-[#111]"></span> Sony FX3 (Boîtier Nu)</li>
-                  <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-[#111]"></span> Objectif 24-70mm GM II</li>
-                  <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-[#111]"></span> DJI RS3 Pro</li>
-                  <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-[#111]"></span> Filtres ND Freewell</li>
+                  <li className="flex items-center gap-3"><PlayCircle className="w-4 h-4" /> Sony FX3 (Boîtier Nu)</li>
+                  <li className="flex items-center gap-3"><Settings className="w-4 h-4" /> Objectif 24-70mm GM II</li>
+                  <li className="flex items-center gap-3"><Box className="w-4 h-4" /> DJI RS3 Pro</li>
+                  <li className="flex items-center gap-3"><Microscope className="w-4 h-4" /> Filtres ND Freewell</li>
                 </ul>
               </div>
               <div className="flex items-end justify-between pt-8 border-t border-[#EEE]">
@@ -281,8 +287,8 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-4">
                 <div className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Contact</div>
-                <p>12 Rue de la Précision<br/>75011 Paris, France</p>
-                <a href="mailto:contact@vision-adequate.fr" className="hover:text-white transition-colors mt-2">contact@vision-adequate.fr</a>
+                <p className="flex items-start gap-2"><MapPin className="w-4 h-4 shrink-0" /> <span>12 Rue de la Précision<br/>75011 Paris, France</span></p>
+                <a href="mailto:contact@vision-adequate.fr" className="hover:text-white transition-colors mt-2 flex items-center gap-2"><Mail className="w-4 h-4 shrink-0" /> contact@vision-adequate.fr</a>
               </div>
             </div>
           </div>
