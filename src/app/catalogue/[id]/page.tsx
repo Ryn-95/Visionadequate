@@ -278,10 +278,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
       {/* FOOTER */}
       <footer className="bg-[#111] text-[#F4F4F0] px-6 md:px-12 py-12 border-t border-[#333] flex justify-between items-center text-[10px] font-bold tracking-widest uppercase">
-        <span>© 2026 Vision Adéquate.</span>
+        <span>© 2026 Vision Adéquate. Tous droits réservés.</span>
         <div className="flex gap-8">
-          <Link href="#" className="hover:text-white transition-colors">Mentions Légales</Link>
-          <Link href="#" className="hover:text-white transition-colors">CGV</Link>
+          <span className="text-[#555]">Mentions Légales</span>
+          <span className="text-[#555]">CGV</span>
         </div>
       </footer>
     </div>

@@ -280,10 +280,8 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-8 text-sm font-medium text-[#888]">
               <div className="flex flex-col gap-4">
                 <div className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Catalogue</div>
-                <Link href="#" className="hover:text-white transition-colors">Caméras</Link>
-                <Link href="#" className="hover:text-white transition-colors">Objectifs</Link>
-                <Link href="#" className="hover:text-white transition-colors">Machinerie</Link>
-                <Link href="#" className="hover:text-white transition-colors">Lumière</Link>
+                <Link href="/catalogue" className="hover:text-white transition-colors">Inventaire Complet</Link>
+                <Link href="/devis" className="hover:text-white transition-colors">Demander un Devis</Link>
               </div>
               <div className="flex flex-col gap-4">
                 <div className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Contact</div>
@@ -293,10 +291,10 @@ export default function Home() {
             </div>
           </div>
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-widest uppercase text-[#555]">
-            <span>© 2026 Vision Adéquate.</span>
+            <span>© 2026 Vision Adéquate. Tous droits réservés.</span>
             <div className="flex gap-8">
-              <Link href="#" className="hover:text-white transition-colors">Mentions Légales</Link>
-              <Link href="#" className="hover:text-white transition-colors">CGV</Link>
+              <span>Mentions Légales</span>
+              <span>CGV</span>
             </div>
           </div>
         </footer>
