@@ -56,7 +56,7 @@ export default function Devis() {
     const doc = new jsPDF();
     
     // Convert logo image to base64
-    const logoUrl = '/assets/logo/logo.png';
+    const logoUrl = '/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png';
     const logoImg = new Image();
     logoImg.src = logoUrl;
     
@@ -146,10 +146,16 @@ export default function Devis() {
     
     doc.setFontSize(12);
     doc.text(`Total HT ${durationText} : ${finalTotalHT} €`, 120, finalY + 15);
-    doc.text(`TVA (20%) : ${(finalTotalHT * 0.2).toFixed(2)} €`, 120, finalY + 22);
+    doc.text(`Frais de dossier / Préparation matériel (20%) : ${(finalTotalHT * 0.2).toFixed(2)} €`, 120, finalY + 22);
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
     doc.text(`Total TTC estimé : ${(finalTotalHT * 1.2).toFixed(2)} €`, 120, finalY + 32);
+
+    // Mention TVA Non applicable
+    doc.setFontSize(10);
+    doc.setTextColor(255, 0, 0); // Le rouge
+    doc.text("TVA NON APPLICABLE, ART 293 B DU CGI", 14, finalY + 45);
+    doc.setTextColor(0, 0, 0); // Reset color
 
     // Save the PDF
     doc.save(`Devis_Vision_Adequate_${formData.nom || "Client"}.pdf`);
@@ -374,7 +380,7 @@ export default function Devis() {
                     (Math.ceil(Math.abs(new Date(formData.dateFin).getTime() - new Date(formData.dateDebut).getTime()) / (1000 * 60 * 60 * 24)) + 1) : 
                     1)}€
                 </div>
-                <div className="text-[10px] font-bold text-[#888] uppercase tracking-widest mt-1">HT (+ TVA = {(totalHT * 1.2 * (formData.dateDebut && formData.dateFin ? 
+                <div className="text-[10px] font-bold text-[#888] uppercase tracking-widest mt-1">HT (+ Frais = {(totalHT * 1.2 * (formData.dateDebut && formData.dateFin ? 
                     (Math.ceil(Math.abs(new Date(formData.dateFin).getTime() - new Date(formData.dateDebut).getTime()) / (1000 * 60 * 60 * 24)) + 1) : 
                     1)).toFixed(2)}€ TTC)</div>
               </div>

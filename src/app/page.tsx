@@ -4,7 +4,6 @@ import { products } from "@/data/products";
 import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Microscope, HeadphonesIcon, MapPin, Mail, PlayCircle, Settings, Box } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { NetflixLogo, CanalPlusLogo, ArteLogo, A24Logo, HBOLogo } from '@/components/ui/PartnerLogos';
 import { Header } from "@/components/ui/Header";
 
 export default function Home() {
@@ -74,17 +73,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PARTENAIRES / TRUSTED BY */}
-        <section className="py-24 px-6 md:px-12 border-b border-[#111] flex flex-col md:flex-row justify-between items-center gap-12 bg-white">
-          <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] whitespace-nowrap">
-            Ils nous font confiance
-          </div>
-          <div className="flex flex-wrap justify-center md:justify-end items-center gap-12 md:gap-16 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-            <NetflixLogo className="h-6 md:h-8 w-auto" />
-            <CanalPlusLogo className="h-4 md:h-6 w-auto" />
-            <ArteLogo className="h-6 md:h-8 w-auto" />
-            <A24Logo className="h-6 md:h-8 w-auto" />
-            <HBOLogo className="h-6 md:h-8 w-auto" />
+        {/* PARTENAIRES / TRUSTED BY - Premium Scrolling Marquee (Pure White) */}
+        <section className="py-20 bg-[#050505] overflow-hidden border-y border-[#222]">
+          <div className="max-w-[100vw] mx-auto" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+            <div className="text-center mb-12 relative z-10">
+              <h3 className="text-[10px] font-bold text-[#666] uppercase tracking-[0.4em]">Ils nous font confiance</h3>
+            </div>
+            <div className="flex whitespace-nowrap relative items-center">
+              <div className="animate-marquee-slow flex items-center gap-20 md:gap-32 pr-20 md:pr-32">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="flex items-center gap-20 md:gap-32 opacity-80 hover:opacity-100 transition-opacity duration-500">
+                    {/* INSPI: grayscale to keep shape, brightness to make it pop, mix-blend-screen for dark backgrounds */}
+                    <img src="/assets/RYN/Partenaire de confiance/Inspi Pnj.png" alt="INSPI" className="h-12 md:h-14 w-auto object-contain grayscale brightness-200 mix-blend-screen" />
+                    
+                    {/* HELICE D'OR: JPEG. invert turns white bg to black, mix-blend-screen hides the black. px-8 prevents it from touching others */}
+                    <div className="px-8">
+                      <img src="/assets/RYN/Partenaire de confiance/HELICE DOR .jpeg" alt="HELICE D'OR" className="h-12 md:h-14 w-auto object-contain grayscale invert mix-blend-screen" />
+                    </div>
+                    
+                    {/* MOWA AGENCY: Black PNG -> brightness-0 invert makes it pure white */}
+                    <img src="/assets/RYN/Partenaire de confiance/MowaAgency.png" alt="MOWA AGENCY" className="h-8 md:h-10 w-auto object-contain brightness-0 invert" />
+                    
+                    {/* PAD PANIK PROD */}
+                    <img src="/assets/RYN/Partenaire de confiance/Padpanikprod.png" alt="PAD PANIK PROD" className="h-8 md:h-10 w-auto object-contain brightness-0 invert" />
+                    
+                    {/* Le Bisso By Lion */}
+                    <img src="/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-39-57-Photoroom.png" alt="Le Bisso By Lion" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
+                    
+                    {/* Partenaire */}
+                    <img src="/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-40-20-Photoroom.png" alt="Partenaire" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -255,11 +276,204 @@ export default function Home() {
           </div>
         </section>
 
+        {/* NOUVELLE SECTION: PORTFOLIO */}
+        <section className="px-6 md:px-12 py-32 border-b border-[#111] bg-[#111] text-white">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9]">
+              Portfolio <br /> Visuel.
+            </h2>
+            <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em]">
+              Aperçu de nos réalisations
+            </div>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              "/assets/RYN/Portfolio/AKENZO/Akenzo P.1-34.jpg",
+              "/assets/RYN/Portfolio/CHARLITO/Charlito_R2-066.jpg",
+              "/assets/RYN/Portfolio/MARIE & YOANN/Marie&Yoan 2-24.jpg",
+              "/assets/RYN/Portfolio/Mariage de A & M/B1.jpg",
+              "/assets/RYN/Portfolio/Mariage de C & A/Amir&Chaïma-007.jpg",
+              "/assets/RYN/Portfolio/Mariage de S & C/Sara&Chris-018.jpg"
+            ].map((src, i) => (
+              <div key={i} className="aspect-square bg-[#222] overflow-hidden group">
+                <img src={src} alt={`Portfolio ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              </div>
+            ))}
+          </div>
+        </section>
+
+                {/* NOUVELLE SECTION: PRESTATIONS & TARIFS - Minimalist & Unique */}
+        <section className="py-32 bg-[#F4F4F0] text-[#111] border-y border-[#111] relative overflow-hidden">
+          
+          {/* Arrière-plan décoratif */}
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03]">
+            <div className="absolute top-10 left-10 text-[20vw] font-black leading-none">PRICING</div>
+            <div className="absolute bottom-10 right-10 text-[20vw] font-black leading-none">2026</div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            
+            <div className="flex flex-col lg:flex-row justify-between items-start mb-24 gap-12">
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-4 mb-6">
+                  <span className="w-12 h-[2px] bg-[#111]"></span>
+                  <span className="text-[10px] font-bold text-[#111] uppercase tracking-[0.3em]">Investissement</span>
+                </div>
+                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] mb-6">
+                  Grille Tarifaire <br/> Officielle.
+                </h2>
+                <p className="text-[#555] text-base md:text-lg font-medium leading-relaxed max-w-xl">
+                  Transparence absolue sur nos prestations. Conçue pour les productions d&apos;excellence, sans compromis sur la qualité.
+                </p>
+              </div>
+              <a href="/assets/RYN/Section Prestation/Grille Tarifaire .pdf" target="_blank" className="group flex items-center justify-center gap-4 bg-[#111] text-[#F4F4F0] px-8 py-5 text-xs font-bold uppercase tracking-widest hover:bg-[#333] transition-colors shrink-0">
+                Télécharger le PDF <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+
+            {/* Layout en maçonnerie asymétrique */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+              
+              {/* Colonne 1: Standard (Prend 5 colonnes sur 12) */}
+              <div className="md:col-span-5 space-y-12">
+                
+                {/* Block Photo */}
+                <div className="bg-white border border-[#111] p-8 md:p-10 relative group hover:-translate-y-2 transition-transform duration-500">
+                  <div className="absolute top-0 right-0 bg-[#111] text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1">Standard</div>
+                  <h3 className="text-2xl font-black uppercase tracking-tight mb-8">Photographie</h3>
+                  <div className="space-y-6">
+                    <div className="flex justify-between items-end border-b border-[#EEE] pb-4">
+                      <span className="text-sm font-medium">Session 2H</span>
+                      <span className="text-2xl font-black">120€</span>
+                    </div>
+                    <div className="flex justify-between items-end border-b border-[#EEE] pb-4">
+                      <span className="text-sm font-medium">Session 4H</span>
+                      <span className="text-2xl font-black">240€</span>
+                    </div>
+                    <div className="flex justify-between items-end border-b border-[#EEE] pb-4">
+                      <span className="text-sm font-medium">Session 8H</span>
+                      <span className="text-2xl font-black">480€</span>
+                    </div>
+                    <div className="flex justify-between items-end pt-2 text-[#666]">
+                      <span className="text-sm font-medium">Retouche Post-prod</span>
+                      <span className="text-lg font-bold">200€<span className="text-xs font-normal">/jour</span></span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Block Vidéo */}
+                <div className="bg-[#111] text-white border border-[#111] p-8 md:p-10 relative group hover:-translate-y-2 transition-transform duration-500">
+                  <div className="absolute top-0 right-0 bg-white text-[#111] text-[9px] font-bold uppercase tracking-widest px-3 py-1">Standard</div>
+                  <h3 className="text-2xl font-black uppercase tracking-tight mb-8">Vidéographie</h3>
+                  <div className="space-y-6">
+                    <div className="flex justify-between items-end border-b border-[#333] pb-4">
+                      <span className="text-sm font-medium text-[#CCC]">Session 2H</span>
+                      <span className="text-2xl font-black">150€</span>
+                    </div>
+                    <div className="flex justify-between items-end border-b border-[#333] pb-4">
+                      <span className="text-sm font-medium text-[#CCC]">Session 4H</span>
+                      <span className="text-2xl font-black">300€</span>
+                    </div>
+                    <div className="flex justify-between items-end border-b border-[#333] pb-4">
+                      <span className="text-sm font-medium text-[#CCC]">Session 8H</span>
+                      <span className="text-2xl font-black">600€</span>
+                    </div>
+                    <div className="flex justify-between items-end pt-2 text-[#888]">
+                      <span className="text-sm font-medium">Montage & Colo</span>
+                      <span className="text-lg font-bold text-white">400€<span className="text-xs font-normal text-[#888]">/jour</span></span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Colonne 2: Mariage & Extras (Prend 7 colonnes sur 12) */}
+              <div className="md:col-span-7 space-y-12">
+                
+                {/* Block Mariage Premium (Gros block) */}
+                <div className="bg-white border border-[#111] p-8 md:p-12 relative">
+                  <div className="absolute top-8 right-8 w-16 h-16 border border-[#111] rounded-full flex items-center justify-center">
+                    <div className="w-2 h-2 bg-[#111] rounded-full animate-pulse"></div>
+                  </div>
+                  <h3 className="text-3xl font-black uppercase tracking-tight mb-2">Mariage Premium</h3>
+                  <p className="text-[#666] text-sm mb-10 font-medium">L&apos;expérience complète : Photo & Vidéo simultanées.</p>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div className="border border-[#111] p-6 hover:bg-[#111] hover:text-white transition-colors group cursor-default">
+                      <div className="text-[10px] font-bold uppercase tracking-widest mb-4 group-hover:text-[#888]">Pack 4H</div>
+                      <div className="text-3xl font-black mb-2">1200€</div>
+                      <div className="text-xs font-medium text-[#666] group-hover:text-[#CCC]">Couverture essentielle</div>
+                    </div>
+                    <div className="border border-[#111] bg-[#111] text-white p-6 relative">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-[#111] text-[9px] font-bold uppercase tracking-widest px-2 py-1 border border-[#111]">Populaire</div>
+                      <div className="text-[10px] font-bold uppercase tracking-widest mb-4 text-[#888]">Pack 8H</div>
+                      <div className="text-3xl font-black mb-2">1700€</div>
+                      <div className="text-xs font-medium text-[#CCC]">Couverture optimale</div>
+                    </div>
+                    <div className="border border-[#111] p-6 hover:bg-[#111] hover:text-white transition-colors group cursor-default">
+                      <div className="text-[10px] font-bold uppercase tracking-widest mb-4 group-hover:text-[#888]">Pack 12H</div>
+                      <div className="text-3xl font-black mb-2">2820€</div>
+                      <div className="text-xs font-medium text-[#666] group-hover:text-[#CCC]">Couverture totale</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Grid interne pour les autres prestations Mariage */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
+                  
+                  {/* Photo Seule Mariage */}
+                  <div className="space-y-6">
+                    <h4 className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] border-b border-[#111] pb-4">Mariage : Photo Seule</h4>
+                    <ul className="space-y-4">
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Prestation 4H</span> <span className="font-black text-lg text-[#111]">500€</span></li>
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Prestation 8H</span> <span className="font-black text-lg text-[#111]">700€</span></li>
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Prestation 12H</span> <span className="font-black text-lg text-[#111]">1120€</span></li>
+                    </ul>
+                  </div>
+
+                  {/* Vidéo Seule Mariage */}
+                  <div className="space-y-6">
+                    <h4 className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] border-b border-[#111] pb-4">Mariage : Vidéo Seule</h4>
+                    <ul className="space-y-4">
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Prestation 4H</span> <span className="font-black text-lg text-[#111]">700€</span></li>
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Prestation 8H</span> <span className="font-black text-lg text-[#111]">1000€</span></li>
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Prestation 12H</span> <span className="font-black text-lg text-[#111]">1700€</span></li>
+                    </ul>
+                  </div>
+
+                  {/* Création de contenu Mariage */}
+                  <div className="space-y-6">
+                    <h4 className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] border-b border-[#111] pb-4">Création Contenu (UGC)</h4>
+                    <ul className="space-y-4">
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Format 4H</span> <span className="font-black text-lg text-[#111]">140€</span></li>
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Format 8H</span> <span className="font-black text-lg text-[#111]">280€</span></li>
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Format 12H</span> <span className="font-black text-lg text-[#111]">420€</span></li>
+                    </ul>
+                  </div>
+
+                  {/* Extras */}
+                  <div className="space-y-6 bg-[#EBEBE6] p-6 border border-[#111]">
+                    <h4 className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] border-b border-[#111] pb-4">Services Additionnels</h4>
+                    <ul className="space-y-4">
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Prise Drone</span> <span className="font-black text-lg text-[#111]">150€</span></li>
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Frais d&apos;agence <span className="text-[9px] block">Hors Mariage</span></span> <span className="font-black text-lg text-[#111]">80€</span></li>
+                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Frais d&apos;agence <span className="text-[9px] block">Mariage</span></span> <span className="font-black text-lg text-[#111]">160€</span></li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </section>
+
         {/* FOOTER - Minimaliste */}
         <footer className="bg-[#111] text-[#F4F4F0] px-6 md:px-12 py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 border-b border-[#333] pb-24">
             <div>
-              <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-16 md:h-24 w-auto object-contain mb-12" />
+              <img src="/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png" alt="Vision Adéquate" className="h-16 md:h-24 w-auto object-contain mb-12 invert" />
               <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] mb-8">
                 Prêt à <br/> Tourner.
               </h2>
@@ -283,8 +497,8 @@ export default function Home() {
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-widest uppercase text-[#555]">
             <span>© 2026 Vision Adéquate. Tous droits réservés.</span>
             <div className="flex gap-8">
-              <span>Mentions Légales</span>
-              <span>CGV</span>
+              <a href="/assets/RYN/Contrat LOCATION + CGL/Contrat ADÉQUATE .pdf" target="_blank" className="hover:text-white transition-colors">Contrat Location</a>
+              <a href="/assets/RYN/Contrat LOCATION + CGL/CGL_Location_Audiovisuel_Clauses.pdf" target="_blank" className="hover:text-white transition-colors">CGV</a>
             </div>
           </div>
         </footer>
@@ -297,6 +511,16 @@ export default function Home() {
         }
         .animate-marquee {
           animation: marquee 20s linear infinite;
+        }
+        .animate-marquee-slow {
+          animation: marquee 40s linear infinite;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
     </div>

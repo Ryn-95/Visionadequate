@@ -76,6 +76,77 @@ const PRODUCTS_DATA: Record<string, any> = {
     desc: "Caméra d'action 360° avec deux capteurs 1/2 pouce, capturant des vidéos 5.7K immersives.",
     specs: [["Capteurs", "Double 1/2 pouce"], ["Résolution", "5.7K 360°"], ["Étanchéité", "10 m"], ["Écran", "Tactile 2.29 pouces"]]
   }
+,
+
+  "filtre-nd-freewell": {
+    name: "Filtre ND Variable", brand: "Freewell", price: "10", status: "Disponible",
+    images: ["/assets/MATERIELS 2/Freewel Filtre Nd/Freewel.jpg", "/assets/MATERIELS 2/Freewel Filtre Nd/3 - freewel .jpg"],
+    desc: "Filtre ND variable de haute qualité pour contrôler l'exposition en vidéo.",
+    specs: [["Type", "Variable"], ["Densité", "ND8 à ND1000"], ["Fixation", "Magnétique"]]
+  },
+  "trepied-joby": {
+    name: "Trépied Joby", brand: "Joby", price: "5", status: "Disponible",
+    images: ["/assets/MATERIELS 2/Trépied/1 Joby .jpg", "/assets/MATERIELS 2/Trépied/2 - Joby.jpg", "/assets/MATERIELS 2/Trépied/3 - Joby.jpg"],
+    desc: "Trépied flexible et robuste, idéal pour les vlogs et les installations créatives.",
+    specs: [["Type", "Flexible"], ["Poids max", "3 kg"], ["Matériau", "Plastique ABS / Métal"]]
+  },
+  "cage-sony-a7iv": {
+    name: "Cage A7IV / A7S3", brand: "SmallRig", price: "10", status: "Disponible",
+    images: ["/assets/MATERIELS 2/SmallRight Cage/1 - SmallRight Cage A7IV, A7S3.jpg", "/assets/MATERIELS 2/SmallRight Cage/2 - SmallRight Cage .jpg", "/assets/MATERIELS 2/SmallRight Cage/3 - SmallRight Cage .jpg"],
+    desc: "Cage de protection et de montage pour Sony A7IV et A7S III. Offre de multiples points de fixation.",
+    specs: [["Matériau", "Alliage d'aluminium"], ["Compatibilité", "Sony A7IV, A7S III"], ["Fixations", "1/4\"", "3/8\"", "Griffe froide"]]
+  },
+  "carte-sd-128": {
+    name: "Carte SD Sony 128GB", brand: "Sony", price: "30", status: "Disponible",
+    images: ["/assets/materiels/11-sd-iii-.jpg"],
+    desc: "Carte mémoire SDXC ultra-rapide pour l'enregistrement vidéo 4K et 8K.",
+    specs: [["Capacité", "128 GB"], ["Vitesse lecture", "300 MB/s"], ["Classe", "V90"]]
+  },
+  "carte-sd-angelbird-128": {
+    name: "Carte SD Angelbird 128GB", brand: "Angelbird", price: "25", status: "Disponible",
+    images: ["/assets/MATERIELS 2/CARTE SD/1 - ANGELBIRD 128GB.JPG"],
+    desc: "Carte mémoire SDXC V90 haute performance, conçue pour les flux de travail vidéo exigeants.",
+    specs: [["Capacité", "128 GB"], ["Vitesse", "300 MB/s"], ["Classe", "V90"]]
+  },
+  "dji-mic-2": {
+    name: "DJI Mic 2", brand: "DJI", price: "35", status: "Disponible",
+    images: [
+      "/assets/MATERIELS 2/DJI Mic 2/1 - DJI Mic 2 Système audfio sans fil (2 TX + 1 RX) + Étui de charge + Sac de rangement.jpg",
+      "/assets/MATERIELS 2/DJI Mic 2/2 - DJI Mic 2 Système audfio sans fil (2 TX + 1 RX) + Étui de charge + Sac de rangement .jpg",
+      "/assets/MATERIELS 2/DJI Mic 2/3 - DJI Mic 2 Système audfio sans fil (2 TX + 1 RX) + Étui de charge + Sac de rangement..jpg"
+    ],
+    desc: "Système de microphone sans fil professionnel avec enregistrement interne 32-bit float.",
+    specs: [["Émetteurs", "2"], ["Récepteur", "1"], ["Enregistrement", "32-bit Float interne"], ["Portée", "250m"]]
+  },
+  "godox-flash-v1-pro-s": {
+    name: "Godox Flash V1 PRO S", brand: "Godox", price: "20", status: "Disponible",
+    images: [
+      "/assets/MATERIELS 2/Flash V1 PRO S/1 - Flash V1 PRO S .jpg",
+      "/assets/MATERIELS 2/Flash V1 PRO S/2 - Flash V1 PRO S .jpg",
+      "/assets/MATERIELS 2/Flash V1 PRO S/3 - Flash V1 PRO S .jpg"
+    ],
+    desc: "Flash cobra professionnel à tête ronde pour Sony. Éclairage doux et uniforme.",
+    specs: [["Tête", "Ronde"], ["Compatibilité", "Sony TTL"], ["Batterie", "Li-ion rechargeable"]]
+  },
+  "godox-x3-s": {
+    name: "Godox X3-S", brand: "Godox", price: "10", status: "Disponible",
+    images: [
+      "/assets/MATERIELS 2/Godox X3-S/1 - Godox X3-S Déclencheur de Flash.jpg",
+      "/assets/MATERIELS 2/Godox X3-S/2 - Godox X3-S Déclencheur de Flash...jpg"
+    ],
+    desc: "Déclencheur de flash sans fil ultra-compact avec écran tactile OLED.",
+    specs: [["Compatibilité", "Sony"], ["Écran", "Tactile OLED"], ["Fréquence", "2.4 GHz"]]
+  },
+  "micro-cravate": {
+    name: "Micro Cravate", brand: "Générique", price: "5", status: "Disponible",
+    images: [
+      "/assets/MATERIELS 2/MicroCravate/1 - MicroCravate.jpg",
+      "/assets/MATERIELS 2/MicroCravate/2 - MicroCravate.jpg"
+    ],
+    desc: "Microphone cravate filaire pour des prises de son discrètes et claires.",
+    specs: [["Type", "Omnidirectionnel"], ["Connecteur", "Jack 3.5mm"]]
+  }
+
 };
 
 export default function ProductPage({ params }: { params: { id: string } }) {
@@ -83,7 +154,18 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const [activeImage, setActiveImage] = useState(0);
   const { addItem } = useCart();
 
-  const product = PRODUCTS_DATA[params.id] || PRODUCTS_DATA["sony-fx3"];
+  
+  const realProduct = products.find(p => p.id === params.id);
+  const product = PRODUCTS_DATA[params.id] || (realProduct ? {
+    name: realProduct.model,
+    brand: realProduct.brand,
+    price: realProduct.pricePerDay.toString(),
+    status: realProduct.available ? "Disponible" : "Indisponible",
+    images: [realProduct.imageUrl],
+    desc: "Matériel professionnel de haute qualité.",
+    specs: realProduct.specs.map(s => ["Spec", s])
+  } : PRODUCTS_DATA["sony-fx3"]);
+
 
   const handleAdd = () => {
     // Retrouver le vrai objet Product depuis la base de données
@@ -116,16 +198,18 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         <div className="flex flex-col lg:flex-row overflow-hidden">
           {/* GAUCHE : GALERIE */}
           <div className="w-full lg:w-2/3 border-r border-[#111] flex flex-col">
-            <div className="relative aspect-[4/3] lg:aspect-[16/10] bg-[#EBEBE6] flex items-center justify-center p-6 lg:p-12 border-b border-[#111]">
-              <motion.img 
-                key={activeImage}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                src={product.images[activeImage]} 
-                alt={product.name} 
-                className="w-full h-full object-contain mix-blend-multiply drop-shadow-2xl"
-              />
+            <div className="h-[300px] md:h-[360px] flex items-center justify-center p-6 lg:p-12 border-b border-[#111] bg-[#F4F4F0]">
+              <div className="relative w-full h-full max-w-sm bg-[#EBEBE6] flex items-center justify-center p-6">
+                <motion.img
+                  key={activeImage}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  src={product.images[activeImage]}
+                  alt={product.name}
+                  className="w-full h-full object-contain mix-blend-multiply drop-shadow-2xl"
+                />
+              </div>
             </div>
             {/* THUMBNAILS */}
             <div className="flex border-b border-[#111] overflow-x-auto hide-scrollbar">
@@ -199,21 +283,55 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         {/* SECTION: DANS LA VALISE & FAQ (Blueprint Style) */}
         <section className="border-t border-[#111] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
           {/* Dans la valise */}
-          <div className="p-8 md:p-24 border-b md:border-b-0 md:border-r border-[#111]">
-            <h2 className="flex items-center gap-4 text-2xl md:text-3xl font-black tracking-tighter uppercase mb-8 md:mb-12"><PackageOpen className="w-6 h-6 md:w-8 md:h-8 shrink-0" /> Inclus dans la valise.</h2>
-            <ul className="space-y-6">
+          <div className="border-b md:border-b-0 md:border-r border-[#111] flex flex-col">
+            {/* Header */}
+            <div className="p-8 md:p-16 border-b border-[#111]">
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h2 className="flex items-center gap-4 text-2xl md:text-4xl font-black tracking-tighter uppercase leading-[0.9]">
+                  <PackageOpen className="w-6 h-6 md:w-9 md:h-9 shrink-0" /> Inclus dans<br className="hidden md:block" /> la valise.
+                </h2>
+                <span className="shrink-0 text-[10px] font-bold uppercase tracking-widest text-white bg-[#111] px-3 py-1.5">
+                  {[
+                    { qty: "1", name: `Boîtier ${product.name}` },
+                    { qty: "3", name: "Batteries NPF-Z100" },
+                    { qty: "1", name: "Chargeur double rapide" },
+                    { qty: "2", name: "Cartes CFexpress Type A (160GB)" },
+                    { qty: "1", name: "Lecteur de carte USB-C" },
+                    { qty: "1", name: "Cage complète (Top Handle, Baseplate)" },
+                    { qty: "1", name: "Valise rigide sur-mesure (Pelican/HPRC)" }
+                  ].length} éléments
+                </span>
+              </div>
+              <p className="text-sm font-medium text-[#666] leading-relaxed max-w-md">
+                Chaque kit part contrôlé et prêt à tourner. Contenu vérifié pièce par pièce à la sortie comme au retour.
+              </p>
+            </div>
+
+            {/* Kit list */}
+            <ul className="flex flex-col">
               {[
-                `1x Boîtier ${product.name}`,
-                "3x Batteries NPF-Z100",
-                "1x Chargeur double rapide",
-                "2x Cartes CFexpress Type A (160GB)",
-                "1x Lecteur de carte USB-C",
-                "1x Cage complète (Top Handle, Baseplate)",
-                "1x Valise rigide sur-mesure (Pelican/HPRC)"
+                { qty: "1", name: `Boîtier ${product.name}` },
+                { qty: "3", name: "Batteries NPF-Z100" },
+                { qty: "1", name: "Chargeur double rapide" },
+                { qty: "2", name: "Cartes CFexpress Type A (160GB)" },
+                { qty: "1", name: "Lecteur de carte USB-C" },
+                { qty: "1", name: "Cage complète (Top Handle, Baseplate)" },
+                { qty: "1", name: "Valise rigide sur-mesure (Pelican/HPRC)" }
               ].map((item, i) => (
-                <li key={i} className="flex items-center gap-4 text-sm font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#111]" />
-                  {item}
+                <li
+                  key={i}
+                  className="group flex items-center gap-5 md:gap-6 px-8 md:px-16 py-5 border-b border-[#DDD] last:border-b-0 hover:bg-[#EBEBE6] transition-colors"
+                >
+                  <span className="shrink-0 text-[10px] font-bold text-[#AAA] tabular-nums tracking-widest w-6">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="shrink-0 flex items-center justify-center w-10 h-10 border border-[#111] font-black text-sm tabular-nums group-hover:bg-[#111] group-hover:text-white transition-colors">
+                    ×{item.qty}
+                  </span>
+                  <span className="text-sm md:text-base font-bold tracking-tight uppercase leading-tight">
+                    {item.name}
+                  </span>
+                  <CheckCircle2 className="w-4 h-4 text-[#111] ml-auto shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </li>
               ))}
             </ul>

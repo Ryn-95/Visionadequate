@@ -11,7 +11,7 @@ export function Header({ variant = 'default' }: { variant?: 'default' | 'transpa
     <header className={`fixed top-0 w-full z-50 px-4 md:px-6 py-4 md:py-6 flex justify-between items-center ${variant === 'transparent' ? 'bg-transparent text-[#111] pointer-events-none' : 'bg-[#F4F4F0] border-b border-[#111]'}`}>
       <div className={`flex items-center ${variant === 'transparent' ? 'pointer-events-auto' : ''}`}>
         <Link href="/" className="hover:opacity-50 transition-opacity">
-          <img src="/assets/logo/logo.png" alt="Vision Adéquate" className="h-8 md:h-12 w-auto object-contain invert" />
+          <img src="/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png" alt="Vision Adéquate" className={`h-12 md:h-16 w-auto object-contain ${variant === 'transparent' ? 'brightness-0' : 'brightness-0'}`} />
         </Link>
       </div>
       <nav className={`flex gap-6 md:gap-12 text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase ${variant === 'transparent' ? 'pointer-events-auto' : ''}`}>

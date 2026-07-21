@@ -157,16 +157,16 @@ export const products: Product[] = [
     imageUrl: '/assets/materielsdetails/8-insta-360-x3/8-i-.jpg',
   },
   {
-    id: 'freewel-nd',
-    slug: 'freewel-nd',
+    id: 'filtre-nd-freewell',
+    slug: 'filtre-nd-freewell',
     brand: 'Freewell',
-    model: 'Filtres Magnétiques ND',
+    model: 'Filtre ND Variable',
     category: 'accessoires',
-    subcategory: 'Filtres',
+    subcategory: 'Filtre',
     specs: ['ND8 à ND1000', 'Magnétique', 'Verre optique'],
     pricePerDay: 10,
     available: true,
-    imageUrl: '/assets/materielsdetails/14-sony-14-mm-gm-i/14-i.jpg.webp', // fallback image
+    imageUrl: '/assets/materiels/3---freewel-.avif',
   },
   {
     id: 'trepied-joby',
@@ -178,7 +178,7 @@ export const products: Product[] = [
     specs: ['Léger', 'Flexible', 'Compact'],
     pricePerDay: 5,
     available: true,
-    imageUrl: '/assets/materielsdetails/15-rs3-mini-dji/15-ii.jpg', // fallback image
+    imageUrl: '/assets/materiels/7--joby.jpg',
   },
   {
     id: 'cage-sony-a7iv',
@@ -190,7 +190,7 @@ export const products: Product[] = [
     specs: ['Aluminium', 'Points de fixation multiples', 'Ergonomique'],
     pricePerDay: 10,
     available: true,
-    imageUrl: '/assets/materielsdetails/1-sony-a7iv/1-ii--sony-a7iv-.webp', // fallback image
+    imageUrl: '/assets/materiels/9---rig.jpg',
   },
   {
     id: 'carte-sd-128',
@@ -202,6 +202,68 @@ export const products: Product[] = [
     specs: ['128GB', 'V90', '300MB/s'],
     pricePerDay: 30,
     available: true,
-    imageUrl: '/assets/materielsdetails/10-fx3/10-iii.avif', // fallback image
+    imageUrl: '/assets/materiels/11-sd-iii-.jpg',
+  }
+,
+  {
+    id: 'carte-sd-angelbird-128',
+    slug: 'carte-sd-angelbird-128',
+    brand: 'Angelbird',
+    model: 'Carte SD 128GB',
+    category: 'accessoires',
+    subcategory: 'Stockage',
+    specs: ["128GB","V90","300MB/s"],
+    pricePerDay: 25,
+    available: true,
+    imageUrl: '/assets/MATERIELS 2/CARTE SD/1 - ANGELBIRD 128GB.JPG'
+  },
+  {
+    id: 'dji-mic-2',
+    slug: 'dji-mic-2',
+    brand: 'DJI',
+    model: 'Mic 2',
+    category: 'audio',
+    subcategory: 'Microphone sans fil',
+    specs: ["2 TX + 1 RX","32-bit Float","250m portée"],
+    pricePerDay: 35,
+    available: true,
+    badge: 'NOUVEAU',
+    imageUrl: '/assets/MATERIELS 2/DJI Mic 2/1 - DJI Mic 2 Système audfio sans fil (2 TX + 1 RX) + Étui de charge + Sac de rangement.jpg'
+  },
+  {
+    id: 'godox-flash-v1-pro-s',
+    slug: 'godox-flash-v1-pro-s',
+    brand: 'Godox',
+    model: 'Flash V1 PRO S',
+    category: 'eclairage',
+    subcategory: 'Flash',
+    specs: ["Tête ronde","TTL","Batterie Li-ion"],
+    pricePerDay: 20,
+    available: true,
+    imageUrl: '/assets/MATERIELS 2/Flash V1 PRO S/1 - Flash V1 PRO S .jpg'
+  },
+  {
+    id: 'godox-x3-s',
+    slug: 'godox-x3-s',
+    brand: 'Godox',
+    model: 'X3-S Déclencheur',
+    category: 'eclairage',
+    subcategory: 'Déclencheur',
+    specs: ["Sony","Écran tactile","2.4GHz"],
+    pricePerDay: 10,
+    available: true,
+    imageUrl: '/assets/MATERIELS 2/Godox X3-S/1 - Godox X3-S Déclencheur de Flash.jpg'
+  },
+  {
+    id: 'micro-cravate',
+    slug: 'micro-cravate',
+    brand: 'Générique',
+    model: 'Micro Cravate',
+    category: 'audio',
+    subcategory: 'Microphone',
+    specs: ["Omnidirectionnel","Jack 3.5mm"],
+    pricePerDay: 5,
+    available: true,
+    imageUrl: '/assets/MATERIELS 2/MicroCravate/1 - MicroCravate.jpg'
   }
 ];
