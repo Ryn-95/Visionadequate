@@ -8,6 +8,7 @@ import { products } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import { Header } from "@/components/ui/Header";
+import { Footer } from "@/components/ui/Footer";
 
 const PRODUCTS_DATA: Record<string, any> = {
   "sony-a7iv": {
@@ -425,7 +426,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   <img
                     src={sugg.imageUrl}
                     alt={sugg.model}
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                     className="max-w-[70%] max-h-[75%] w-auto h-auto object-contain mix-blend-multiply drop-shadow-[0_15px_25px_rgba(0,0,0,0.15)] group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
@@ -445,14 +446,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-[#111] text-[#F4F4F0] px-6 md:px-12 py-12 border-t border-[#333] flex justify-between items-center text-[10px] font-bold tracking-widest uppercase">
-        <span>© 2026 Vision Adéquate. Tous droits réservés.</span>
-        <div className="flex gap-8">
-          <span className="text-[#555]">Mentions Légales</span>
-          <span className="text-[#555]">CGV</span>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

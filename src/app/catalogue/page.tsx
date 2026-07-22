@@ -8,6 +8,7 @@ import { FilterSidebar } from "@/components/catalogue/FilterSidebar";
 import { SortBar } from "@/components/catalogue/SortBar";
 import { ProductGrid } from "@/components/catalogue/ProductGrid";
 import { Header } from "@/components/ui/Header";
+import { Footer } from "@/components/ui/Footer";
 
 export default function Catalogue() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -86,6 +87,8 @@ export default function Catalogue() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

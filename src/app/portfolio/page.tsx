@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/ui/Header";
+import { Footer } from "@/components/ui/Footer";
 
 const BASE = "/assets/RYN/Portfolio";
 const BASE_AUTO = "/assets/Porfolio ";
@@ -172,14 +173,14 @@ export default function PortfolioPage() {
                 {section.files.map((file, i) => (
                   <figure
                     key={file}
-                    className="group relative mb-4 md:mb-5 overflow-hidden break-inside-avoid bg-[#efece4]"
+                    className="group relative mb-4 md:mb-5 overflow-hidden break-inside-avoid"
                   >
                     <img
                       src={src(section.folder, file, section.base)}
                       alt={`${section.group} — ${i + 1}`}
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
-                      className="w-full h-auto object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.035]"
+                      className="block w-full h-auto object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.035]"
                     />
                   </figure>
                 ))}
@@ -206,13 +207,7 @@ export default function PortfolioPage() {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="px-6 md:px-12 py-8 border-t border-[#e6e1d5] flex flex-col sm:flex-row gap-3 justify-between items-center text-[10px] uppercase tracking-[0.2em] text-[#a8a498]">
-        <span>© 2026 Vision Adéquate. Tous droits réservés.</span>
-        <Link href="/" className="hover:text-[#1f1f1f] transition-colors">
-          Accueil
-        </Link>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Microscope, Headph
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Header } from "@/components/ui/Header";
+import { Footer } from "@/components/ui/Footer";
 
 export default function Home() {
   return (
@@ -99,7 +100,7 @@ export default function Home() {
               <img
                 src="/assets/L'Agence.png"
                 alt="Manifeste Vision Adéquate"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 className="w-full h-auto max-h-[70vh] object-contain"
               />
@@ -144,7 +145,7 @@ export default function Home() {
                         <img
                           src={partner.src}
                           alt={partner.alt}
-                          loading="lazy"
+                          loading="eager"
                           decoding="async"
                           className={`w-auto object-contain ${partner.className}`}
                         />
@@ -227,7 +228,7 @@ export default function Home() {
                   <img
                     src={product.imageUrl}
                     alt={product.model}
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                     className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
@@ -289,7 +290,7 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-1/2 relative aspect-square md:aspect-auto flex items-center justify-center p-12 overflow-hidden bg-[#F4F4F0]">
-              <img src="/assets/materielsdetails/10-fx3/10-ii-.avif" alt="Setup FX3" loading="lazy" decoding="async" className="w-full h-full object-contain mix-blend-multiply scale-110 hover:scale-125 transition-transform duration-700" />
+              <img src="/assets/materielsdetails/10-fx3/10-ii-.avif" alt="Setup FX3" loading="eager" decoding="async" className="w-full h-full object-contain mix-blend-multiply scale-110 hover:scale-125 transition-transform duration-700" />
             </div>
           </div>
         </section>
@@ -319,7 +320,7 @@ export default function Home() {
                   alt={`Portfolio ${i + 1}`}
                   width={900}
                   height={900}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -360,40 +361,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FOOTER - Minimaliste */}
-        <footer className="bg-[#111] text-[#F4F4F0] px-6 md:px-12 py-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 border-b border-[#333] pb-24">
-            <div>
-              <img src="/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png" alt="Vision Adéquate" loading="lazy" decoding="async" className="h-16 md:h-24 w-auto object-contain mb-12 invert" />
-              <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] mb-8">
-                Prêt à <br/> Tourner.
-              </h2>
-              <Link href="/devis" className="inline-flex items-center justify-center gap-3 bg-white text-[#111] px-8 py-5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors">
-                Démarrer un devis <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-8 text-sm font-medium text-[#888]">
-              <div className="flex flex-col gap-4">
-                <div className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Catalogue</div>
-                <Link href="/catalogue" className="hover:text-white transition-colors">Inventaire Complet</Link>
-                <Link href="/devis" className="hover:text-white transition-colors">Demander un Devis</Link>
-              </div>
-              <div className="flex flex-col gap-4">
-                <div className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Contact</div>
-                <p className="flex items-start gap-2"><MapPin className="w-4 h-4 shrink-0" /> <span>12 Rue de la Précision<br/>75011 Paris, France</span></p>
-                <a href="mailto:contact@vision-adequate.fr" className="hover:text-white transition-colors mt-2 flex items-center gap-2"><Mail className="w-4 h-4 shrink-0" /> contact@vision-adequate.fr</a>
-              </div>
-            </div>
-          </div>
-          <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-widest uppercase text-[#555]">
-            <span>© 2026 Vision Adéquate. Tous droits réservés.</span>
-            <div className="flex gap-8">
-              <a href="/assets/RYN/Contrat LOCATION + CGL/Contrat ADÉQUATE .pdf" target="_blank" className="hover:text-white transition-colors">Contrat Location</a>
-              <a href="/assets/RYN/Contrat LOCATION + CGL/CGL_Location_Audiovisuel_Clauses.pdf" target="_blank" className="hover:text-white transition-colors">CGV</a>
-            </div>
-          </div>
-        </footer>
       </main>
+
+      <Footer />
       
       <style jsx global>{`
         @keyframes marquee {

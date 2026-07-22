@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import { Header } from "@/components/ui/Header";
+import { Footer } from "@/components/ui/Footer";
 
 export default function Devis() {
   const [step, setStep] = useState(1);
@@ -388,6 +389,8 @@ export default function Devis() {
           )}
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

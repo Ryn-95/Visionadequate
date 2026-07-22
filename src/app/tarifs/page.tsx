@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Header } from "@/components/ui/Header";
+import { Footer } from "@/components/ui/Footer";
 
 export default function TarifsPage() {
   return (
@@ -189,11 +190,7 @@ export default function TarifsPage() {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-[#111] text-[#F4F4F0] px-6 md:px-12 py-12 border-t border-[#333] flex justify-between items-center text-[10px] font-bold tracking-widest uppercase">
-        <span>© 2026 Vision Adéquate. Tous droits réservés.</span>
-        <Link href="/" className="text-[#555] hover:text-white transition-colors">Accueil</Link>
-      </footer>
+      <Footer />
     </div>
   );
 }
