@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft, ArrowUpRight, CheckCircle2, HelpCircle, PackageOpen } from "lucide-react";
+import { ArrowRight, ArrowLeft, ArrowUpRight, CheckCircle2, HelpCircle, PackageOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { products } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
@@ -173,9 +173,23 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     if (realProduct) {
       addItem(realProduct);
     }
-    
+
     setAdded(true);
     setTimeout(() => setAdded(false), 3000);
+  };
+
+  const total = product.images.length;
+  const goNext = () => setActiveImage((i: number) => (i + 1) % total);
+  const goPrev = () => setActiveImage((i: number) => (i - 1 + total) % total);
+
+  // Swipe tactile (mobile)
+  const touchStartX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 40) { dx < 0 ? goNext() : goPrev(); }
+    touchStartX.current = null;
   };
 
   return (
@@ -184,13 +198,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
       <main className="pt-[72px] md:pt-[96px]">
         {/* TOP BAR - Breadcrumb & Price */}
-        <div className="flex justify-between items-center px-6 md:px-12 h-12 md:h-14 border-b border-black/10 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#999]">
-          <Link href="/catalogue" className="flex items-center gap-2 hover:text-[#111] transition-colors">
-            <ArrowLeft className="w-3.5 h-3.5" /> Retour à l&apos;inventaire
+        <div className="flex justify-between items-center gap-4 px-6 md:px-12 h-12 md:h-14 border-b border-black/10 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#999] whitespace-nowrap">
+          <Link href="/catalogue" className="flex items-center gap-2 hover:text-[#111] transition-colors shrink-0">
+            <ArrowLeft className="w-3.5 h-3.5 shrink-0" /> <span className="hidden xs:inline sm:inline">Retour à l&apos;inventaire</span><span className="sm:hidden">Retour</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <span className="text-[#555]">REF. {params.id.toUpperCase()}</span>
-            <span className="w-1 h-1 bg-[#CCC] rounded-full" />
+          <div className="flex items-center gap-3 shrink-0">
+            <span className="hidden sm:inline text-[#555]">REF. {params.id.toUpperCase()}</span>
+            <span className="hidden sm:inline w-1 h-1 bg-[#CCC] rounded-full" />
             <span className={product.status === "Disponible" ? "text-emerald-600" : "text-amber-600"}>{product.status}</span>
           </div>
         </div>
@@ -198,31 +212,61 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         <div className="flex flex-col lg:flex-row">
           {/* GAUCHE : GALERIE (Sticky sur Desktop) */}
           <div className="w-full lg:w-[58%] lg:border-r border-black/10">
-            <div className="lg:sticky lg:top-[96px] flex flex-col">
+            <div className="lg:sticky lg:top-[96px] lg:h-[calc(100vh-152px)] flex flex-col">
               {/* Stage produit */}
-              <div className="relative flex items-center justify-center px-8 py-14 md:py-20 h-[46vh] min-h-[340px] lg:h-[calc(100vh-96px-140px)] overflow-hidden">
+              <div
+                onTouchStart={onTouchStart}
+                onTouchEnd={onTouchEnd}
+                className="group relative flex-1 flex items-center justify-center px-6 md:px-8 py-10 h-[52vh] min-h-[360px] lg:h-auto overflow-hidden select-none"
+              >
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_90%_at_50%_38%,_#FDFDFB_0%,_#EEEEE8_55%,_#E4E4DD_100%)]" />
                 <motion.img
                   key={activeImage}
-                  initial={{ opacity: 0, scale: 0.96 }}
+                  initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   src={product.images[activeImage]}
                   alt={product.name}
-                  className="relative z-10 max-w-[78%] max-h-[300px] md:max-h-[380px] w-auto h-auto object-contain mix-blend-multiply drop-shadow-[0_35px_55px_rgba(0,0,0,0.22)]"
+                  draggable={false}
+                  className="relative z-10 max-w-[80%] max-h-[85%] w-auto h-auto object-contain mix-blend-multiply drop-shadow-[0_35px_55px_rgba(0,0,0,0.22)]"
                 />
+
+                {total > 1 && (
+                  <>
+                    {/* Flèches navigation */}
+                    <button
+                      onClick={goPrev}
+                      aria-label="Image précédente"
+                      className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/85 backdrop-blur-sm border border-black/10 flex items-center justify-center text-[#111] shadow-sm hover:bg-white hover:scale-105 active:scale-95 transition-all"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={goNext}
+                      aria-label="Image suivante"
+                      className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/85 backdrop-blur-sm border border-black/10 flex items-center justify-center text-[#111] shadow-sm hover:bg-white hover:scale-105 active:scale-95 transition-all"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                    {/* Compteur */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 text-[11px] font-semibold tabular-nums text-[#111] bg-white/70 backdrop-blur-sm px-3 py-1 rounded-full border border-black/5">
+                      {activeImage + 1} / {total}
+                    </div>
+                  </>
+                )}
               </div>
-              {/* Miniatures */}
-              {product.images.length > 1 && (
-                <div className="flex gap-3 justify-center flex-wrap px-8 pb-10 pt-6 border-t border-black/10">
+
+              {/* Miniatures (toujours visibles) */}
+              {total > 1 && (
+                <div className="shrink-0 flex gap-2.5 md:gap-3 justify-center flex-wrap px-6 py-4 md:py-5 border-t border-black/10 bg-[#F4F4F0]">
                   {product.images.map((img: string, i: number) => (
                     <button
                       key={img}
                       onClick={() => setActiveImage(i)}
                       aria-label={`Voir l'image ${i + 1}`}
-                      className={`relative w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden bg-[#EBEBE6] flex items-center justify-center transition-all duration-300 ${i === activeImage ? 'ring-2 ring-[#111] ring-offset-2 ring-offset-[#F4F4F0]' : 'opacity-50 hover:opacity-100'}`}
+                      className={`relative w-14 h-14 md:w-16 md:h-16 rounded-xl overflow-hidden bg-[#EBEBE6] flex items-center justify-center transition-all duration-300 ${i === activeImage ? 'ring-2 ring-[#111] ring-offset-2 ring-offset-[#F4F4F0]' : 'opacity-45 hover:opacity-100'}`}
                     >
-                      <img src={img} alt="" decoding="async" className="w-full h-full object-contain p-2.5 mix-blend-multiply" />
+                      <img src={img} alt="" decoding="async" className="w-full h-full object-contain p-2 mix-blend-multiply" />
                     </button>
                   ))}
                 </div>
