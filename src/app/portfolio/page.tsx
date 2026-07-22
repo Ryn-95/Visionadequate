@@ -5,33 +5,9 @@ import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/ui/Header";
 
 const BASE = "/assets/RYN/Portfolio";
+const BASE_AUTO = "/assets/Porfolio ";
 
-const GALLERY: { group: string; folder: string; files: string[] }[] = [
-  {
-    group: "Akenzo",
-    folder: "AKENZO",
-    files: [
-      "Akenzo P.1-34.jpg",
-      "Akenzo P.2-25.jpg",
-      "Akenzo P.2-28.jpg",
-      "Akenzo P.3-17.jpg",
-      "Akenzo P.3-28.jpg",
-      "Akenzo P.3-36.jpg",
-      "Akenzo P.4-22.jpg",
-    ],
-  },
-  {
-    group: "Charlito",
-    folder: "CHARLITO",
-    files: [
-      "Charlito_R2-066.jpg",
-      "Charlito_R2-101.jpg",
-      "Charlito_R3-03.jpg",
-      "Charlito_R3-07.jpg",
-      "Charlito_R3-08.jpg",
-      "Charlito_R3-10.jpg",
-    ],
-  },
+const GALLERY: { group: string; folder: string; files: string[]; base?: string }[] = [
   {
     group: "Mariage de A & M",
     folder: "Mariage de A & M",
@@ -77,9 +53,62 @@ const GALLERY: { group: string; folder: string; files: string[] }[] = [
       "Sara&Chris-197.jpg",
     ],
   },
+  {
+    group: "Akenzo",
+    folder: "AKENZO",
+    files: [
+      "Akenzo P.1-34.jpg",
+      "Akenzo P.2-25.jpg",
+      "Akenzo P.2-28.jpg",
+      "Akenzo P.3-17.jpg",
+      "Akenzo P.3-28.jpg",
+      "Akenzo P.3-36.jpg",
+      "Akenzo P.4-22.jpg",
+    ],
+  },
+  {
+    group: "Charlito",
+    folder: "CHARLITO",
+    files: [
+      "Charlito_R2-066.jpg",
+      "Charlito_R2-101.jpg",
+      "Charlito_R3-03.jpg",
+      "Charlito_R3-07.jpg",
+      "Charlito_R3-08.jpg",
+      "Charlito_R3-10.jpg",
+    ],
+  },
+  {
+    group: "Classe G Brabus",
+    folder: "CLASSE G BRABUS",
+    base: BASE_AUTO,
+    files: [
+      "ELITE AUTO V1 CINEMATIQUE -04.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -08.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -14.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -15.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -16.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -18.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -20.jpg",
+    ],
+  },
+  {
+    group: "Audi R8 Spider",
+    folder: "AUDI R8 SPIDER",
+    base: BASE_AUTO,
+    files: [
+      "ELITE AUTO V1 CINEMATIQUE -32.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -34.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -38.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -39.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -42.jpg",
+      "ELITE AUTO V1 CINEMATIQUE -43.jpg",
+    ],
+  },
 ];
 
-const src = (folder: string, file: string) => encodeURI(`${BASE}/${folder}/${file}`);
+const src = (folder: string, file: string, base: string = BASE) =>
+  encodeURI(`${base}/${folder}/${file}`);
 
 export default function PortfolioPage() {
   return (
@@ -146,7 +175,7 @@ export default function PortfolioPage() {
                     className="group relative mb-4 md:mb-5 overflow-hidden break-inside-avoid bg-[#efece4]"
                   >
                     <img
-                      src={src(section.folder, file)}
+                      src={src(section.folder, file, section.base)}
                       alt={`${section.group} — ${i + 1}`}
                       loading="lazy"
                       decoding="async"
