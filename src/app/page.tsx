@@ -330,8 +330,8 @@ export default function Home() {
                   <span className="w-12 h-[2px] bg-[#111]"></span>
                   <span className="text-[10px] font-bold text-[#111] uppercase tracking-[0.3em]">Investissement</span>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] mb-6">
-                  Grille Tarifaire <br/> Officielle.
+                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.95] mb-6 max-w-2xl">
+                  Grille tarifaire prestation photo et vidéo.
                 </h2>
                 <p className="text-[#555] text-base md:text-lg font-medium leading-relaxed max-w-xl">
                   Transparence absolue sur nos prestations. Conçue pour les productions d&apos;excellence, sans compromis sur la qualité.
@@ -341,9 +341,6 @@ export default function Home() {
                 <Link href="/tarifs" className="group flex items-center justify-center gap-4 bg-[#111] text-[#F4F4F0] px-8 py-5 text-xs font-bold uppercase tracking-widest hover:bg-[#333] transition-colors">
                   Voir la grille complète <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <a href="/assets/RYN/Section Prestation/Grille Tarifaire .pdf" target="_blank" className="group flex items-center justify-center gap-4 bg-transparent border border-[#111] text-[#111] px-8 py-5 text-xs font-bold uppercase tracking-widest hover:bg-[#111] hover:text-white transition-colors">
-                  Télécharger le PDF
-                </a>
               </div>
             </div>
           </div>

@@ -28,22 +28,19 @@ export default function TarifsPage() {
 
           <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
-            <div className="flex flex-col lg:flex-row justify-between items-start mb-24 gap-12">
+            <div className="mb-24">
               <div className="max-w-3xl">
                 <div className="inline-flex items-center gap-4 mb-6">
                   <span className="w-12 h-[2px] bg-[#111]"></span>
                   <span className="text-[10px] font-bold text-[#111] uppercase tracking-[0.3em]">Investissement</span>
                 </div>
-                <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] mb-6">
-                  Grille Tarifaire <br/> Officielle.
+                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.95] mb-6 max-w-2xl">
+                  Grille tarifaire prestation photo et vidéo.
                 </h1>
                 <p className="text-[#555] text-base md:text-lg font-medium leading-relaxed max-w-xl">
                   Transparence absolue sur nos prestations. Conçue pour les productions d&apos;excellence, sans compromis sur la qualité.
                 </p>
               </div>
-              <a href="/assets/RYN/Section Prestation/Grille Tarifaire .pdf" target="_blank" className="group flex items-center justify-center gap-4 bg-[#111] text-[#F4F4F0] px-8 py-5 text-xs font-bold uppercase tracking-widest hover:bg-[#333] transition-colors shrink-0">
-                Télécharger le PDF <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
             </div>
 
             {/* Layout en maçonnerie asymétrique */}
@@ -94,7 +91,7 @@ export default function TarifsPage() {
                       <span className="text-2xl font-black">600€</span>
                     </div>
                     <div className="flex justify-between items-end pt-2 text-[#888]">
-                      <span className="text-sm font-medium">Montage & Colo</span>
+                      <span className="text-sm font-medium">Montage & Colorimétrie</span>
                       <span className="text-lg font-bold text-white">400€<span className="text-xs font-normal text-[#888]">/jour</span></span>
                     </div>
                   </div>
@@ -110,7 +107,7 @@ export default function TarifsPage() {
                   <div className="absolute top-8 right-8 w-16 h-16 border border-[#111] rounded-full flex items-center justify-center">
                     <div className="w-2 h-2 bg-[#111] rounded-full animate-pulse"></div>
                   </div>
-                  <h3 className="text-3xl font-black uppercase tracking-tight mb-2">Mariage Premium</h3>
+                  <h3 className="text-3xl font-black uppercase tracking-tight mb-2">Mariage</h3>
                   <p className="text-[#666] text-sm mb-10 font-medium">L&apos;expérience complète : Photo & Vidéo simultanées.</p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -171,8 +168,6 @@ export default function TarifsPage() {
                     <h4 className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] border-b border-[#111] pb-4">Services Additionnels</h4>
                     <ul className="space-y-4">
                       <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Prise Drone</span> <span className="font-black text-lg text-[#111]">150€</span></li>
-                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Frais d&apos;agence <span className="text-[9px] block">Hors Mariage</span></span> <span className="font-black text-lg text-[#111]">80€</span></li>
-                      <li className="flex justify-between items-center text-sm font-medium"><span className="text-[#555]">Frais d&apos;agence <span className="text-[9px] block">Mariage</span></span> <span className="font-black text-lg text-[#111]">160€</span></li>
                     </ul>
                   </div>
 
