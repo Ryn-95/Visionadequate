@@ -73,6 +73,40 @@ export default function Home() {
           </div>
         </section>
 
+        {/* NOUVELLE SECTION: L'AGENCE / MANIFESTO */}
+        <section className="px-6 md:px-12 py-32 bg-[#F4F4F0] text-[#111] border-b border-[#111]">
+          <div className="flex flex-col md:flex-row gap-16 md:gap-32 items-center max-w-7xl mx-auto">
+            <div className="w-full md:w-1/2 flex flex-col justify-center">
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85] mb-8">
+                L&apos;Agence.
+              </h2>
+              <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-12 flex items-center gap-4">
+                <span className="w-8 h-[1px] bg-[#888]"></span> Manifeste
+              </div>
+              <div className="space-y-8 text-sm md:text-base font-medium text-[#555] leading-relaxed">
+                <p className="text-xl md:text-2xl font-bold text-[#111] leading-tight">
+                  Nous ne sommes pas de simples loueurs. Vision Adéquate est né d&apos;une frustration : celle de voir la logistique entraver la création.
+                </p>
+                <p>
+                  Chaque pièce de notre inventaire est sélectionnée, testée et calibrée avec une rigueur chirurgicale. Si un équipement n&apos;atteint pas nos standards de fiabilité, il n&apos;est pas proposé à la location. Point.
+                </p>
+                <p className="text-[#111] font-bold">
+                  Notre mission est simple : faire disparaître l&apos;outil pour laisser toute la place à votre vision.
+                </p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/2 flex items-center justify-center">
+              <img
+                src="/assets/L'Agence.png"
+                alt="Manifeste Vision Adéquate"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto max-h-[70vh] object-contain"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* PARTENAIRES / TRUSTED BY */}
         <section className="py-24 md:py-32 bg-[#050505] overflow-hidden border-y border-white/10">
           {/* Header éditorial, cohérent avec le reste du site */}
@@ -119,40 +153,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* NOUVELLE SECTION: L'AGENCE / MANIFESTO */}
-        <section className="px-6 md:px-12 py-32 bg-[#F4F4F0] text-[#111] border-b border-[#111]">
-          <div className="flex flex-col md:flex-row gap-16 md:gap-32 items-center max-w-7xl mx-auto">
-            <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85] mb-8">
-                L&apos;Agence.
-              </h2>
-              <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em] mb-12 flex items-center gap-4">
-                <span className="w-8 h-[1px] bg-[#888]"></span> Manifeste
-              </div>
-              <div className="space-y-8 text-sm md:text-base font-medium text-[#555] leading-relaxed">
-                <p className="text-xl md:text-2xl font-bold text-[#111] leading-tight">
-                  Nous ne sommes pas de simples loueurs. Vision Adéquate est né d&apos;une frustration : celle de voir la logistique entraver la création.
-                </p>
-                <p>
-                  Chaque pièce de notre inventaire est sélectionnée, testée et calibrée avec une rigueur chirurgicale. Si un équipement n&apos;atteint pas nos standards de fiabilité, il n&apos;est pas proposé à la location. Point.
-                </p>
-                <p className="text-[#111] font-bold">
-                  Notre mission est simple : faire disparaître l&apos;outil pour laisser toute la place à votre vision.
-                </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 flex items-center justify-center">
-              <img
-                src="/assets/L'Agence.png"
-                alt="Manifeste Vision Adéquate"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto max-h-[70vh] object-contain"
-              />
             </div>
           </div>
         </section>

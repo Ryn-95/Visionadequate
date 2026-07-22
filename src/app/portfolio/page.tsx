@@ -103,12 +103,12 @@ export default function PortfolioPage() {
             <span>07 — Projets</span>
           </div>
 
-          {/* Wordmark géant + accroche en italique alignée sur la ligne de base */}
-          <div className="mt-8 md:mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
-            <h1 className="font-serif font-normal leading-[0.86] tracking-[-0.015em] text-[#1c1c1c] text-[19vw] sm:text-8xl md:text-[9rem] lg:text-[11rem]">
+          {/* Wordmark géant + accroche */}
+          <div className="mt-8 md:mt-12">
+            <h1 className="font-black uppercase leading-[0.82] tracking-tighter text-[#1c1c1c] text-[17vw] md:text-[14vw] lg:text-[12vw]">
               Portfolio
             </h1>
-            <p className="font-serif italic text-[#6f6c62] text-lg md:text-2xl leading-snug max-w-[19rem] md:text-right md:pb-4 shrink-0">
+            <p className="mt-6 md:mt-8 md:ml-auto text-[#555] font-medium text-sm md:text-base leading-relaxed max-w-md md:text-right">
               Nos histoires en images — photo &amp; vidéo, capturées avec le
               matériel que nous louons chaque jour.
             </p>
@@ -133,7 +133,7 @@ export default function PortfolioPage() {
             >
               {/* Titre centré, serif, lettrage large */}
               <div className="text-center mb-12 md:mb-16">
-                <h2 className="font-serif font-normal uppercase text-2xl md:text-[2.4rem] tracking-[0.28em] md:tracking-[0.32em] text-[#2b2b2b] leading-tight">
+                <h2 className="font-black uppercase text-3xl md:text-5xl tracking-tighter text-[#1c1c1c] leading-none">
                   {section.group}
                 </h2>
               </div>
@@ -165,7 +165,7 @@ export default function PortfolioPage() {
           <p className="uppercase tracking-[0.4em] text-[10px] text-[#b0aca0] mb-6">
             Votre projet
           </p>
-          <h2 className="font-serif font-normal text-3xl md:text-5xl tracking-[0.02em] text-[#232323] leading-tight max-w-2xl mx-auto">
+          <h2 className="font-black uppercase text-4xl md:text-6xl tracking-tighter text-[#1c1c1c] leading-[0.9] max-w-2xl mx-auto">
             Envie d&apos;un rendu similaire&nbsp;?
           </h2>
           <Link
