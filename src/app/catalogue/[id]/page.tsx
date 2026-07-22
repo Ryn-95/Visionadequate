@@ -184,108 +184,114 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
       <main className="pt-[72px] md:pt-[96px]">
         {/* TOP BAR - Breadcrumb & Price */}
-        <div className="flex justify-between items-center px-6 md:px-12 py-4 border-b border-[#111] text-[10px] font-bold uppercase tracking-widest text-[#555]">
+        <div className="flex justify-between items-center px-6 md:px-12 h-12 md:h-14 border-b border-black/10 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#999]">
           <Link href="/catalogue" className="flex items-center gap-2 hover:text-[#111] transition-colors">
-            <ArrowLeft className="w-3 h-3" /> Retour à l&apos;inventaire
+            <ArrowLeft className="w-3.5 h-3.5" /> Retour à l&apos;inventaire
           </Link>
-          <div className="flex items-center gap-4">
-            <span className="text-[#111]">REF. {params.id.toUpperCase()}</span>
-            <span className="w-1 h-1 bg-[#111] rounded-full" />
+          <div className="flex items-center gap-3">
+            <span className="text-[#555]">REF. {params.id.toUpperCase()}</span>
+            <span className="w-1 h-1 bg-[#CCC] rounded-full" />
             <span className={product.status === "Disponible" ? "text-emerald-600" : "text-amber-600"}>{product.status}</span>
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row overflow-hidden">
-          {/* GAUCHE : GALERIE */}
-          <div className="w-full lg:w-2/3 border-r border-[#111] flex flex-col">
-            <div className="h-[300px] md:h-[360px] flex items-center justify-center p-6 lg:p-12 border-b border-[#111] bg-[#F4F4F0]">
-              <div className="relative w-full h-full max-w-sm bg-[#EBEBE6] flex items-center justify-center p-6">
+        <div className="flex flex-col lg:flex-row">
+          {/* GAUCHE : GALERIE (Sticky sur Desktop) */}
+          <div className="w-full lg:w-[58%] lg:border-r border-black/10">
+            <div className="lg:sticky lg:top-[96px] flex flex-col">
+              {/* Stage produit */}
+              <div className="relative flex items-center justify-center px-8 py-14 md:py-20 h-[46vh] min-h-[340px] lg:h-[calc(100vh-96px-140px)] overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_90%_at_50%_38%,_#FDFDFB_0%,_#EEEEE8_55%,_#E4E4DD_100%)]" />
                 <motion.img
                   key={activeImage}
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   src={product.images[activeImage]}
                   alt={product.name}
-                  className="w-full h-full object-contain mix-blend-multiply drop-shadow-2xl"
+                  className="relative z-10 max-w-[78%] max-h-[300px] md:max-h-[380px] w-auto h-auto object-contain mix-blend-multiply drop-shadow-[0_35px_55px_rgba(0,0,0,0.22)]"
                 />
               </div>
-            </div>
-            {/* THUMBNAILS */}
-            <div className="flex border-b border-[#111] overflow-x-auto hide-scrollbar">
-              {product.images.map((img: string, i: number) => (
-                <button 
-                  key={img} 
-                  onClick={() => setActiveImage(i)}
-                  className={`relative shrink-0 w-[33.33%] md:w-auto md:flex-1 aspect-[16/9] border-r border-[#111] last:border-r-0 flex items-center justify-center bg-[#F4F4F0] hover:bg-[#EBEBE6] transition-colors ${i === activeImage ? 'opacity-100' : 'opacity-40'}`}
-                >
-                  <img src={img} alt={`Miniature ${product.model} ${i+1}`} decoding="async" className="w-full h-full object-contain p-4 mix-blend-multiply" />
-                </button>
-              ))}
+              {/* Miniatures */}
+              {product.images.length > 1 && (
+                <div className="flex gap-3 justify-center flex-wrap px-8 pb-10 pt-6 border-t border-black/10">
+                  {product.images.map((img: string, i: number) => (
+                    <button
+                      key={img}
+                      onClick={() => setActiveImage(i)}
+                      aria-label={`Voir l'image ${i + 1}`}
+                      className={`relative w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden bg-[#EBEBE6] flex items-center justify-center transition-all duration-300 ${i === activeImage ? 'ring-2 ring-[#111] ring-offset-2 ring-offset-[#F4F4F0]' : 'opacity-50 hover:opacity-100'}`}
+                    >
+                      <img src={img} alt="" decoding="async" className="w-full h-full object-contain p-2.5 mix-blend-multiply" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
-          {/* DROITE : INFOS & DEVIS (Sticky sur Desktop) */}
-          <div className="w-full lg:w-1/3 flex flex-col">
-            <div className="lg:sticky lg:top-[96px] flex flex-col lg:h-[calc(100vh-96px)]">
-              {/* Product Header */}
-              <div className="p-8 border-b border-[#111]">
-                <div className="text-[10px] font-bold text-[#666] uppercase tracking-[0.2em] mb-4">{product.brand}</div>
-                <h1 className="text-4xl lg:text-6xl font-black tracking-tighter uppercase leading-[0.9] mb-6 break-words">
-                  {product.name}
-                </h1>
-                <p className="text-sm font-medium text-[#555] leading-relaxed">
-                  {product.desc}
-                </p>
-              </div>
+          {/* DROITE : INFOS & DEVIS */}
+          <div className="w-full lg:w-[42%] flex flex-col">
+            {/* Product Header */}
+            <div className="px-8 md:px-14 pt-12 md:pt-20 pb-10">
+              <div className="text-[11px] font-semibold text-[#999] uppercase tracking-[0.25em] mb-5">{product.brand}</div>
+              <h1 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.86] mb-8 break-words">
+                {product.name}
+              </h1>
+              <p className="text-base font-medium text-[#666] leading-relaxed max-w-md">
+                {product.desc}
+              </p>
+            </div>
 
-              {/* Price & Action */}
-              <div className="p-8 border-b border-[#111] bg-[#111] text-white">
-                <div className="flex justify-between items-end mb-8">
-                  <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em]">Tarif Journalier</div>
-                  <div className="text-right">
-                    <div className="font-black text-4xl leading-none">{product.price}€</div>
-                    <div className="text-[10px] font-bold text-[#888] uppercase tracking-widest mt-1">/ Jour HT</div>
+            {/* Price */}
+            <div className="px-8 md:px-14 py-8 border-y border-black/10 flex items-end justify-between">
+              <div>
+                <div className="text-[10px] font-semibold text-[#999] uppercase tracking-[0.2em] mb-1.5">Tarif journalier</div>
+                <div className="text-xs font-medium text-[#AAA] uppercase tracking-wider">HT / jour</div>
+              </div>
+              <div className="font-black text-5xl lg:text-6xl leading-none tracking-tighter">{product.price}€</div>
+            </div>
+
+            {/* CTA */}
+            <div className="px-8 md:px-14 py-8 flex flex-col gap-3">
+              <button
+                onClick={handleAdd}
+                className={`group w-full py-5 rounded-full text-xs font-bold uppercase tracking-widest transition-all flex justify-center items-center gap-2 ${
+                  added ? "bg-emerald-600 text-white" : "bg-[#111] text-white hover:bg-[#333]"
+                }`}
+              >
+                {added ? (
+                  <><CheckCircle2 className="w-4 h-4" /> Ajouté au devis</>
+                ) : (
+                  <>Ajouter au devis <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></>
+                )}
+              </button>
+              <Link href="/devis" className="w-full py-5 rounded-full text-xs font-bold uppercase tracking-widest transition-colors flex justify-center items-center gap-2 border border-[#111]/20 text-[#111] hover:bg-[#111] hover:text-white">
+                Voir mon devis
+              </Link>
+            </div>
+
+            {/* Quick Specs */}
+            <div className="px-8 md:px-14 pb-16 pt-4">
+              <div className="text-[10px] font-semibold text-[#999] uppercase tracking-[0.25em] mb-4">Spécifications clés</div>
+              <div className="flex flex-col">
+                {product.specs.map(([label, value]: [string, string], i: number) => (
+                  <div key={i} className="flex justify-between items-center gap-4 py-4 border-b border-black/10">
+                    <span className="text-xs font-semibold text-[#888] uppercase tracking-wider">{label}</span>
+                    <span className="text-sm font-bold text-[#111] text-right">{value}</span>
                   </div>
-                </div>
-
-                <div className="space-y-4">
-                  <button 
-                    onClick={handleAdd}
-                    className={`w-full py-4 text-xs font-bold uppercase tracking-widest transition-colors flex justify-center items-center gap-2 ${
-                      added ? "bg-emerald-600 text-white" : "bg-white text-[#111] hover:bg-gray-200"
-                    }`}
-                  >
-                    {added ? "Ajouté au devis" : "Ajouter au devis"} {added ? null : <ArrowRight className="w-4 h-4" />}
-                  </button>
-                  <Link href="/devis" className="w-full py-4 text-xs font-bold uppercase tracking-widest transition-colors flex justify-center items-center gap-2 bg-transparent border border-[#333] text-white hover:bg-[#222]">
-                    Voir mon devis
-                  </Link>
-                </div>
-              </div>
-
-              {/* Quick Specs */}
-              <div className="p-8 overflow-y-auto flex-1 hide-scrollbar">
-                <div className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] mb-6">Spécifications clés</div>
-                <div className="space-y-4">
-                  {product.specs.map(([label, value]: [string, string], i: number) => (
-                    <div key={i} className="flex justify-between border-b border-[#DDD] pb-4">
-                      <span className="text-[11px] font-bold text-[#666] uppercase tracking-widest">{label}</span>
-                      <span className="text-[11px] font-medium text-[#111]">{value}</span>
-                    </div>
-                  ))}
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
         {/* SECTION: DANS LA VALISE & FAQ (Blueprint Style) */}
-        <section className="border-t border-[#111] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+        <section className="border-t border-black/10 grid grid-cols-1 md:grid-cols-2 overflow-hidden">
           {/* Dans la valise */}
-          <div className="border-b md:border-b-0 md:border-r border-[#111] flex flex-col">
+          <div className="border-b md:border-b-0 md:border-r border-black/10 flex flex-col">
             {/* Header */}
-            <div className="p-8 md:p-16 border-b border-[#111]">
+            <div className="p-8 md:p-16 border-b border-black/10">
               <div className="flex items-start justify-between gap-4 mb-4">
                 <h2 className="flex items-center gap-4 text-2xl md:text-4xl font-black tracking-tighter uppercase leading-[0.9]">
                   <PackageOpen className="w-6 h-6 md:w-9 md:h-9 shrink-0" /> Inclus dans<br className="hidden md:block" /> la valise.
@@ -355,32 +361,37 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           </div>
         </section>
 
-        {/* SUGGESTIONS (Grid Style) */}
-        <section className="border-t border-[#111] overflow-hidden">
-          <div className="px-6 md:px-12 py-12 md:py-16 flex justify-between items-end border-b border-[#111]">
-            <h2 className="text-2xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] break-words">
+        {/* SUGGESTIONS */}
+        <section className="border-t border-black/10 px-6 md:px-12 py-16 md:py-24">
+          <div className="flex justify-between items-end mb-10 md:mb-14 gap-8">
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9]">
               Recommandations <br/> Techniques
             </h2>
+            <Link href="/catalogue" className="hidden md:flex items-center gap-2 text-xs font-semibold uppercase tracking-widest border-b-2 border-[#111] pb-1 hover:opacity-50 transition-opacity shrink-0">
+              Tout l&apos;inventaire <ArrowUpRight className="w-4 h-4" />
+            </Link>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3">
-            {products.slice(0, 3).map((sugg, i) => (
-              <Link href={`/catalogue/${sugg.id}`} key={i} className="group flex flex-col border-r border-b md:border-b-0 border-[#111] last:border-r-0 bg-[#F4F4F0] hover:bg-[#EBEBE6] transition-colors">
-                <div className="relative aspect-[4/3] p-12 flex items-center justify-center overflow-hidden border-b border-[#111]">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {products.filter(p => p.id !== params.id).slice(0, 3).map((sugg, i) => (
+              <Link href={`/catalogue/${sugg.id}`} key={i} className="group flex flex-col rounded-3xl overflow-hidden bg-white border border-black/10 hover:border-black/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500">
+                <div className="relative aspect-[4/3] p-10 flex items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_center,_#FFFFFF_0%,_#ECECE6_100%)]">
                   <img
                     src={sugg.imageUrl}
                     alt={sugg.model}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="max-w-[70%] max-h-[75%] w-auto h-auto object-contain mix-blend-multiply drop-shadow-[0_15px_25px_rgba(0,0,0,0.15)] group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
                 </div>
-                <div className="p-6">
-                  <div className="text-[10px] font-bold text-[#666] uppercase tracking-[0.2em] mb-2">{sugg.brand}</div>
-                  <h3 className="text-xl font-black tracking-tight uppercase leading-none mb-4">
-                    {sugg.model}
-                  </h3>
-                  <div className="font-black text-lg">{sugg.pricePerDay}€ <span className="text-[9px] font-bold text-[#666] uppercase tracking-widest">/ Jour</span></div>
+                <div className="p-6 flex items-end justify-between">
+                  <div>
+                    <div className="text-[10px] font-semibold text-[#999] uppercase tracking-[0.2em] mb-1.5">{sugg.brand}</div>
+                    <h3 className="text-xl font-black tracking-tight uppercase leading-none">
+                      {sugg.model}
+                    </h3>
+                  </div>
+                  <div className="font-black text-lg shrink-0">{sugg.pricePerDay}€ <span className="text-[9px] font-semibold text-[#999] uppercase tracking-widest">/ J</span></div>
                 </div>
               </Link>
             ))}
