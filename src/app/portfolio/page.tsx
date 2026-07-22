@@ -87,37 +87,49 @@ export default function PortfolioPage() {
       <Header variant="default" />
 
       <main>
-        {/* TOP BAR */}
-        <div className="pt-[92px] md:pt-[116px] px-6 md:px-12">
+        {/* MASTHEAD — éditorial, remonté en haut */}
+        <header className="px-6 md:px-12 pt-[84px] md:pt-[104px] pb-14 md:pb-20">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[#9a9a90] hover:text-[#1f1f1f] transition-colors"
+            className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[#9a9a90] hover:text-[#1f1f1f] transition-colors mb-9 md:mb-12"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Retour à l&apos;accueil
           </Link>
-        </div>
 
-        {/* HERO — épuré, centré, serif */}
-        <header className="text-center px-6 pt-24 md:pt-32 pb-20 md:pb-28">
-          <p className="uppercase tracking-[0.45em] text-[10px] md:text-[11px] text-[#b0aca0] mb-7">
-            Nos réalisations
-          </p>
-          <h1 className="font-serif font-normal text-5xl md:text-7xl lg:text-[5.5rem] tracking-[0.02em] leading-[1.05] text-[#232323]">
-            Portfolio
-          </h1>
-          <div className="mx-auto mt-9 h-px w-14 bg-[#d8d4c8]" />
-          <p className="mx-auto mt-9 max-w-xl text-[15px] md:text-base text-[#7d7a70] leading-relaxed">
-            Un aperçu de nos réalisations photo &amp; vidéo, capturées avec le
-            matériel que nous louons chaque jour.
-          </p>
+          {/* Ligne méta */}
+          <div className="flex items-center justify-between border-b border-[#e3ddd0] pb-4 md:pb-5 text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-[#a8a498]">
+            <span>Sélection visuelle</span>
+            <span className="hidden sm:inline">Mariages &amp; Événements</span>
+            <span>07 — Projets</span>
+          </div>
+
+          {/* Wordmark géant + accroche en italique alignée sur la ligne de base */}
+          <div className="mt-8 md:mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
+            <h1 className="font-serif font-normal leading-[0.86] tracking-[-0.015em] text-[#1c1c1c] text-[19vw] sm:text-8xl md:text-[9rem] lg:text-[11rem]">
+              Portfolio
+            </h1>
+            <p className="font-serif italic text-[#6f6c62] text-lg md:text-2xl leading-snug max-w-[19rem] md:text-right md:pb-4 shrink-0">
+              Nos histoires en images — photo &amp; vidéo, capturées avec le
+              matériel que nous louons chaque jour.
+            </p>
+          </div>
         </header>
 
         {/* GALLERIES */}
-        <div className="pb-28 md:pb-40">
-          {GALLERY.map((section) => (
+        <div className="pt-6 md:pt-10 pb-28 md:pb-40">
+          {GALLERY.map((section) => {
+            const n = section.files.length;
+            const colClass =
+              n <= 2
+                ? "columns-1"
+                : n <= 4
+                ? "columns-1 sm:columns-2"
+                : "columns-1 sm:columns-2 lg:columns-3";
+            const widthClass = n <= 2 ? "max-w-3xl" : n <= 4 ? "max-w-5xl" : "max-w-[1440px]";
+            return (
             <section
               key={section.group}
-              className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 mb-24 md:mb-40"
+              className={`${widthClass} mx-auto px-4 sm:px-6 md:px-10 mb-24 md:mb-40`}
             >
               {/* Titre centré, serif, lettrage large */}
               <div className="text-center mb-12 md:mb-16">
@@ -127,7 +139,7 @@ export default function PortfolioPage() {
               </div>
 
               {/* Mosaïque équilibrée — toutes les photos du dossier */}
-              <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-5 [column-fill:_balance]">
+              <div className={`${colClass} gap-4 md:gap-5 [column-fill:_balance]`}>
                 {section.files.map((file, i) => (
                   <figure
                     key={file}
@@ -144,7 +156,8 @@ export default function PortfolioPage() {
                 ))}
               </div>
             </section>
-          ))}
+            );
+          })}
         </div>
 
         {/* CTA — élégant, épuré */}
