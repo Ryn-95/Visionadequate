@@ -4,16 +4,82 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Header } from "@/components/ui/Header";
 
-const GALLERY = [
-  { group: "Akenzo", images: ["/assets/portfolio-opt/akenzo.webp", "/assets/portfolio-opt/akenzo-2.webp"] },
-  { group: "Charlito", images: ["/assets/portfolio-opt/charlito.webp", "/assets/portfolio-opt/charlito-2.webp"] },
-  { group: "Marie & Yoann", images: ["/assets/portfolio-opt/marie-yoann.webp", "/assets/portfolio-opt/marie-yoann-2.webp"] },
-  { group: "Mariage A & M", images: ["/assets/portfolio-opt/mariage-am.webp", "/assets/portfolio-opt/mariage-am-2.webp"] },
-  { group: "Mariage B & D", images: ["/assets/portfolio-opt/mariage-bd.webp", "/assets/portfolio-opt/mariage-bd-2.webp"] },
-  { group: "Mariage C & A", images: ["/assets/portfolio-opt/mariage-ca.webp", "/assets/portfolio-opt/mariage-ca-2.webp"] },
-  { group: "Mariage F & R", images: ["/assets/portfolio-opt/mariage-fr.webp", "/assets/portfolio-opt/mariage-fr-2.webp"] },
-  { group: "Mariage S & C", images: ["/assets/portfolio-opt/mariage-sc.webp", "/assets/portfolio-opt/mariage-sc-2.webp"] },
+const BASE = "/assets/RYN/Portfolio";
+
+const GALLERY: { group: string; credit?: string; folder: string; files: string[] }[] = [
+  {
+    group: "Akenzo",
+    folder: "AKENZO",
+    files: [
+      "Akenzo P.1-34.jpg",
+      "Akenzo P.2-25.jpg",
+      "Akenzo P.2-28.jpg",
+      "Akenzo P.3-17.jpg",
+      "Akenzo P.3-28.jpg",
+      "Akenzo P.3-36.jpg",
+      "Akenzo P.4-22.jpg",
+    ],
+  },
+  {
+    group: "Charlito",
+    folder: "CHARLITO",
+    files: [
+      "Charlito_R2-066.jpg",
+      "Charlito_R2-101.jpg",
+      "Charlito_R3-03.jpg",
+      "Charlito_R3-07.jpg",
+      "Charlito_R3-08.jpg",
+      "Charlito_R3-10.jpg",
+    ],
+  },
+  {
+    group: "Mariage de A & M",
+    folder: "Mariage de A & M",
+    files: ["B1.jpg", "B2.jpg", "B3.jpg", "B4.jpg", "B5.jpg"],
+  },
+  {
+    group: "Mariage de B & D",
+    folder: "Mariage de B & D",
+    files: ["C1.jpg", "C2.jpg", "C3.jpg", "C4.jpg"],
+  },
+  {
+    group: "Mariage de C & A",
+    folder: "Mariage de C & A",
+    files: [
+      "Amir&Chaïma-007.jpg",
+      "Amir&Chaïma-013.jpg",
+      "Amir&Chaïma-078.jpg",
+      "Amir&Chaïma-142.jpg",
+      "Amir&Chaïma-164.jpg",
+      "Amir&Chaïma-178.jpg",
+      "Amir&Chaïma-179.jpg",
+      "Amir&Chaïma-264.jpg",
+    ],
+  },
+  {
+    group: "Mariage de F & R",
+    folder: "Mariage de F & R",
+    files: ["A1jpg.jpg", "A2.jpg", "A3.jpg", "A4.jpg"],
+  },
+  {
+    group: "Mariage de S & C",
+    folder: "Mariage de S & C",
+    files: [
+      "A-9.jpg",
+      "A-98.jpg",
+      "A-107.jpg",
+      "A-120.jpg",
+      "A-127.jpg",
+      "Sara&Chris-018.jpg",
+      "Sara&Chris-093.jpg",
+      "Sara&Chris-125.jpg",
+      "Sara&Chris-166.jpg",
+      "Sara&Chris-197.jpg",
+    ],
+  },
 ];
+
+const src = (folder: string, file: string) => encodeURI(`${BASE}/${folder}/${file}`);
 
 export default function PortfolioPage() {
   return (
@@ -29,49 +95,50 @@ export default function PortfolioPage() {
         </div>
 
         {/* HERO */}
-        <div className="px-6 md:px-16 pt-16 md:pt-24 pb-24 md:pb-36">
+        <div className="px-6 md:px-16 pt-16 md:pt-24 pb-20 md:pb-32">
           <h1 className="text-6xl md:text-[8vw] lg:text-[7.5rem] font-black tracking-tighter uppercase leading-[0.85] mb-10">
             Portfolio<br />Visuel.
           </h1>
           <p className="text-base md:text-xl font-medium text-[#999] max-w-xl leading-relaxed">
-            Un aperçu de nos réalisations photo & vidéo, tournées avec le matériel que nous louons chaque jour.
+            Un aperçu de nos réalisations photo &amp; vidéo, tournées avec le matériel que nous louons chaque jour.
           </p>
         </div>
 
-        {/* GALLERY */}
-        <div className="flex flex-col gap-32 md:gap-48 pb-32 md:pb-48">
+        {/* GALLERIES */}
+        <div className="flex flex-col gap-28 md:gap-40 pb-32 md:pb-48">
           {GALLERY.map((section, gi) => (
-            <section
-              key={section.group}
-              className="flex flex-col gap-6 md:gap-8"
-            >
+            <section key={section.group} className="flex flex-col gap-8 md:gap-12">
+              {/* Section heading */}
               <div className="px-6 md:px-16 flex items-baseline gap-4">
-                <span className="text-xs font-mono text-[#555]">{String(gi + 1).padStart(2, "0")}</span>
-                <h2 className="text-2xl md:text-4xl font-black tracking-tight uppercase">{section.group}</h2>
+                <span className="text-xs font-mono text-[#555] pt-1">
+                  {String(gi + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase leading-none">
+                    {section.group}
+                  </h2>
+                  <div className="mt-3 h-px w-14 bg-white/25" />
+                </div>
               </div>
 
-              <div className={`flex flex-col md:flex-row gap-4 md:gap-6 px-0 md:px-16 ${gi % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
-                <div className="md:w-[62%] aspect-[4/3] md:aspect-[16/10] overflow-hidden bg-[#161616]">
-                  <img
-                    src={section.images[0]}
-                    alt={`${section.group} 1`}
-                    width={900}
-                    height={900}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-                  />
-                </div>
-                <div className="md:w-[38%] aspect-[4/3] overflow-hidden bg-[#161616]">
-                  <img
-                    src={section.images[1]}
-                    alt={`${section.group} 2`}
-                    width={900}
-                    height={900}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-                  />
+              {/* Masonry mosaic — every photo in the folder */}
+              <div className="px-3 md:px-16">
+                <div className="[column-fill:_balance] columns-2 lg:columns-3 gap-3 md:gap-5">
+                  {section.files.map((file, i) => (
+                    <figure
+                      key={file}
+                      className="group relative mb-3 md:mb-5 overflow-hidden bg-[#161616] break-inside-avoid"
+                    >
+                      <img
+                        src={src(section.folder, file)}
+                        alt={`${section.group} — ${i + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-auto object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                      />
+                      <span className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/0 group-hover:ring-white/15 transition-[box-shadow] duration-500" />
+                    </figure>
+                  ))}
                 </div>
               </div>
             </section>

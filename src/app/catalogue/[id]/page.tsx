@@ -394,7 +394,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               {[
                 { q: "Le matériel est-il assuré ?", a: "Oui, une assurance bris de machine est incluse avec une franchise de 1500€. Une option zéro franchise est disponible sur devis." },
                 { q: "Faites-vous des tests caméra ?", a: "Notre salle de test est à votre disposition gratuitement pour vérifier votre liste la veille du départ." },
-                { q: "Livrez-vous sur le plateau ?", a: "Nous assurons la livraison par coursier dédié en Île-de-France (optionnel)." }
+                { q: "Livrez-vous sur le plateau ?", a: "Nous assurons la livraison par coursier dédié en Île-de-France (optionnel)." },
+                { q: "Votre matériel est-il en bon état ?", a: "Tous nos équipements sont contrôlés, nettoyés et testés avant chaque location. Nous demandons à nos clients de restituer le matériel dans l'état dans lequel il a été remis. En cas de perte, de casse ou de détérioration, des frais pourront être appliqués conformément au contrat de location." },
+                { q: "Comment utiliser le matériel ?", a: "Le matériel est destiné à une utilisation conforme à sa fonction. Toute modification, sous-location ou utilisation inadaptée est interdite. Notre équipe reste disponible pour répondre à vos questions et vous conseiller avant votre événement." }
               ].map((faq, i) => (
                 <div key={i} className="border-b border-[#CCC] pb-6">
                   <div className="text-xs font-bold uppercase tracking-widest mb-3">{faq.q}</div>

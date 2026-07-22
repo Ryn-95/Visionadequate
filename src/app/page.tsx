@@ -1,7 +1,7 @@
 "use client";
 
 import { products } from "@/data/products";
-import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Microscope, HeadphonesIcon, MapPin, Mail, PlayCircle, Settings, Box } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Microscope, HeadphonesIcon, MapPin, Mail, PlayCircle, Settings, Box, Package, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Header } from "@/components/ui/Header";
@@ -147,7 +147,7 @@ export default function Home() {
             </div>
             <div className="w-full md:w-1/2 flex items-center justify-center">
               <img
-                src="/assets/image.webp"
+                src="/assets/L'Agence.png"
                 alt="Manifeste Vision Adéquate"
                 loading="lazy"
                 decoding="async"
@@ -157,30 +157,30 @@ export default function Home() {
           </div>
         </section>
 
-        {/* NOUVELLE SECTION: SERVICES */}
+        {/* NOUVELLE SECTION: CONDITIONS DE LOCATION */}
         <section className="px-6 md:px-12 py-32 border-b border-[#111]">
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] mb-24 text-center">
-            Infrastructure <br/> de Soutien.
+            Conditions <br/> de Location.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#111]">
             {[
               {
                 num: "01",
-                icon: Microscope,
-                title: "Laboratoire de Test",
-                desc: "Accès gratuit à notre salle de préparation équipée de mires 4K pour calibrer vos optiques la veille du départ."
+                icon: Package,
+                title: "Retrait du matériel",
+                desc: "Retirez votre matériel directement auprès de notre agence ou profitez de notre service de livraison (sur devis). Les retraits s'effectuent du lundi au vendredi, de 10h00 à 14h00, sur rendez-vous. Pour les locations du week-end, le matériel est remis le vendredi et reste à votre disposition jusqu'au lundi, afin que vous puissiez profiter pleinement de votre événement."
               },
               {
                 num: "02",
-                icon: HeadphonesIcon,
-                title: "Hotline Plateau",
-                desc: "Un assistant opérateur disponible 24/7. Un problème matériel à 3h du matin ? Nous trouvons la solution en temps réel."
+                icon: RotateCcw,
+                title: "Retour du matériel",
+                desc: "Les retours s'effectuent du lundi au vendredi, de 15h00 à 18h00, sur rendez-vous. Si vous avez bénéficié de notre service de livraison, nous pouvons également organiser la reprise du matériel selon les modalités convenues lors de votre réservation. Les locations effectuées pour le week-end sont restituées le lundi."
               },
               {
                 num: "03",
                 icon: ShieldCheck,
-                title: "Logistique Sécurisée",
-                desc: "Livraison par coursier technique sur votre lieu de tournage en Île-de-France, dans des flight cases blindés Pelican."
+                title: "Avant votre location",
+                desc: "Afin de garantir la disponibilité de nos équipements, toute réservation est confirmée après validation du devis. Une caution est demandée pour tout matériel loué. Chaque équipement est vérifié, testé et préparé avec soin avant sa remise pour vous garantir une prestation de qualité."
               }
             ].map((service, i) => (
               <div key={i} className="p-12 border-b md:border-b-0 md:border-r last:border-r-0 border-[#111] hover:bg-[#EBEBE6] transition-colors group">
