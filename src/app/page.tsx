@@ -73,35 +73,49 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PARTENAIRES / TRUSTED BY - Premium Scrolling Marquee (Pure White) */}
-        <section className="py-20 bg-[#050505] overflow-hidden border-y border-[#222]">
-          <div className="max-w-[100vw] mx-auto" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
-            <div className="text-center mb-12 relative z-10">
-              <h3 className="text-[10px] font-bold text-[#666] uppercase tracking-[0.4em]">Ils nous font confiance</h3>
+        {/* PARTENAIRES / TRUSTED BY */}
+        <section className="py-24 md:py-32 bg-[#050505] overflow-hidden border-y border-white/10">
+          {/* Header éditorial, cohérent avec le reste du site */}
+          <div className="px-6 md:px-12 mb-16 md:mb-20 flex flex-col items-center text-center">
+            <div className="inline-flex items-center gap-4 mb-6">
+              <span className="w-8 h-[1px] bg-white/25" />
+              <span className="text-[10px] font-bold text-white/50 uppercase tracking-[0.35em]">Ils nous font confiance</span>
+              <span className="w-8 h-[1px] bg-white/25" />
             </div>
-            <div className="flex whitespace-nowrap relative items-center">
-              <div className="animate-marquee-slow flex items-center gap-20 md:gap-32 pr-20 md:pr-32">
+            <h3 className="text-2xl md:text-4xl font-black text-white tracking-tighter uppercase leading-[0.9]">
+              Studios & agences partenaires
+            </h3>
+          </div>
+
+          <div
+            className="max-w-[100vw] mx-auto"
+            style={{ maskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)' }}
+          >
+            <div className="flex whitespace-nowrap relative items-stretch">
+              <div className="animate-marquee-slow hover:[animation-play-state:paused] flex items-stretch pr-24 md:pr-32">
                 {[...Array(4)].map((_, i) => (
-                  <div key={i} className="flex items-center gap-20 md:gap-32 opacity-80 hover:opacity-100 transition-opacity duration-500">
-                    {/* INSPI: grayscale to keep shape, brightness to make it pop, mix-blend-screen for dark backgrounds */}
-                    <img src="/assets/RYN/Partenaire de confiance/Inspi Pnj.png" alt="INSPI" loading="lazy" decoding="async" className="h-12 md:h-14 w-auto object-contain grayscale brightness-200 mix-blend-screen" />
-
-                    {/* HELICE D'OR: JPEG. invert turns white bg to black, mix-blend-screen hides the black. px-8 prevents it from touching others */}
-                    <div className="px-8">
-                      <img src="/assets/RYN/Partenaire de confiance/HELICE DOR .jpeg" alt="HELICE D'OR" loading="lazy" decoding="async" className="h-12 md:h-14 w-auto object-contain grayscale invert mix-blend-screen" />
-                    </div>
-
-                    {/* MOWA AGENCY: Black PNG -> brightness-0 invert makes it pure white */}
-                    <img src="/assets/RYN/Partenaire de confiance/MowaAgency.png" alt="MOWA AGENCY" loading="lazy" decoding="async" className="h-8 md:h-10 w-auto object-contain brightness-0 invert" />
-
-                    {/* PAD PANIK PROD */}
-                    <img src="/assets/RYN/Partenaire de confiance/Padpanikprod.png" alt="PAD PANIK PROD" loading="lazy" decoding="async" className="h-8 md:h-10 w-auto object-contain brightness-0 invert" />
-
-                    {/* Le Bisso By Lion */}
-                    <img src="/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-39-57-Photoroom.png" alt="Le Bisso By Lion" loading="lazy" decoding="async" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
-
-                    {/* Partenaire */}
-                    <img src="/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-40-20-Photoroom.png" alt="Partenaire" loading="lazy" decoding="async" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
+                  <div key={i} className="flex items-stretch">
+                    {[
+                      { src: "/assets/RYN/Partenaire de confiance/Inspi Pnj.png", alt: "INSPI Studio", className: "max-h-[70%] grayscale brightness-200 mix-blend-screen" },
+                      { src: "/assets/RYN/Partenaire de confiance/HELICE DOR .jpeg", alt: "Hélice d'Or", className: "max-h-[70%] grayscale invert mix-blend-screen" },
+                      { src: "/assets/RYN/Partenaire de confiance/MowaAgency.png", alt: "MOWA Agency", className: "max-h-[50%] brightness-0 invert" },
+                      { src: "/assets/RYN/Partenaire de confiance/Padpanikprod.png", alt: "Pad Panik Prod", className: "max-h-[62%] brightness-0 invert" },
+                      { src: "/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-39-57-Photoroom.png", alt: "Le Bisso By Lion", className: "max-h-[68%] brightness-0 invert" },
+                      { src: "/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-40-20-Photoroom.png", alt: "Charlito", className: "max-h-[42%] brightness-0 invert" },
+                    ].map((partner, j) => (
+                      <div
+                        key={j}
+                        className="flex items-center justify-center h-20 md:h-24 w-36 md:w-44 mx-2 md:mx-3 shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-500"
+                      >
+                        <img
+                          src={partner.src}
+                          alt={partner.alt}
+                          loading="lazy"
+                          decoding="async"
+                          className={`w-auto object-contain ${partner.className}`}
+                        />
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
