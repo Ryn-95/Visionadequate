@@ -28,9 +28,11 @@ export function ProductCard({ product, viewMode }: ProductCardProps) {
             En Stock
           </div>
         )}
-        <img 
-          src={product.imageUrl} 
-          alt={product.model} 
+        <img
+          src={product.imageUrl}
+          alt={product.model}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
         />
       </div>

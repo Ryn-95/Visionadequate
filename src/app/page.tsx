@@ -84,24 +84,24 @@ export default function Home() {
                 {[...Array(4)].map((_, i) => (
                   <div key={i} className="flex items-center gap-20 md:gap-32 opacity-80 hover:opacity-100 transition-opacity duration-500">
                     {/* INSPI: grayscale to keep shape, brightness to make it pop, mix-blend-screen for dark backgrounds */}
-                    <img src="/assets/RYN/Partenaire de confiance/Inspi Pnj.png" alt="INSPI" className="h-12 md:h-14 w-auto object-contain grayscale brightness-200 mix-blend-screen" />
-                    
+                    <img src="/assets/RYN/Partenaire de confiance/Inspi Pnj.png" alt="INSPI" loading="lazy" decoding="async" className="h-12 md:h-14 w-auto object-contain grayscale brightness-200 mix-blend-screen" />
+
                     {/* HELICE D'OR: JPEG. invert turns white bg to black, mix-blend-screen hides the black. px-8 prevents it from touching others */}
                     <div className="px-8">
-                      <img src="/assets/RYN/Partenaire de confiance/HELICE DOR .jpeg" alt="HELICE D'OR" className="h-12 md:h-14 w-auto object-contain grayscale invert mix-blend-screen" />
+                      <img src="/assets/RYN/Partenaire de confiance/HELICE DOR .jpeg" alt="HELICE D'OR" loading="lazy" decoding="async" className="h-12 md:h-14 w-auto object-contain grayscale invert mix-blend-screen" />
                     </div>
-                    
+
                     {/* MOWA AGENCY: Black PNG -> brightness-0 invert makes it pure white */}
-                    <img src="/assets/RYN/Partenaire de confiance/MowaAgency.png" alt="MOWA AGENCY" className="h-8 md:h-10 w-auto object-contain brightness-0 invert" />
-                    
+                    <img src="/assets/RYN/Partenaire de confiance/MowaAgency.png" alt="MOWA AGENCY" loading="lazy" decoding="async" className="h-8 md:h-10 w-auto object-contain brightness-0 invert" />
+
                     {/* PAD PANIK PROD */}
-                    <img src="/assets/RYN/Partenaire de confiance/Padpanikprod.png" alt="PAD PANIK PROD" className="h-8 md:h-10 w-auto object-contain brightness-0 invert" />
-                    
+                    <img src="/assets/RYN/Partenaire de confiance/Padpanikprod.png" alt="PAD PANIK PROD" loading="lazy" decoding="async" className="h-8 md:h-10 w-auto object-contain brightness-0 invert" />
+
                     {/* Le Bisso By Lion */}
-                    <img src="/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-39-57-Photoroom.png" alt="Le Bisso By Lion" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
-                    
+                    <img src="/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-39-57-Photoroom.png" alt="Le Bisso By Lion" loading="lazy" decoding="async" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
+
                     {/* Partenaire */}
-                    <img src="/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-40-20-Photoroom.png" alt="Partenaire" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
+                    <img src="/assets/RYN/Partenaire de confiance/PHOTO-2025-08-08-17-40-20-Photoroom.png" alt="Partenaire" loading="lazy" decoding="async" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
                   </div>
                 ))}
               </div>
@@ -132,9 +132,11 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-1/2 flex items-center justify-center">
-              <img 
-                src="/assets/image.png" 
-                alt="Manifeste Vision Adéquate" 
+              <img
+                src="/assets/image.webp"
+                alt="Manifeste Vision Adéquate"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto max-h-[70vh] object-contain"
               />
             </div>
@@ -208,9 +210,11 @@ export default function Home() {
                       {product.badge}
                     </div>
                   )}
-                  <img 
-                    src={product.imageUrl} 
-                    alt={product.model} 
+                  <img
+                    src={product.imageUrl}
+                    alt={product.model}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
                 </div>
@@ -271,7 +275,7 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-1/2 relative aspect-square md:aspect-auto flex items-center justify-center p-12 overflow-hidden bg-[#F4F4F0]">
-              <img src="/assets/materielsdetails/10-fx3/10-ii-.avif" alt="Setup FX3" className="w-full h-full object-contain mix-blend-multiply scale-110 hover:scale-125 transition-transform duration-700" />
+              <img src="/assets/materielsdetails/10-fx3/10-ii-.avif" alt="Setup FX3" loading="lazy" decoding="async" className="w-full h-full object-contain mix-blend-multiply scale-110 hover:scale-125 transition-transform duration-700" />
             </div>
           </div>
         </section>
@@ -288,15 +292,23 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              "/assets/RYN/Portfolio/AKENZO/Akenzo P.1-34.jpg",
-              "/assets/RYN/Portfolio/CHARLITO/Charlito_R2-066.jpg",
-              "/assets/RYN/Portfolio/MARIE & YOANN/Marie&Yoan 2-24.jpg",
-              "/assets/RYN/Portfolio/Mariage de A & M/B1.jpg",
-              "/assets/RYN/Portfolio/Mariage de C & A/Amir&Chaïma-007.jpg",
-              "/assets/RYN/Portfolio/Mariage de S & C/Sara&Chris-018.jpg"
+              "/assets/portfolio-opt/akenzo.webp",
+              "/assets/portfolio-opt/charlito.webp",
+              "/assets/portfolio-opt/marie-yoann.webp",
+              "/assets/portfolio-opt/mariage-am.webp",
+              "/assets/portfolio-opt/mariage-ca.webp",
+              "/assets/portfolio-opt/mariage-sc.webp"
             ].map((src, i) => (
               <div key={i} className="aspect-square bg-[#222] overflow-hidden group">
-                <img src={src} alt={`Portfolio ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img
+                  src={src}
+                  alt={`Portfolio ${i + 1}`}
+                  width={900}
+                  height={900}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
               </div>
             ))}
           </div>
@@ -473,7 +485,7 @@ export default function Home() {
         <footer className="bg-[#111] text-[#F4F4F0] px-6 md:px-12 py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 border-b border-[#333] pb-24">
             <div>
-              <img src="/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png" alt="Vision Adéquate" className="h-16 md:h-24 w-auto object-contain mb-12 invert" />
+              <img src="/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png" alt="Vision Adéquate" loading="lazy" decoding="async" className="h-16 md:h-24 w-auto object-contain mb-12 invert" />
               <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] mb-8">
                 Prêt à <br/> Tourner.
               </h2>

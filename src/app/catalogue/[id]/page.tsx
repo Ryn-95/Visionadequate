@@ -219,7 +219,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   onClick={() => setActiveImage(i)}
                   className={`relative shrink-0 w-[33.33%] md:w-auto md:flex-1 aspect-[16/9] border-r border-[#111] last:border-r-0 flex items-center justify-center bg-[#F4F4F0] hover:bg-[#EBEBE6] transition-colors ${i === activeImage ? 'opacity-100' : 'opacity-40'}`}
                 >
-                  <img src={img} alt={`Miniature ${product.model} ${i+1}`} className="w-full h-full object-contain p-4 mix-blend-multiply" />
+                  <img src={img} alt={`Miniature ${product.model} ${i+1}`} decoding="async" className="w-full h-full object-contain p-4 mix-blend-multiply" />
                 </button>
               ))}
             </div>
@@ -367,9 +367,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             {products.slice(0, 3).map((sugg, i) => (
               <Link href={`/catalogue/${sugg.id}`} key={i} className="group flex flex-col border-r border-b md:border-b-0 border-[#111] last:border-r-0 bg-[#F4F4F0] hover:bg-[#EBEBE6] transition-colors">
                 <div className="relative aspect-[4/3] p-12 flex items-center justify-center overflow-hidden border-b border-[#111]">
-                  <img 
-                    src={sugg.imageUrl} 
-                    alt={sugg.model} 
+                  <img
+                    src={sugg.imageUrl}
+                    alt={sugg.model}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
                 </div>

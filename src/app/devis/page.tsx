@@ -194,7 +194,7 @@ export default function Devis() {
               items.map((item) => (
                 <div key={item.id} className="flex border-b border-[#111] group">
                   <div className="w-32 md:w-48 aspect-square border-r border-[#111] bg-[#EBEBE6] flex items-center justify-center p-6">
-                    <img src={item.imageUrl} alt={item.model} className="w-full h-full object-contain mix-blend-multiply" />
+                    <img src={item.imageUrl} alt={item.model} decoding="async" className="w-full h-full object-contain mix-blend-multiply" />
                   </div>
                   <div className="p-6 md:p-8 flex-1 flex flex-col justify-between">
                     <div className="flex justify-between items-start">
