@@ -8,13 +8,13 @@ export function Header({ variant = 'default' }: { variant?: 'default' | 'transpa
   const itemCount = items.reduce((acc, i) => acc + i.quantity, 0);
 
   return (
-    <header className={`fixed top-0 w-full z-50 px-4 md:px-6 py-4 md:py-6 flex justify-between items-center ${variant === 'transparent' ? 'bg-transparent text-[#111] pointer-events-none' : 'bg-[#F4F4F0] border-b border-[#111]'}`}>
+    <header className={`fixed top-0 w-full z-50 h-[72px] md:h-[96px] px-4 md:px-6 flex justify-between items-center text-[#111] ${variant === 'transparent' ? 'bg-transparent pointer-events-none' : 'bg-[#F4F4F0]/90 backdrop-blur-md border-b border-[#111]/10'}`}>
       <div className={`flex items-center ${variant === 'transparent' ? 'pointer-events-auto' : ''}`}>
         <Link href="/" className="hover:opacity-50 transition-opacity">
-          <img src="/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png" alt="Vision Adéquate" className={`h-12 md:h-16 w-auto object-contain ${variant === 'transparent' ? 'brightness-0' : 'brightness-0'}`} />
+          <img src="/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png" alt="Vision Adéquate" className="h-9 md:h-12 w-auto object-contain brightness-0" />
         </Link>
       </div>
-      <nav className={`flex gap-6 md:gap-12 text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase ${variant === 'transparent' ? 'pointer-events-auto' : ''}`}>
+      <nav className={`flex items-center gap-5 md:gap-10 text-[10px] md:text-xs font-semibold tracking-[0.15em] uppercase ${variant === 'transparent' ? 'pointer-events-auto' : ''}`}>
         <Link href="/catalogue" className="hover:opacity-50 transition-opacity">Inventaire</Link>
         <Link href="/portfolio" className="hover:opacity-50 transition-opacity">Portfolio</Link>
         <Link href="/tarifs" className="hover:opacity-50 transition-opacity">Tarifs</Link>
