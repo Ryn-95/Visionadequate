@@ -16,6 +16,8 @@ export function Header({ variant = 'default' }: { variant?: 'default' | 'transpa
       </div>
       <nav className={`flex gap-6 md:gap-12 text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase ${variant === 'transparent' ? 'pointer-events-auto' : ''}`}>
         <Link href="/catalogue" className="hover:opacity-50 transition-opacity">Inventaire</Link>
+        <Link href="/portfolio" className="hover:opacity-50 transition-opacity">Portfolio</Link>
+        <Link href="/tarifs" className="hover:opacity-50 transition-opacity">Tarifs</Link>
         <Link href="/devis" className="hover:opacity-50 transition-opacity flex items-center gap-1.5 md:gap-2">
           Devis
           {itemCount > 0 && (
