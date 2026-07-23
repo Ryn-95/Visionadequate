@@ -136,7 +136,7 @@ export default function PortfolioPage() {
           {/* Wordmark géant + accroche */}
           <div className="mt-8 md:mt-12">
             <h1 className="font-black uppercase leading-[0.82] tracking-tighter text-[#1c1c1c] text-[17vw] md:text-[14vw] lg:text-[12vw]">
-              Portfolio
+              Portfolio.
             </h1>
             <p className="mt-6 md:mt-8 md:ml-auto text-[#555] font-medium text-sm md:text-base leading-relaxed max-w-md md:text-right">
               Nos histoires en images — photo &amp; vidéo, capturées avec le

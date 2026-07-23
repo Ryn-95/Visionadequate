@@ -193,19 +193,6 @@ export const products: Product[] = [
     imageUrl: '/assets/materiels/9---rig.jpg',
   },
   {
-    id: 'carte-sd-128',
-    slug: 'carte-sd-128',
-    brand: 'Sony',
-    model: 'Carte SD',
-    category: 'accessoires',
-    subcategory: 'Stockage',
-    specs: ['128GB', 'V90', '300MB/s'],
-    pricePerDay: 30,
-    available: true,
-    imageUrl: '/assets/materiels/11-sd-iii-.jpg',
-  }
-,
-  {
     id: 'carte-sd-angelbird-128',
     slug: 'carte-sd-angelbird-128',
     brand: 'Angelbird',
