@@ -113,7 +113,7 @@ const src = (folder: string, file: string, base: string = BASE) =>
 
 export default function PortfolioPage() {
   return (
-    <div className="min-h-screen bg-[#FBFAF7] text-[#1f1f1f] font-sans selection:bg-[#1f1f1f] selection:text-[#FBFAF7]">
+    <div className="min-h-screen bg-[#0A0A0A] text-white font-sans selection:bg-white selection:text-[#0A0A0A]">
       <Header variant="default" />
 
       <main>
@@ -121,24 +121,24 @@ export default function PortfolioPage() {
         <header className="px-6 md:px-12 pt-[84px] md:pt-[104px] pb-14 md:pb-20">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[#9a9a90] hover:text-[#1f1f1f] transition-colors mb-9 md:mb-12"
+            className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[#888] hover:text-white transition-colors mb-9 md:mb-12"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Retour à l&apos;accueil
           </Link>
 
           {/* Ligne méta */}
-          <div className="flex items-center justify-between border-b border-[#e3ddd0] pb-4 md:pb-5 text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-[#a8a498]">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4 md:pb-5 text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-[#888]">
             <span>Sélection visuelle</span>
             <span className="hidden sm:inline">Mariages &amp; Événements</span>
-            <span>07 — Projets</span>
+            <span>09 — Projets</span>
           </div>
 
           {/* Wordmark géant + accroche */}
           <div className="mt-8 md:mt-12">
-            <h1 className="font-black uppercase leading-[0.82] tracking-tighter text-[#1c1c1c] text-[17vw] md:text-[14vw] lg:text-[12vw]">
+            <h1 className="font-black uppercase leading-[0.82] tracking-tighter text-white text-[17vw] md:text-[14vw] lg:text-[12vw]">
               Portfolio.
             </h1>
-            <p className="mt-6 md:mt-8 md:ml-auto text-[#555] font-medium text-sm md:text-base leading-relaxed max-w-md md:text-right">
+            <p className="mt-6 md:mt-8 md:ml-auto text-[#999] font-medium text-sm md:text-base leading-relaxed max-w-md md:text-right">
               Nos histoires en images — photo &amp; vidéo, capturées avec le
               matériel que nous louons chaque jour.
             </p>
@@ -163,7 +163,7 @@ export default function PortfolioPage() {
             >
               {/* Titre centré, serif, lettrage large */}
               <div className="text-center mb-12 md:mb-16">
-                <h2 className="font-black uppercase text-3xl md:text-5xl tracking-tighter text-[#1c1c1c] leading-none">
+                <h2 className="font-black uppercase text-3xl md:text-5xl tracking-tighter text-white leading-none">
                   {section.group}
                 </h2>
               </div>
@@ -173,7 +173,7 @@ export default function PortfolioPage() {
                 {section.files.map((file, i) => (
                   <figure
                     key={file}
-                    className="group relative mb-4 md:mb-5 overflow-hidden break-inside-avoid"
+                    className="group relative mb-4 md:mb-5 overflow-hidden break-inside-avoid bg-[#161616]"
                   >
                     <img
                       src={src(section.folder, file, section.base)}
@@ -190,17 +190,17 @@ export default function PortfolioPage() {
           })}
         </div>
 
-        {/* CTA — élégant, épuré */}
-        <section className="border-t border-[#e6e1d5] px-6 py-24 md:py-36 text-center">
-          <p className="uppercase tracking-[0.4em] text-[10px] text-[#b0aca0] mb-6">
+        {/* CTA */}
+        <section className="border-t border-white/10 px-6 py-24 md:py-36 text-center">
+          <p className="uppercase tracking-[0.4em] text-[10px] text-[#888] mb-6">
             Votre projet
           </p>
-          <h2 className="font-black uppercase text-4xl md:text-6xl tracking-tighter text-[#1c1c1c] leading-[0.9] max-w-2xl mx-auto">
+          <h2 className="font-black uppercase text-4xl md:text-6xl tracking-tighter text-white leading-[0.9] max-w-2xl mx-auto">
             Envie d&apos;un rendu similaire&nbsp;?
           </h2>
           <Link
             href="/devis"
-            className="inline-flex items-center gap-3 mt-11 border border-[#1f1f1f] px-10 py-4 text-[11px] uppercase tracking-[0.25em] text-[#1f1f1f] hover:bg-[#1f1f1f] hover:text-[#FBFAF7] transition-colors"
+            className="inline-flex items-center gap-3 mt-11 border border-white px-10 py-4 text-[11px] uppercase tracking-[0.25em] text-white hover:bg-white hover:text-[#0A0A0A] transition-colors"
           >
             Démarrer un devis
           </Link>

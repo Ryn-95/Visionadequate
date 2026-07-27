@@ -38,7 +38,7 @@ export const products: Product[] = [
     pricePerDay: 120,
     available: true,
     badge: 'PRO',
-    imageUrl: '/assets/materielsdetails/10-fx3/10-i-.avif',
+    imageUrl: '/assets/materielsdetails/10-fx3/10-iii.avif',
     sensorFormat: 'Full Frame',
   },
   {

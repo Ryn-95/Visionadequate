@@ -80,19 +80,15 @@ export function Footer() {
             <ul className="flex flex-col gap-5 text-sm text-white/70">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-white/40" />
-                <span>
-                  12 Rue de la Précision
-                  <br />
-                  75011 Paris, France
-                </span>
+                <span>95140 Garges-lès-Gonesse, France</span>
               </li>
               <li>
                 <a
-                  href="mailto:contact@vision-adequate.fr"
+                  href="mailto:contact.visionadequate@gmail.com"
                   className="flex items-center gap-3 hover:text-white transition-colors"
                 >
                   <Mail className="w-4 h-4 shrink-0 text-white/40" />
-                  contact@vision-adequate.fr
+                  contact.visionadequate@gmail.com
                 </a>
               </li>
             </ul>

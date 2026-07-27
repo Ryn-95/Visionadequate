@@ -19,7 +19,7 @@ const PRODUCTS_DATA: Record<string, any> = {
   },
   "sony-fx3": {
     name: "Sony FX3", brand: "Sony", price: "120", status: "En location",
-    images: ["/assets/materielsdetails/10-fx3/10-i-.avif", "/assets/materielsdetails/10-fx3/10-ii-.avif", "/assets/materielsdetails/10-fx3/10-iii.avif"],
+    images: ["/assets/materielsdetails/10-fx3/10-iii.avif", "/assets/materielsdetails/10-fx3/10-i-.avif", "/assets/materielsdetails/10-fx3/10-ii-.avif"],
     desc: "Caméra cinéma compacte plein format, idéale pour les tournages solo et les petites équipes.",
     specs: [["Capteur", "Plein format 4K"], ["Dynamique", "15+ stops"], ["Monture", "E-Mount"], ["Poids", "715 g"]]
   },
@@ -344,11 +344,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 <span className="shrink-0 text-[10px] font-bold uppercase tracking-widest text-white bg-[#111] px-3 py-1.5">
                   {[
                     { qty: "1", name: `Boîtier ${product.name}` },
-                    { qty: "3", name: "Batteries NPF-Z100" },
+                    { qty: "2", name: "Batteries NPF-Z100" },
                     { qty: "1", name: "Chargeur double rapide" },
-                    { qty: "2", name: "Cartes CFexpress Type A (160GB)" },
-                    { qty: "1", name: "Lecteur de carte USB-C" },
-                    { qty: "1", name: "Cage complète (Top Handle, Baseplate)" },
                     { qty: "1", name: "Valise rigide sur-mesure (Pelican/HPRC)" }
                   ].length} éléments
                 </span>
@@ -362,11 +359,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <ul className="flex flex-col">
               {[
                 { qty: "1", name: `Boîtier ${product.name}` },
-                { qty: "3", name: "Batteries NPF-Z100" },
+                { qty: "2", name: "Batteries NPF-Z100" },
                 { qty: "1", name: "Chargeur double rapide" },
-                { qty: "2", name: "Cartes CFexpress Type A (160GB)" },
-                { qty: "1", name: "Lecteur de carte USB-C" },
-                { qty: "1", name: "Cage complète (Top Handle, Baseplate)" },
                 { qty: "1", name: "Valise rigide sur-mesure (Pelican/HPRC)" }
               ].map((item, i) => (
                 <li

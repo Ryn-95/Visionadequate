@@ -92,9 +92,8 @@ export default function Devis() {
     doc.setFontSize(22);
     doc.text("VISION ADEQUATE", 50, 25);
     doc.setFontSize(10);
-    doc.text("12 Rue de la Précision", 50, 32);
-    doc.text("75011 Paris, France", 50, 37);
-    doc.text("contact@vision-adequate.fr", 50, 42);
+    doc.text("95140 Garges-lès-Gonesse, France", 50, 32);
+    doc.text("contact.visionadequate@gmail.com", 50, 37);
 
     // Add Client Info
     doc.setFontSize(14);
@@ -164,7 +163,7 @@ export default function Devis() {
     // Optionally open mail client
     const subject = encodeURIComponent("Nouvelle demande de devis - " + (formData.societe || formData.nom || "Client"));
     const body = encodeURIComponent(`Bonjour l'équipe Vision Adéquate,\n\nVeuillez trouver ci-joint ma demande de devis en PDF que je viens de générer sur votre site.\n\nMerci,\n${formData.nom}`);
-    window.open(`mailto:contact@vision-adequate.fr?subject=${subject}&body=${body}`, '_blank');
+    window.open(`mailto:contact.visionadequate@gmail.com?subject=${subject}&body=${body}`, '_blank');
     
     setStep(3);
     clearCart();
