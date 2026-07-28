@@ -112,9 +112,9 @@ const PRODUCTS_DATA: Record<string, any> = {
   "dji-mic-2": {
     name: "DJI Mic 2", brand: "DJI", price: "35", status: "Disponible",
     images: [
-      "/assets/MATERIELS 2/DJI Mic 2/1 - DJI Mic 2 Système audfio sans fil (2 TX + 1 RX) + Étui de charge + Sac de rangement.jpg",
-      "/assets/MATERIELS 2/DJI Mic 2/2 - DJI Mic 2 Système audfio sans fil (2 TX + 1 RX) + Étui de charge + Sac de rangement .jpg",
-      "/assets/MATERIELS 2/DJI Mic 2/3 - DJI Mic 2 Système audfio sans fil (2 TX + 1 RX) + Étui de charge + Sac de rangement..jpg"
+      "/assets/MATERIELS 2/DJI Mic 2/dji-mic-2-1.jpg",
+      "/assets/MATERIELS 2/DJI Mic 2/dji-mic-2-2.jpg",
+      "/assets/MATERIELS 2/DJI Mic 2/dji-mic-2-3.jpg"
     ],
     desc: "Système de microphone sans fil professionnel avec enregistrement interne 32-bit float.",
     specs: [["Émetteurs", "2"], ["Récepteur", "1"], ["Enregistrement", "32-bit Float interne"], ["Portée", "250m"]]

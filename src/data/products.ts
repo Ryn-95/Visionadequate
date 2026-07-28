@@ -215,7 +215,7 @@ export const products: Product[] = [
     pricePerDay: 35,
     available: true,
     badge: 'NOUVEAU',
-    imageUrl: '/assets/MATERIELS 2/DJI Mic 2/1 - DJI Mic 2 Système audfio sans fil (2 TX + 1 RX) + Étui de charge + Sac de rangement.jpg'
+    imageUrl: '/assets/MATERIELS 2/DJI Mic 2/dji-mic-2-1.jpg'
   },
   {
     id: 'godox-flash-v1-pro-s',

@@ -5,111 +5,22 @@ import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/ui/Header";
 import { Footer } from "@/components/ui/Footer";
 
-const BASE = "/assets/RYN/Portfolio";
-const BASE_AUTO = "/assets/Porfolio ";
+const BASE = "/assets/portfolio-web";
 
-const GALLERY: { group: string; folder: string; files: string[]; base?: string }[] = [
-  {
-    group: "Mariage de A & M",
-    folder: "Mariage de A & M",
-    files: ["B1.jpg", "B2.jpg", "B3.jpg", "B4.jpg", "B5.jpg"],
-  },
-  {
-    group: "Mariage de B & D",
-    folder: "Mariage de B & D",
-    files: ["C1.jpg", "C2.jpg", "C3.jpg", "C4.jpg"],
-  },
-  {
-    group: "Mariage de C & A",
-    folder: "Mariage de C & A",
-    files: [
-      "Amir&Chaïma-007.jpg",
-      "Amir&Chaïma-013.jpg",
-      "Amir&Chaïma-078.jpg",
-      "Amir&Chaïma-142.jpg",
-      "Amir&Chaïma-164.jpg",
-      "Amir&Chaïma-178.jpg",
-      "Amir&Chaïma-179.jpg",
-      "Amir&Chaïma-264.jpg",
-    ],
-  },
-  {
-    group: "Mariage de F & R",
-    folder: "Mariage de F & R",
-    files: ["A1jpg.jpg", "A2.jpg", "A3.jpg", "A4.jpg"],
-  },
-  {
-    group: "Mariage de S & C",
-    folder: "Mariage de S & C",
-    files: [
-      "A-9.jpg",
-      "A-98.jpg",
-      "A-107.jpg",
-      "A-120.jpg",
-      "A-127.jpg",
-      "Sara&Chris-018.jpg",
-      "Sara&Chris-093.jpg",
-      "Sara&Chris-125.jpg",
-      "Sara&Chris-166.jpg",
-      "Sara&Chris-197.jpg",
-    ],
-  },
-  {
-    group: "Akenzo",
-    folder: "AKENZO",
-    files: [
-      "Akenzo P.1-34.jpg",
-      "Akenzo P.2-25.jpg",
-      "Akenzo P.2-28.jpg",
-      "Akenzo P.3-17.jpg",
-      "Akenzo P.3-28.jpg",
-      "Akenzo P.3-36.jpg",
-      "Akenzo P.4-22.jpg",
-    ],
-  },
-  {
-    group: "Charlito",
-    folder: "CHARLITO",
-    files: [
-      "Charlito_R2-066.jpg",
-      "Charlito_R2-101.jpg",
-      "Charlito_R3-03.jpg",
-      "Charlito_R3-07.jpg",
-      "Charlito_R3-08.jpg",
-      "Charlito_R3-10.jpg",
-    ],
-  },
-  {
-    group: "Classe G Brabus",
-    folder: "CLASSE G BRABUS",
-    base: BASE_AUTO,
-    files: [
-      "ELITE AUTO V1 CINEMATIQUE -04.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -08.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -14.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -15.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -16.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -18.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -20.jpg",
-    ],
-  },
-  {
-    group: "Audi R8 Spider",
-    folder: "AUDI R8 SPIDER",
-    base: BASE_AUTO,
-    files: [
-      "ELITE AUTO V1 CINEMATIQUE -32.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -34.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -38.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -39.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -42.jpg",
-      "ELITE AUTO V1 CINEMATIQUE -43.jpg",
-    ],
-  },
+// Images optimisées pour le web (1600px, WebP) — générées depuis les originaux
+const GALLERY: { group: string; folder: string; count: number }[] = [
+  { group: "Mariage de A & M", folder: "mariage-am", count: 5 },
+  { group: "Mariage de B & D", folder: "mariage-bd", count: 4 },
+  { group: "Mariage de C & A", folder: "mariage-ca", count: 8 },
+  { group: "Mariage de F & R", folder: "mariage-fr", count: 4 },
+  { group: "Mariage de S & C", folder: "mariage-sc", count: 10 },
+  { group: "Akenzo", folder: "akenzo", count: 7 },
+  { group: "Charlito", folder: "charlito", count: 6 },
+  { group: "Classe G Brabus", folder: "classe-g-brabus", count: 7 },
+  { group: "Audi R8 Spider", folder: "audi-r8-spider", count: 6 },
 ];
 
-const src = (folder: string, file: string, base: string = BASE) =>
-  encodeURI(`${base}/${folder}/${file}`);
+const src = (folder: string, index: number) => `${BASE}/${folder}/${index + 1}.webp`;
 
 export default function PortfolioPage() {
   return (
@@ -148,7 +59,7 @@ export default function PortfolioPage() {
         {/* GALLERIES */}
         <div className="pt-6 md:pt-10 pb-28 md:pb-40">
           {GALLERY.map((section) => {
-            const n = section.files.length;
+            const n = section.count;
             const colClass =
               n <= 2
                 ? "columns-1"
@@ -170,13 +81,13 @@ export default function PortfolioPage() {
 
               {/* Mosaïque équilibrée — toutes les photos du dossier */}
               <div className={`${colClass} gap-4 md:gap-5 [column-fill:_balance]`}>
-                {section.files.map((file, i) => (
+                {Array.from({ length: section.count }, (_, i) => (
                   <figure
-                    key={file}
+                    key={i}
                     className="group relative mb-4 md:mb-5 overflow-hidden break-inside-avoid bg-[#161616]"
                   >
                     <img
-                      src={src(section.folder, file, section.base)}
+                      src={src(section.folder, i)}
                       alt={`${section.group} — ${i + 1}`}
                       loading="eager"
                       decoding="async"

@@ -56,38 +56,31 @@ export default function Devis() {
 
     const doc = new jsPDF();
     
-    // Convert logo image to base64
+    // Convert logo image to base64 (logo is black on transparent — drawn on a white background for the PDF)
     const logoUrl = '/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png';
     const logoImg = new Image();
     logoImg.src = logoUrl;
-    
-    await new Promise((resolve) => {
-      logoImg.onload = resolve;
+
+    const logoLoaded = await new Promise<boolean>((resolve) => {
+      logoImg.onload = () => resolve(true);
+      logoImg.onerror = () => resolve(false);
     });
 
-    const canvas = document.createElement('canvas');
-    canvas.width = logoImg.width;
-    canvas.height = logoImg.height;
-    const ctx = canvas.getContext('2d');
-    if (ctx) {
-      // Invert the colors for the PDF (black logo on white bg instead of white on black)
-      ctx.drawImage(logoImg, 0, 0);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
-      for (let i = 0; i < data.length; i += 4) {
-        // Only invert if it's not transparent
-        if (data[i + 3] > 0) {
-          data[i] = 255 - data[i];     // red
-          data[i + 1] = 255 - data[i + 1]; // green
-          data[i + 2] = 255 - data[i + 2]; // blue
-        }
+    if (logoLoaded) {
+      const canvas = document.createElement('canvas');
+      canvas.width = logoImg.width;
+      canvas.height = logoImg.height;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(logoImg, 0, 0);
       }
-      ctx.putImageData(imageData, 0, 0);
-    }
-    const logoBase64 = canvas.toDataURL('image/png');
+      const logoBase64 = canvas.toDataURL('image/png');
 
-    // Add Company Logo/Header
-    doc.addImage(logoBase64, 'PNG', 14, 15, 30, 30 * (logoImg.height / logoImg.width));
+      // Add Company Logo/Header
+      doc.addImage(logoBase64, 'PNG', 14, 15, 30, 30 * (logoImg.height / logoImg.width));
+    }
     
     doc.setFontSize(22);
     doc.text("VISION ADEQUATE", 50, 25);

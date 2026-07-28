@@ -86,13 +86,10 @@ export default function Home() {
               </div>
               <div className="space-y-8 text-sm md:text-base font-medium text-[#555] leading-relaxed">
                 <p className="text-xl md:text-2xl font-bold text-[#111] leading-tight">
-                  Nous ne sommes pas de simples loueurs. Vision Adéquate est né d&apos;une frustration : celle de voir la logistique entraver la création.
+                  Nous ne sommes pas de simples loueurs. Vision Adéquate réunit trois expertises : la location de matériel, la photographie et la vidéo.
                 </p>
                 <p>
-                  Chaque pièce de notre inventaire est sélectionnée, testée et calibrée avec une rigueur chirurgicale. Si un équipement n&apos;atteint pas nos standards de fiabilité, il n&apos;est pas proposé à la location. Point.
-                </p>
-                <p className="text-[#111] font-bold">
-                  Notre mission est simple : faire disparaître l&apos;outil pour laisser toute la place à votre vision.
+                  Que vous louiez un équipement ou fassiez appel à nos prestations, nous accordons la même importance à la qualité, à la fiabilité et au sens du détail, pour vous accompagner sereinement dans tous vos projets.
                 </p>
               </div>
             </div>
