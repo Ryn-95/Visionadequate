@@ -79,14 +79,14 @@ export default function Devis() {
       const logoBase64 = canvas.toDataURL('image/png');
 
       // Add Company Logo/Header
-      doc.addImage(logoBase64, 'PNG', 14, 15, 30, 30 * (logoImg.height / logoImg.width));
+      doc.addImage(logoBase64, 'PNG', 14, 14, 22, 22 * (logoImg.height / logoImg.width));
     }
-    
+
     doc.setFontSize(22);
-    doc.text("VISION ADEQUATE", 50, 25);
+    doc.text("VISION ADEQUATE", 46, 25);
     doc.setFontSize(10);
-    doc.text("95140 Garges-lès-Gonesse, France", 50, 32);
-    doc.text("contact.visionadequate@gmail.com", 50, 37);
+    doc.text("95140 Garges-lès-Gonesse, France", 46, 32);
+    doc.text("contact.visionadequate@gmail.com", 46, 37);
 
     // Add Client Info
     doc.setFontSize(14);
@@ -137,12 +137,14 @@ export default function Devis() {
 
     const finalTotalHT = totalHT * durationMultiplier;
     
+    // Totaux alignés sur le bord droit de la page (marge de 14mm)
+    const rightEdge = 196;
     doc.setFontSize(12);
-    doc.text(`Total HT ${durationText} : ${finalTotalHT} €`, 120, finalY + 15);
-    doc.text(`Frais de dossier / Préparation matériel (20%) : ${(finalTotalHT * 0.2).toFixed(2)} €`, 120, finalY + 22);
+    doc.text(`Total HT ${durationText} : ${finalTotalHT} €`, rightEdge, finalY + 15, { align: "right" });
+    doc.text(`Frais de dossier / Préparation matériel (20%) : ${(finalTotalHT * 0.2).toFixed(2)} €`, rightEdge, finalY + 22, { align: "right" });
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
-    doc.text(`Total TTC estimé : ${(finalTotalHT * 1.2).toFixed(2)} €`, 120, finalY + 32);
+    doc.text(`Total TTC estimé : ${(finalTotalHT * 1.2).toFixed(2)} €`, rightEdge, finalY + 32, { align: "right" });
 
     // Mention TVA Non applicable
     doc.setFontSize(10);
