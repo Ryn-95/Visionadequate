@@ -228,7 +228,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   src={product.images[activeImage]}
-                  alt={product.name}
+                  alt={`${product.name} en location chez Vision Adéquate`}
                   draggable={false}
                   className="relative z-10 max-w-[80%] max-h-[85%] w-auto h-auto object-contain mix-blend-multiply drop-shadow-[0_35px_55px_rgba(0,0,0,0.22)]"
                 />
@@ -265,7 +265,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     <button
                       key={img}
                       onClick={() => setActiveImage(i)}
-                      aria-label={`Voir l'image ${i + 1}`}
+                      aria-label={`Voir la photo ${i + 1} du ${product.name}`}
                       className={`relative w-14 h-14 md:w-16 md:h-16 rounded-xl overflow-hidden bg-[#EBEBE6] flex items-center justify-center transition-all duration-300 ${i === activeImage ? 'ring-2 ring-[#111] ring-offset-2 ring-offset-[#F4F4F0]' : 'opacity-45 hover:opacity-100'}`}
                     >
                       <img src={img} alt="" decoding="async" className="w-full h-full object-contain p-2 mix-blend-multiply" />
@@ -429,7 +429,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 <div className="relative aspect-[4/3] p-10 flex items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_center,_#FFFFFF_0%,_#ECECE6_100%)]">
                   <img
                     src={sugg.imageUrl}
-                    alt={sugg.model}
+                    alt={`${sugg.brand} ${sugg.model} en location`}
                     loading="eager"
                     decoding="async"
                     className="max-w-[70%] max-h-[75%] w-auto h-auto object-contain mix-blend-multiply drop-shadow-[0_15px_25px_rgba(0,0,0,0.15)] group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
