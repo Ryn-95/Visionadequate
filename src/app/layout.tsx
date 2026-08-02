@@ -8,8 +8,22 @@ import Loader from "@/components/ui/Loader";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.visionadequate.fr"),
   title: "Vision Adéquate | Location de matériel cinéma",
   description: "Location de matériel vidéo et cinéma professionnel. Le juste équipement. La pleine vision.",
+  openGraph: {
+    title: "Vision Adéquate | Location de matériel cinéma",
+    description: "Location de matériel vidéo et cinéma professionnel. Le juste équipement. La pleine vision.",
+    url: "https://www.visionadequate.fr",
+    siteName: "Vision Adéquate",
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vision Adéquate | Location de matériel cinéma",
+    description: "Location de matériel vidéo et cinéma professionnel. Le juste équipement. La pleine vision.",
+  },
 };
 
 export default function RootLayout({

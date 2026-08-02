@@ -214,6 +214,7 @@ export default function TarifsPage() {
                     <h4 className="text-[10px] font-bold text-[#111] uppercase tracking-[0.2em] border-b border-[#111] pb-4">Services Additionnels</h4>
                     <ul className="space-y-1">
                       <li><button onClick={() => choosePrestation("Service additionnel — Prise Drone (150€)")} className="w-full flex justify-between items-center text-sm font-medium py-2 px-2 -mx-2 hover:bg-white transition-colors text-left"><span className="text-[#555]">Prise Drone</span> <span className="font-black text-lg text-[#111]">150€</span></button></li>
+                      <li><button onClick={() => choosePrestation("Mariage — Prise & impression cliché (sur devis)")} className="w-full flex justify-between items-center text-sm font-medium py-2 px-2 -mx-2 hover:bg-white transition-colors text-left"><span className="text-[#555]">Mariage : Prise & impression cliché</span> <span className="font-black text-sm text-[#111] uppercase tracking-widest">Sur devis</span></button></li>
                     </ul>
                   </div>
 
