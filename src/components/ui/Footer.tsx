@@ -16,6 +16,8 @@ const NAV = [
   { label: "Prestations", href: "/tarifs" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Devis", href: "/devis" },
+  // Lien interne sitewide vers la page locale : sans lui, elle serait orpheline.
+  { label: "Photographe mariage 95", href: "/photographe-mariage-val-doise" },
 ];
 
 const LOGO = "/assets/RYN/LOGO NOIR ,BLANC, ROUGE/58959_VISION ADEQUATE_AK-01.png";

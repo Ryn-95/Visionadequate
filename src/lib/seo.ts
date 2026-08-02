@@ -184,6 +184,62 @@ const SERVICES = [
   { name: "Création de contenu UGC", price: 140, type: "Création de contenu" },
 ];
 
+/**
+ * FAQ tarifaire affichée sur /tarifs.
+ *
+ * Cible la grappe de questions « combien coûte un photographe de mariage »
+ * (~450 recherches/mois cumulées en France, difficulté 0 à 10). Les montants
+ * reprennent la grille publiée sur la même page — toute modification de prix
+ * doit être répercutée ici.
+ *
+ * Source unique : consommée à la fois par l'affichage et par le JSON-LD, pour
+ * éviter que le texte visible et les données structurées divergent.
+ */
+export const PRICING_FAQ: { q: string; a: string }[] = [
+  {
+    q: "Combien coûte un photographe de mariage ?",
+    a: "En France, comptez généralement entre 1 200€ et 2 500€ pour une couverture complète. Chez Vision Adéquate, la photographie de mariage seule démarre à 500€ pour 4 heures, 700€ pour 8 heures et 1 120€ pour 12 heures. Ces montants sont fermes et affichés publiquement : il n'y a pas de devis préalable pour connaître le prix.",
+  },
+  {
+    q: "Quel est le prix d'un vidéaste pour un mariage ?",
+    a: "La vidéo de mariage seule est facturée 700€ pour 4 heures, 1 000€ pour 8 heures et 1 700€ pour 12 heures. La vidéo est plus chère que la photo à durée égale car elle demande davantage de matériel (stabilisateur, son, éclairage) et surtout un temps de montage et d'étalonnage après l'événement.",
+  },
+  {
+    q: "Faut-il prendre la photo et la vidéo ensemble ?",
+    a: "Le pack photo et vidéo simultanées coûte 1 200€ pour 4 heures, 1 700€ pour 8 heures et 2 820€ pour 12 heures — soit exactement le prix des deux prestations réservées séparément, sans surcoût de coordination. L'intérêt n'est donc pas financier mais pratique : une seule équipe habituée à travailler ensemble, qui ne se gêne pas pendant les moments clés, et une vraie cohérence visuelle entre les photos et le film.",
+  },
+  {
+    q: "Comment choisir son photographe de mariage ?",
+    a: "Regardez un reportage complet et pas seulement les meilleures images d'un portfolio : c'est la régularité sur toute une journée qui compte. Vérifiez que le style correspond au vôtre, que le tarif est clair et écrit, et que le matériel est professionnel et doublé en cas de panne. Notre portfolio présente des mariages entiers, du préparatif à la soirée.",
+  },
+  {
+    q: "Proposez-vous des prises de vue par drone ?",
+    a: "Oui, la prise de vue par drone est proposée en service additionnel à 150€, en complément d'une prestation photo ou vidéo. Elle permet des plans d'ensemble du lieu de réception et des séquences aériennes des moments clés.",
+  },
+  {
+    q: "Dans quelles villes intervenez-vous ?",
+    a: "Nous sommes basés à Garges-lès-Gonesse (95140) et intervenons dans tout le Val-d'Oise — Sarcelles, Villiers-le-Bel, Cergy, Argenteuil — ainsi qu'à Paris et en Île-de-France. Pour un mariage en dehors de cette zone, indiquez-nous le lieu dans votre demande.",
+  },
+  {
+    q: "Comment réserver une date ?",
+    a: "Envoyez votre demande via le formulaire de la page, par e-mail ou par WhatsApp en précisant la date et le lieu. La date est bloquée une fois le devis validé. Les dates de printemps et d'été partant en premier, mieux vaut s'y prendre le plus tôt possible.",
+  },
+];
+
+export function faqJsonLd(
+  entries: { q: string; a: string }[] = PRICING_FAQ
+): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: entries.map((e) => ({
+      "@type": "Question",
+      name: e.q,
+      acceptedAnswer: { "@type": "Answer", text: e.a },
+    })),
+  };
+}
+
 export function servicesJsonLd(): JsonLd {
   return {
     "@context": "https://schema.org",

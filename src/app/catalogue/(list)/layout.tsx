@@ -2,15 +2,23 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd, catalogueJsonLd } from "@/lib/seo";
 
+/*
+  Cible (volumes Semrush France) : « location matériel photo » (390/mois),
+  « location appareil photo Paris » (210), « location matériel photo
+  professionnel » (170), « location matériel vidéo » (260).
+  Le titre est volontairement court : le gabarit ajoute « | Vision Adéquate ».
+*/
+const TITLE = "Location matériel photo & vidéo professionnel";
+const DESCRIPTION =
+  "Location d'appareils photo et de matériel vidéo professionnel en Val-d'Oise (95), Paris et Île-de-France : Sony FX3, A7IV, A7S III, drones DJI, stabilisateurs, éclairage et audio. Dès 6€ par jour, matériel testé avant chaque départ.";
+
 export const metadata: Metadata = {
-  title: "Catalogue — Location de caméras, objectifs et drones",
-  description:
-    "Louez du matériel photo et vidéo professionnel en Val-d'Oise (95) : Sony FX3, A7IV, A7S III, drones DJI, stabilisateurs RS3, éclairage Godox et audio. Dès 6€ par jour.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "/catalogue" },
   openGraph: {
-    title: "Catalogue — Location de caméras, objectifs et drones",
-    description:
-      "Sony FX3, A7IV, A7S III, drones DJI, stabilisateurs, éclairage et audio en location en Val-d'Oise et Île-de-France. Dès 6€ par jour.",
+    title: TITLE,
+    description: DESCRIPTION,
     url: "/catalogue",
     type: "website",
   },
@@ -37,7 +45,8 @@ export default function CatalogueLayout({
         Google et pour les lecteurs d'écran, sans modifier le rendu.
       */}
       <h1 className="sr-only">
-        Location de matériel photo et vidéo en Val-d&apos;Oise et Île-de-France
+        Location de matériel photo et vidéo professionnel en Val-d&apos;Oise,
+        Paris et Île-de-France
       </h1>
       {children}
     </>

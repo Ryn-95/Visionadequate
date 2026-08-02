@@ -4,9 +4,11 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Mail, MessageCircle, User, Phone, Calendar } from "lucide-react";
 import { useState } from "react";
 import { Header } from "@/components/ui/Header";
+import { PRICING_FAQ } from "@/lib/seo";
 import { Footer } from "@/components/ui/Footer";
 
 const WHATSAPP_NUMBER = "33666737410";
+
 
 export default function TarifsPage() {
   const [formData, setFormData] = useState({
@@ -232,6 +234,42 @@ export default function TarifsPage() {
               </a>
             </div>
 
+          </div>
+        </section>
+
+        {/*
+          SECTION: FAQ TARIFAIRE
+          Répond mot pour mot aux questions les plus recherchées sur le prix
+          d'un photographe de mariage — contenu visible (et non masqué), seul
+          format réellement pris en compte par Google.
+        */}
+        <section className="border-t border-[#111] px-6 md:px-12 py-24 md:py-32 bg-[#EBEBE6]">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-4 mb-6">
+              <span className="w-12 h-[2px] bg-[#111]"></span>
+              <span className="text-[10px] font-bold text-[#111] uppercase tracking-[0.3em]">
+                Questions fréquentes
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-[0.95] mb-14 max-w-2xl">
+              Combien coûte un photographe de mariage&nbsp;?
+            </h2>
+
+            <div className="flex flex-col">
+              {PRICING_FAQ.map((item, i) => (
+                <div
+                  key={i}
+                  className="border-t border-[#111] py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8"
+                >
+                  <h3 className="md:col-span-5 text-base md:text-lg font-black uppercase tracking-tight leading-tight">
+                    {item.q}
+                  </h3>
+                  <p className="md:col-span-7 text-sm md:text-base font-medium text-[#555] leading-relaxed">
+                    {item.a}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
