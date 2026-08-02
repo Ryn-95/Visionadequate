@@ -274,6 +274,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
               )}
             </div>
+
+            {/* Frais d'agence — transparence client */}
+            <div className="px-6 md:px-8 py-6 md:py-8 border-t border-black/10 bg-[#EBEBE6]/60">
+              <p className="text-xs font-medium text-[#666] leading-relaxed">
+                Chez Vision Adéquate, chaque équipement est soigneusement préparé avant d&apos;être remis à nos clients. Les frais d&apos;agence couvrent la recharge des batteries, les contrôles techniques, les tests de bon fonctionnement, le nettoyage, la maintenance préventive, le stockage sécurisé, l&apos;assurance du matériel ainsi que la préparation complète de votre commande. Notre objectif est simple : vous fournir un matériel irréprochable, prêt à être utilisé dès votre arrivée.
+              </p>
+            </div>
           </div>
 
           {/* DROITE : INFOS & DEVIS */}
@@ -298,13 +305,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
               </div>
               <div className="font-black text-5xl lg:text-6xl leading-none tracking-tighter">{formatEuro(fullPrice(Number(product.price)))}€</div>
-            </div>
-
-            {/* Frais d'agence — transparence client */}
-            <div className="px-8 md:px-14 py-6 border-b border-black/10 bg-[#EBEBE6]/60">
-              <p className="text-xs font-medium text-[#666] leading-relaxed">
-                Chez Vision Adéquate, chaque équipement est soigneusement préparé avant d&apos;être remis à nos clients. Les frais d&apos;agence couvrent la recharge des batteries, les contrôles techniques, les tests de bon fonctionnement, le nettoyage, la maintenance préventive, le stockage sécurisé, l&apos;assurance du matériel ainsi que la préparation complète de votre commande. Notre objectif est simple : vous fournir un matériel irréprochable, prêt à être utilisé dès votre arrivée.
-              </p>
             </div>
 
             {/* CTA */}
