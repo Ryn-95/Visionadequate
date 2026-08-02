@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Product } from "@/data/products";
 import { TagBadge } from "./TagBadge";
 import Link from "next/link";
+import { fullPrice, formatEuro } from "@/lib/pricing";
 
 interface ProductCardProps {
   product: Product;
@@ -55,7 +56,7 @@ export function ProductCard({ product, viewMode }: ProductCardProps) {
             ))}
           </div>
           <div className="text-right">
-            <div className="font-black text-xl leading-none">{product.pricePerDay}€</div>
+            <div className="font-black text-xl leading-none">{formatEuro(fullPrice(product.pricePerDay))}€</div>
             <div className="text-[9px] font-bold text-[#666] uppercase tracking-widest mt-1">/ Jour</div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import { Header } from "@/components/ui/Header";
 import { Footer } from "@/components/ui/Footer";
+import { fullPrice, fraisAgence, formatEuro } from "@/lib/pricing";
 
 export default function Devis() {
   const [step, setStep] = useState(1);
@@ -33,6 +34,10 @@ export default function Devis() {
     const date = new Date(dateStr);
     return date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
   };
+
+  const daysCount = formData.dateDebut && formData.dateFin
+    ? Math.ceil(Math.abs(new Date(formData.dateFin).getTime() - new Date(formData.dateDebut).getTime()) / (1000 * 60 * 60 * 24)) + 1
+    : 1;
 
   const getWhatsAppMessage = () => {
     let msg = `Bonjour Vision Adéquate, je souhaite vous envoyer une demande de devis.\n\n`;
@@ -202,8 +207,8 @@ export default function Devis() {
                       </button>
                     </div>
                     <div className="text-right mt-4">
-                      <div className="font-black text-2xl">{item.pricePerDay * item.quantity}€</div>
-                      <div className="text-[9px] font-bold text-[#666] uppercase tracking-widest mt-1">/ Jour HT</div>
+                      <div className="font-black text-2xl">{formatEuro(fullPrice(item.pricePerDay * item.quantity))}€</div>
+                      <div className="text-[9px] font-bold text-[#666] uppercase tracking-widest mt-1">/ Jour</div>
                     </div>
                   </div>
                 </div>
@@ -364,20 +369,14 @@ export default function Devis() {
           {/* Total Bar */}
           {step < 3 && (
             <div className="p-8 md:p-12 border-t border-[#333] flex justify-between items-end">
-              <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em]">Estimation {
-                formData.dateDebut && formData.dateFin ? 
-                `(${Math.ceil(Math.abs(new Date(formData.dateFin).getTime() - new Date(formData.dateDebut).getTime()) / (1000 * 60 * 60 * 24)) + 1} jours)` : 
-                "(1 Jour)"
-              }</div>
+              <div className="text-[10px] font-bold text-[#888] uppercase tracking-[0.2em]">Estimation ({daysCount} jour{daysCount > 1 ? "s" : ""})</div>
               <div className="text-right">
                 <div className="font-black text-4xl leading-none">
-                  {totalHT * (formData.dateDebut && formData.dateFin ? 
-                    (Math.ceil(Math.abs(new Date(formData.dateFin).getTime() - new Date(formData.dateDebut).getTime()) / (1000 * 60 * 60 * 24)) + 1) : 
-                    1)}€
+                  {formatEuro(fullPrice(totalHT * daysCount))}€
                 </div>
-                <div className="text-[10px] font-bold text-[#888] uppercase tracking-widest mt-1">HT (+ Frais = {(totalHT * 1.2 * (formData.dateDebut && formData.dateFin ? 
-                    (Math.ceil(Math.abs(new Date(formData.dateFin).getTime() - new Date(formData.dateDebut).getTime()) / (1000 * 60 * 60 * 24)) + 1) : 
-                    1)).toFixed(2)}€ TTC)</div>
+                <div className="text-[10px] font-bold text-[#888] uppercase tracking-widest mt-1">
+                  Dont {formatEuro(fraisAgence(totalHT * daysCount))}€ de frais d&apos;agence inclus
+                </div>
               </div>
             </div>
           )}

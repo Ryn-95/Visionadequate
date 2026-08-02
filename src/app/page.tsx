@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Header } from "@/components/ui/Header";
 import { Footer } from "@/components/ui/Footer";
+import { fullPrice, formatEuro } from "@/lib/pricing";
 
 export default function Home() {
   return (
@@ -249,8 +250,8 @@ export default function Home() {
                       ))}
                     </div>
                     <div className="text-right">
-                      <div className="font-black text-xl leading-none">{product.pricePerDay}€</div>
-                      <div className="text-[9px] font-bold text-[#666] uppercase tracking-widest mt-1">/ Jour HT</div>
+                      <div className="font-black text-xl leading-none">{formatEuro(fullPrice(product.pricePerDay))}€</div>
+                      <div className="text-[9px] font-bold text-[#666] uppercase tracking-widest mt-1">/ Jour</div>
                     </div>
                   </div>
                 </div>
@@ -278,8 +279,8 @@ export default function Home() {
               </div>
               <div className="flex items-end justify-between pt-8 border-t border-[#EEE]">
                 <div>
-                  <div className="text-3xl font-black">230€</div>
-                  <div className="text-[9px] font-bold text-[#666] uppercase tracking-widest mt-1">/ Jour HT (au lieu de 240€)</div>
+                  <div className="text-3xl font-black">{formatEuro(fullPrice(230))}€</div>
+                  <div className="text-[9px] font-bold text-[#666] uppercase tracking-widest mt-1">/ Jour (au lieu de {formatEuro(fullPrice(240))}€)</div>
                 </div>
                 <Link href="/devis" className="bg-[#111] text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-[#333] transition-colors">
                   Réserver ce pack

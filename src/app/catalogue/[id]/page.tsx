@@ -9,6 +9,7 @@ import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import { Header } from "@/components/ui/Header";
 import { Footer } from "@/components/ui/Footer";
+import { fullPrice, fraisAgence, formatEuro } from "@/lib/pricing";
 
 const PRODUCTS_DATA: Record<string, any> = {
   "sony-a7iv": {
@@ -292,9 +293,18 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <div className="px-8 md:px-14 py-8 border-y border-black/10 flex items-end justify-between">
               <div>
                 <div className="text-[10px] font-semibold text-[#999] uppercase tracking-[0.2em] mb-1.5">Tarif journalier</div>
-                <div className="text-xs font-medium text-[#AAA] uppercase tracking-wider">HT / jour</div>
+                <div className="text-xs font-medium text-[#AAA] uppercase tracking-wider">
+                  Dont {formatEuro(fraisAgence(Number(product.price)))}€ de frais d&apos;agence inclus
+                </div>
               </div>
-              <div className="font-black text-5xl lg:text-6xl leading-none tracking-tighter">{product.price}€</div>
+              <div className="font-black text-5xl lg:text-6xl leading-none tracking-tighter">{formatEuro(fullPrice(Number(product.price)))}€</div>
+            </div>
+
+            {/* Frais d'agence — transparence client */}
+            <div className="px-8 md:px-14 py-6 border-b border-black/10 bg-[#EBEBE6]/60">
+              <p className="text-xs font-medium text-[#666] leading-relaxed">
+                Chez Vision Adéquate, chaque équipement est soigneusement préparé avant d&apos;être remis à nos clients. Les frais d&apos;agence couvrent la recharge des batteries, les contrôles techniques, les tests de bon fonctionnement, le nettoyage, la maintenance préventive, le stockage sécurisé, l&apos;assurance du matériel ainsi que la préparation complète de votre commande. Notre objectif est simple : vous fournir un matériel irréprochable, prêt à être utilisé dès votre arrivée.
+              </p>
             </div>
 
             {/* CTA */}
@@ -432,7 +442,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                       {sugg.model}
                     </h3>
                   </div>
-                  <div className="font-black text-lg shrink-0">{sugg.pricePerDay}€ <span className="text-[9px] font-semibold text-[#999] uppercase tracking-widest">/ J</span></div>
+                  <div className="font-black text-lg shrink-0">{formatEuro(fullPrice(sugg.pricePerDay))}€ <span className="text-[9px] font-semibold text-[#999] uppercase tracking-widest">/ J</span></div>
                 </div>
               </Link>
             ))}
