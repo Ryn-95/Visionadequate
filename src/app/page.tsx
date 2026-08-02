@@ -288,7 +288,7 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-1/2 relative aspect-square md:aspect-auto flex items-center justify-center p-12 overflow-hidden bg-[#F4F4F0]">
-              <img src="/assets/materielsdetails/10-fx3/10-ii-.avif" alt="Setup FX3" loading="eager" decoding="async" className="w-full h-full object-contain mix-blend-multiply scale-110 hover:scale-125 transition-transform duration-700" />
+              <img src="/assets/Sony FX3deface.png" alt="Setup FX3" loading="eager" decoding="async" className="w-full h-full object-contain mix-blend-multiply scale-110 hover:scale-125 transition-transform duration-700" />
             </div>
           </div>
         </section>

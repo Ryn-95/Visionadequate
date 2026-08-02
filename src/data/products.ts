@@ -38,7 +38,7 @@ export const products: Product[] = [
     pricePerDay: 120,
     available: true,
     badge: 'PRO',
-    imageUrl: '/assets/materielsdetails/10-fx3/10-iii.avif',
+    imageUrl: '/assets/Sony FX3deface.png',
     sensorFormat: 'Full Frame',
   },
   {

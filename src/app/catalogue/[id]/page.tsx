@@ -20,7 +20,7 @@ const PRODUCTS_DATA: Record<string, any> = {
   },
   "sony-fx3": {
     name: "Sony FX3", brand: "Sony", price: "120", status: "En location",
-    images: ["/assets/materielsdetails/10-fx3/10-iii.avif", "/assets/materielsdetails/10-fx3/10-i-.avif", "/assets/materielsdetails/10-fx3/10-ii-.avif"],
+    images: ["/assets/Sony FX3deface.png", "/assets/Sony FX3dederriere.png", "/assets/Sony FX3den haut.png"],
     desc: "Caméra cinéma compacte plein format, idéale pour les tournages solo et les petites équipes.",
     specs: [["Capteur", "Plein format 4K"], ["Dynamique", "15+ stops"], ["Monture", "E-Mount"], ["Poids", "715 g"]]
   },
