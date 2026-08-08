@@ -53,7 +53,7 @@ export default function Home() {
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 src="/assets/materiels/9---rig.jpg" 
                 alt="Rig Cinéma" 
-                className="w-full h-full object-contain mix-blend-multiply scale-110 md:scale-125 origin-right"
+                className="w-full h-full object-contain mix-blend-multiply md:scale-125 origin-center md:origin-right"
               />
             </div>
           </div>

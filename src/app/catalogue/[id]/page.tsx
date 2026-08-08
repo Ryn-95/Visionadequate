@@ -211,9 +211,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row">
+        {/*
+          Grille sur desktop : la galerie occupe la colonne gauche et le bloc
+          « frais d'agence » se place dessous. Sur mobile on repasse en pile et
+          l'ordre place le nom, le prix et le bouton juste après la galerie,
+          plutôt que derrière le pavé explicatif.
+        */}
+        <div className="flex flex-col lg:grid lg:grid-cols-[58fr_42fr]">
           {/* GAUCHE : GALERIE (Sticky sur Desktop) */}
-          <div className="w-full lg:w-[58%] lg:border-r border-black/10">
+          <div className="order-1 w-full lg:col-start-1 lg:row-start-1 lg:border-r border-black/10">
             <div className="lg:sticky lg:top-[96px] lg:h-[calc(100vh-152px)] flex flex-col">
               {/* Stage produit */}
               <div
@@ -275,16 +281,17 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               )}
             </div>
 
-            {/* Frais d'agence — transparence client */}
-            <div className="px-6 md:px-8 py-6 md:py-8 border-t border-black/10 bg-[#EBEBE6]/60">
-              <p className="text-xs font-medium text-[#666] leading-relaxed">
-                Chez Vision Adéquate, chaque équipement est soigneusement préparé avant d&apos;être remis à nos clients. Les frais d&apos;agence couvrent la recharge des batteries, les contrôles techniques, les tests de bon fonctionnement, le nettoyage, la maintenance préventive, le stockage sécurisé, l&apos;assurance du matériel ainsi que la préparation complète de votre commande. Notre objectif est simple : vous fournir un matériel irréprochable, prêt à être utilisé dès votre arrivée.
-              </p>
-            </div>
+          </div>
+
+          {/* Frais d'agence — transparence client */}
+          <div className="order-3 px-6 md:px-8 py-6 md:py-8 border-t lg:border-r border-black/10 bg-[#EBEBE6]/60 lg:col-start-1 lg:row-start-2">
+            <p className="text-xs font-medium text-[#666] leading-relaxed">
+              Chez Vision Adéquate, chaque équipement est soigneusement préparé avant d&apos;être remis à nos clients. Les frais d&apos;agence couvrent la recharge des batteries, les contrôles techniques, les tests de bon fonctionnement, le nettoyage, la maintenance préventive, le stockage sécurisé, l&apos;assurance du matériel ainsi que la préparation complète de votre commande. Notre objectif est simple : vous fournir un matériel irréprochable, prêt à être utilisé dès votre arrivée.
+            </p>
           </div>
 
           {/* DROITE : INFOS & DEVIS */}
-          <div className="w-full lg:w-[42%] flex flex-col">
+          <div className="order-2 w-full flex flex-col lg:col-start-2 lg:row-start-1 lg:row-span-2">
             {/* Product Header */}
             <div className="px-8 md:px-14 pt-12 md:pt-20 pb-10">
               <div className="text-[11px] font-semibold text-[#999] uppercase tracking-[0.25em] mb-5">{product.brand}</div>
